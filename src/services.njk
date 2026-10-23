@@ -1,0 +1,83 @@
+---
+layout: layouts/base.njk
+title: Services & Upcoming Trips
+description: Two ways to plan a trip with Milena. Join one of her upcoming trips, or have a custom trip designed just for you.
+---
+{%- from "macros.njk" import tripCard with context -%}
+
+<section class="page-head">
+  <div class="wrap">
+    <h1>Services &amp; Upcoming Trips</h1>
+    <p class="lead">Two ways to plan a trip with me: join one of my upcoming trips, or have one designed just for you.</p>
+    <div class="grid grid-2">
+      <div class="card">
+        <h2 class="h3">Upcoming Trips</h2>
+        <p>Trips I've designed and come along on. Pick one, save your spot, and I'll take care of the rest.</p>
+        <p><a href="#upcoming-trips">See upcoming trips</a></p>
+      </div>
+      <div class="card">
+        <h2 class="h3">Custom Trip Planner</h2>
+        <p>Have somewhere in mind? Tell me where and who's coming, and I'll design the trip and send you a quote.</p>
+        {%- if site.draft %}
+        <p>{% ph "Is the quote free, or is there a planning fee?" %}</p>
+        {%- endif %}
+        <p><a href="#custom-trip">Plan a custom trip</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{%- if site.draft %}
+<section class="section section-lagoon" aria-labelledby="included-heading">
+  <div class="wrap measure">
+    <h2 id="included-heading">What "everything" includes</h2>
+    <p>When I say I take care of everything, here's what that usually means:</p>
+    <p>{% ph "What's usually included: flights? hotels? transfers? tickets? meals?" %}</p>
+  </div>
+</section>
+{%- endif %}
+
+<section class="section section-white" id="upcoming-trips" aria-labelledby="trips-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="trips-heading">Upcoming trips</h2>
+      <p class="lead">Where are we going next? Here's what's coming up.</p>
+    </div>
+    <div class="grid grid-3">
+      {%- for trip in collections.upcomingTrips %}
+      {{ tripCard(trip) }}
+      {%- endfor %}
+      <div class="card more-card">
+        <h3>Don't see what you want?</h3>
+        <p>I'll design a trip just for you. <a href="#custom-trip">Plan a custom trip</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="custom-trip" aria-labelledby="custom-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="custom-heading">Custom Trip Planner</h2>
+      <p class="lead">Tell me about the trip you've been dreaming of. I'll design it around your pace and budget, then send you a quote.</p>
+    </div>
+    <ol class="steps grid grid-3">
+      <li>
+        <h3>Tell me your idea</h3>
+        <p>Where you'd like to go, when, and who's coming. "Not sure yet" is a fine answer.</p>
+      </li>
+      <li>
+        <h3>I design it and send a quote</h3>
+        <p>I'll put together a trip that fits you, and send you a quote with all the details.</p>
+      </li>
+      <li>
+        <h3>Get ready to go</h3>
+        <p>Then just bring your passport.{% if site.draft %} {% ph "Does Milena come along on custom trips too?" %}{% endif %}</p>
+      </li>
+    </ol>
+    <div class="card form-card">
+      <h3>Tell me about your dream trip</h3>
+      {% include "partials/custom-trip-form.njk" %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+{#- Custom Trip Planner request: Milena designs the trip and sends a quote. -#}
+{%- from "macros.njk" import textField, textArea, radios -%}
+{%- set formSubject = "Custom trip request" -%}
+{%- set submitLabel = "Send my trip idea" -%}
+{%- set submitNote = "" -%}
+{% include "partials/form-open.njk" %}
+  {{ textField("c-name", "Name", required=true, autocomplete="name") }}
+  {{ textField("c-phone", "Phone", type="tel", required=true, autocomplete="tel") }}
+  {{ textField("c-email", "Email", type="email", hint="If you leave this blank, I'll get back to you by phone.", autocomplete="email") }}
+  {{ textField("c-where", "Where would you like to go?", required=true, hint="Not sure yet? Just tell me what sounds fun.") }}
+  {{ textField("c-when", "When are you thinking?", hint="A month, a season or exact dates.") }}
+  {{ radios("c-count", "How many travelers?", ["1", "2", "3 to 4", "5 to 8", "9 or more"], required=true, inline=true) }}
+  {{ radios("c-who", "Who's coming?", ["Just me", "A couple", "Family", "A group of friends"]) }}
+  {{ radios("c-pace", "What pace do you like?", ["Easy and relaxed", "A good mix", "Pack it in"]) }}
+  {{ textField("c-budget", "Rough budget per person", hint="A ballpark is fine, or \"not sure yet\".") }}
+  {{ textArea("c-notes", "Anything else?", hint="Must-sees, mobility needs, special occasions.") }}
+{% include "partials/form-actions.njk" %}

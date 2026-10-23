@@ -1,0 +1,4 @@
+{
+  "layout": "layouts/trip.njk",
+  "permalink": "/trips/{{ page.fileSlug }}/"
+}

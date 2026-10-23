@@ -1,0 +1,8 @@
+[
+  { "label": "Home", "url": "/" },
+  { "label": "About", "url": "/about/" },
+  { "label": "Services & Trips", "url": "/services/" },
+  { "label": "Gallery", "url": "/gallery/" },
+  { "label": "Reviews", "url": "/reviews/" },
+  { "label": "Contact", "url": "/contact/" }
+]

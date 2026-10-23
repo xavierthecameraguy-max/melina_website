@@ -1,0 +1,8 @@
+  <div class="form-actions">
+    <button class="btn btn-primary" type="submit">{{ submitLabel }}</button>
+    <p>Rather talk? {% if site.phone %}<a href="{{ site.phone | telHref }}">Call me at {{ site.phone }}</a>{% else %}Call me at {% ph "phone" %}{% endif %}</p>
+  </div>
+  {%- if submitNote %}
+  <p class="form-note">{{ submitNote }}</p>
+  {%- endif %}
+</form>

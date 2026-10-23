@@ -1,0 +1,97 @@
+---
+layout: layouts/base.njk
+---
+{%- from "macros.njk" import photo, icon with context -%}
+
+<section class="trip-hero">
+  <div class="wrap">
+    <p><a href="/services/#upcoming-trips">All upcoming trips</a></p>
+    <div class="trip-hero-grid">
+      <div>
+        <div class="badges">
+          {% if status == "soldout" %}<span class="pill pill-soldout">Sold out: join the waitlist</span>{% else %}<span class="pill pill-open">Spots open</span>{% endif %}
+          <span class="pill pill-sun">Milena is coming on this trip</span>
+          {% if sample %}<span class="pill">Sample trip</span>{% endif %}
+        </div>
+        <h1>{{ title | ph | safe }}</h1>
+        <p class="lead">{{ summary | ph | safe }}</p>
+        {{ photo(image, imageAlt, destination) }}
+      </div>
+      <div class="card">
+        <h2 class="h3">Quick facts</h2>
+        <dl class="facts">
+          <div><dt>Where</dt><dd>{{ destination | ph | safe }}</dd></div>
+          <div><dt>When</dt><dd>{{ dates | ph | safe }}</dd></div>
+          <div><dt>How long</dt><dd>{{ length | ph | safe }}</dd></div>
+          <div><dt>Price</dt><dd><strong>{{ price | ph | safe }}</strong> per person, sharing a room</dd></div>
+          <div><dt>Room to yourself</dt><dd>{{ singlePrice | ph | safe }} per person</dd></div>
+          <div><dt>Deposit</dt><dd>{{ deposit | ph | safe }}, with the rest due {{ finalPayment | ph | safe }}</dd></div>
+          <div><dt>Group size</dt><dd>{{ groupSize | ph | safe }}</dd></div>
+          <div><dt>Spots left</dt><dd>{{ spotsLeft | ph | safe }}</dd></div>
+          <div><dt>Activity level</dt><dd>{{ activity | ph | safe }}. {{ walking | ph | safe }}</dd></div>
+          <div><dt>Book by</dt><dd>{{ bookBy | ph | safe }}</dd></div>
+        </dl>
+        <p class="btn-row no-print"><a class="btn btn-primary" href="#book">{{ "Join the waitlist" if status == "soldout" else "Save my spot" }}</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-white">
+  <div class="wrap">
+    <div class="prose">
+    <h2>Why I picked this trip</h2>
+    {{ content | phHtml | safe }}
+
+    <h2>Day by day</h2>
+    <ol class="days">
+      {%- for day in days %}
+      <li>
+        <span class="day-num">Day {{ loop.index }}</span>
+        <div>
+          <h3>{{ day.title | ph | safe }}</h3>
+          <p>{{ day.text | ph | safe }}</p>
+        </div>
+      </li>
+      {%- endfor %}
+    </ol>
+
+    <h2>What's included</h2>
+    <ul class="checklist">
+      {%- for item in included %}
+      <li>{{ icon("check") | safe }}<span>{{ item | ph | safe }}</span></li>
+      {%- endfor %}
+    </ul>
+
+    <h2>Not included</h2>
+    <ul class="checklist">
+      {%- for item in notIncluded %}
+      <li>{{ icon("cross") | safe }}<span>{{ item | ph | safe }}</span></li>
+      {%- endfor %}
+    </ul>
+
+    <h2>Before you go</h2>
+    <p>{{ beforeYouGo | ph | safe }}</p>
+
+    {%- if faqs and faqs.length %}
+    <h2>Questions about this trip</h2>
+    <dl class="qa">
+      {%- for faq in faqs %}
+      <dt>{{ faq.q | ph | safe }}</dt>
+      <dd>{{ faq.a | ph | safe }}</dd>
+      {%- endfor %}
+    </dl>
+    {%- endif %}
+  </div>
+  </div>
+</section>
+
+<section class="section" id="book" aria-labelledby="book-heading">
+  <div class="wrap">
+    <div class="card form-card">
+      <h2 id="book-heading">{{ "Join the waitlist" if status == "soldout" else "Save my spot" }}</h2>
+      <p>Booking for Mom or Dad? {% if site.phone %}<a href="{{ site.phone | telHref }}">Call me</a>{% else %}Call me{% endif %}, I'm happy to talk it through.</p>
+      {% include "partials/booking-form.njk" %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,86 @@
+{#- Shared building blocks. Import with:
+    {% from "macros.njk" import photo, tripCard, textField, textArea, radios, icon with context %} -#}
+
+{% macro icon(name) -%}
+{%- if name == "phone" -%}
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+{%- elif name == "menu" -%}
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+{%- elif name == "close" -%}
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+{%- elif name == "check" -%}
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="#d9efec" stroke="#1f1a17" stroke-width="2"/><path fill="none" stroke="#0b6564" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M7 12.5l3.2 3.2L17 9"/></svg>
+{%- elif name == "cross" -%}
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="#fde1d8" stroke="#1f1a17" stroke-width="2"/><path fill="none" stroke="#b8432a" stroke-width="2.8" stroke-linecap="round" d="M8.5 8.5l7 7M15.5 8.5l-7 7"/></svg>
+{%- elif name == "together" -%}
+<svg class="feature-icon" viewBox="0 0 56 56" aria-hidden="true" focusable="false"><circle cx="28" cy="28" r="27" fill="#ffc23c" stroke="#1f1a17" stroke-width="2"/><circle cx="21" cy="21" r="5.5" fill="#1f1a17"/><circle cx="35" cy="21" r="5.5" fill="#1f1a17"/><path d="M11 40c1-7 5-11 10-11s9 4 10 11zM25 40c1-7 5-11 10-11s9 4 10 11z" fill="#1f1a17"/></svg>
+{%- elif name == "easy" -%}
+<svg class="feature-icon" viewBox="0 0 56 56" aria-hidden="true" focusable="false"><circle cx="28" cy="28" r="27" fill="#d9efec" stroke="#1f1a17" stroke-width="2"/><circle cx="28" cy="26" r="9" fill="#ffc23c" stroke="#1f1a17" stroke-width="2"/><path d="M28 11v4M28 37v4M13 26h4M39 26h4M17.5 15.5l2.8 2.8M35.7 33.7l2.8 2.8M38.5 15.5l-2.8 2.8M20.3 33.7l-2.8 2.8" stroke="#1f1a17" stroke-width="2.5" stroke-linecap="round"/><path d="M10 45c6-4 12-4 18 0s12 4 18 0" fill="none" stroke="#0e7c7b" stroke-width="3" stroke-linecap="round"/></svg>
+{%- elif name == "price" -%}
+<svg class="feature-icon" viewBox="0 0 56 56" aria-hidden="true" focusable="false"><circle cx="28" cy="28" r="27" fill="#fde1d8" stroke="#1f1a17" stroke-width="2"/><path d="M16 18h14l11 11-12 12-13-13z" fill="#f2603f" stroke="#1f1a17" stroke-width="2.5" stroke-linejoin="round"/><circle cx="22" cy="24" r="2.6" fill="#fff7ec" stroke="#1f1a17" stroke-width="2"/></svg>
+{%- endif -%}
+{%- endmacro %}
+
+{#- A photo, or a labeled placeholder until the real one arrives. -#}
+{% macro photo(src, alt, label, class="") -%}
+{%- if src -%}
+<div class="photo {{ class }}"><img src="{{ src }}" alt="{{ alt }}" loading="lazy"></div>
+{%- else -%}
+<div class="photo photo-ph {{ class }}" role="img" aria-label="Photo coming soon: {{ label }}"><span aria-hidden="true">[Photo: {{ label }}]</span></div>
+{%- endif -%}
+{%- endmacro %}
+
+{% macro tripCard(trip) -%}
+<article class="card trip-card">
+  {{ photo(trip.data.image, trip.data.imageAlt, trip.data.destination) }}
+  <div class="trip-card-body">
+    {% if trip.data.status == "soldout" %}
+      <span class="pill pill-soldout">Sold out: join the waitlist</span>
+    {% else %}
+      <span class="pill pill-open">Spots open</span>
+    {% endif %}
+    <h3><a href="{{ trip.url }}">{{ trip.data.title | ph | safe }}</a></h3>
+    <p class="trip-meta">{{ trip.data.destination | ph | safe }} · {{ trip.data.dates | ph | safe }}</p>
+    <p class="trip-price"><strong>{{ trip.data.price | ph | safe }}</strong> per person</p>
+    <span class="trip-card-more" aria-hidden="true">See the trip</span>
+  </div>
+</article>
+{%- endmacro %}
+
+{#- Form fields: label above, hint under the label, error under the field. -#}
+{% macro textField(id, label, type="text", required=false, hint="", autocomplete="", value="") -%}
+<div class="field">
+  <label for="{{ id }}">{{ label }}{% if required %} <span class="req">(required)</span>{% endif %}</label>
+  {% if hint %}<p class="hint" id="{{ id }}-hint">{{ hint }}</p>{% endif %}
+  <input id="{{ id }}" name="{{ label }}" type="{{ type }}"
+    {%- if autocomplete %} autocomplete="{{ autocomplete }}"{% endif %}
+    {%- if type == "tel" %} inputmode="tel"{% endif %}
+    {%- if value %} value="{{ value }}"{% endif %}
+    {%- if required %} required{% endif %}
+    aria-describedby="{% if hint %}{{ id }}-hint {% endif %}{{ id }}-error">
+  <p class="error" id="{{ id }}-error" hidden></p>
+</div>
+{%- endmacro %}
+
+{% macro textArea(id, label, required=false, hint="") -%}
+<div class="field">
+  <label for="{{ id }}">{{ label }}{% if required %} <span class="req">(required)</span>{% endif %}</label>
+  {% if hint %}<p class="hint" id="{{ id }}-hint">{{ hint }}</p>{% endif %}
+  <textarea id="{{ id }}" name="{{ label }}" rows="5"{% if required %} required{% endif %}
+    aria-describedby="{% if hint %}{{ id }}-hint {% endif %}{{ id }}-error"></textarea>
+  <p class="error" id="{{ id }}-error" hidden></p>
+</div>
+{%- endmacro %}
+
+{% macro radios(id, legend, options, required=false, hint="", inline=false) -%}
+<fieldset class="field" id="{{ id }}" aria-describedby="{% if hint %}{{ id }}-hint {% endif %}{{ id }}-error">
+  <legend>{{ legend }}{% if required %} <span class="req">(required)</span>{% endif %}</legend>
+  {% if hint %}<p class="hint" id="{{ id }}-hint">{{ hint }}</p>{% endif %}
+  <div class="options{% if inline %} options-inline{% endif %}">
+    {% for option in options %}
+    <label class="option"><input type="radio" name="{{ legend }}" value="{{ option }}"{% if required %} required{% endif %}> {{ option }}</label>
+    {% endfor %}
+  </div>
+  <p class="error" id="{{ id }}-error" hidden></p>
+</fieldset>
+{%- endmacro %}

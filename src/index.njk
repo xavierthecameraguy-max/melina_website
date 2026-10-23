@@ -1,0 +1,143 @@
+---
+layout: layouts/base.njk
+title: Home
+---
+{%- from "macros.njk" import photo, tripCard, icon with context -%}
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Onyx World Travel · Based in {{ site.region }}</p>
+      <h1>You bring the passport. I'll bring everything else.</h1>
+      <p class="lead">Hi, I'm Milena! I design fun, budget-friendly trips for groups and individuals. On my upcoming trips, I come along and take care of every little thing, before the trip and during it.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/services/#upcoming-trips">See upcoming trips</a>
+        <a class="btn btn-secondary" href="/services/#custom-trip">Plan a custom trip</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="postcard">
+        {{ photo("", "", "Milena with her travelers") }}
+        <p class="postcard-caption">Wish you were here? You could be.</p>
+        {% include "partials/stamp.njk" %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-white" aria-labelledby="how-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="how-heading">How it works</h2>
+    </div>
+    <ol class="steps grid grid-3">
+      <li>
+        <h3>Pick a trip</h3>
+        <p>Join one of my upcoming trips, or tell me about the trip you've been dreaming of.</p>
+      </li>
+      <li>
+        <h3>I handle the details</h3>
+        <p>Before the trip and during it, I take care of everything. No spreadsheets, no stress.</p>
+      </li>
+      <li>
+        <h3>Show up with your passport</h3>
+        <p>That's it. Really. Bring your passport (and maybe comfy shoes).</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="next-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="next-heading">Where are we going next?</h2>
+      <p class="lead">I get asked this a lot. Here's the answer.</p>
+    </div>
+    <div class="grid grid-3">
+      {%- for trip in collections.upcomingTrips | head(3) %}
+      {{ tripCard(trip) }}
+      {%- endfor %}
+      {%- if collections.upcomingTrips.length < 3 %}
+      <div class="card more-card">
+        <h3>More trips are on the way</h3>
+        <p>I'm always planning the next one. Want to hear about it first? <a href="/contact/">Get in touch</a> and I'll let you know.</p>
+      </div>
+      {%- endif %}
+    </div>
+    <p class="btn-row"><a class="btn btn-sun" href="/services/">See all trips and services</a></p>
+  </div>
+</section>
+
+<section class="section section-sun" aria-labelledby="why-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="why-heading">Why travel with me</h2>
+    </div>
+    <div class="grid grid-3">
+      <div class="card">
+        {{ icon("together") | safe }}
+        <h3>I come with you</h3>
+        <p>On my upcoming trips, I'm right there with you the whole way. You're never figuring it out alone, especially somewhere you've never been.</p>
+      </div>
+      <div class="card">
+        {{ icon("easy") | safe }}
+        <h3>Fun, not overwhelming</h3>
+        <p>Plenty to see and do, with time to breathe. You'll come home with great stories, not needing a vacation from your vacation.</p>
+      </div>
+      <div class="card">
+        {{ icon("price") | safe }}
+        <h3>Budget friendly</h3>
+        <p>Great trips shouldn't cost a fortune. Every trip shows the price per person and what's included, right up front.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="story-heading">
+  <div class="wrap split">
+    {{ photo("", "", "Milena") }}
+    <div class="measure">
+      <h2 id="story-heading">Ten-plus years of planning trips for my friends</h2>
+      <p>For over 10 years, I've been the one planning the trips, and my friends keep coming back year after year for the next adventure. Enough people told me I should open a small travel agency that I finally listened.</p>
+      <p><a href="/about/">Read my story</a></p>
+    </div>
+  </div>
+</section>
+
+{%- if reviews.length or site.draft %}
+<section class="section section-white" aria-labelledby="reviews-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="reviews-heading">What my travelers say</h2>
+    </div>
+    <div class="grid grid-3">
+      {%- if reviews.length %}
+      {%- for review in reviews | head(3) %}
+      <figure class="card quote">
+        <blockquote><p>{{ review.quote }}</p></blockquote>
+        <figcaption>{{ review.name }}, {{ review.trip }}</figcaption>
+      </figure>
+      {%- endfor %}
+      {%- else %}
+      {%- for i in [1, 2, 3] %}
+      <figure class="card quote quote-ph">
+        <blockquote><p>{% ph "A sentence or two from a past traveler" %}</p></blockquote>
+        <figcaption>{% ph "First name, Trip and year" %}</figcaption>
+      </figure>
+      {%- endfor %}
+      {%- endif %}
+    </div>
+    <p class="btn-row"><a class="btn btn-sun" href="/reviews/">Read more reviews</a></p>
+  </div>
+</section>
+{%- endif %}
+
+<section class="band" aria-labelledby="custom-heading">
+  <div class="wrap">
+    <div>
+      <h2 id="custom-heading">Got a place in mind?</h2>
+      <p>Tell me where you've always wanted to go and who's coming. I'll design the trip and send you a quote.</p>
+    </div>
+    <a class="btn btn-dark" href="/services/#custom-trip">Plan a custom trip</a>
+  </div>
+</section>

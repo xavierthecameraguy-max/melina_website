@@ -1,0 +1,42 @@
+---
+layout: layouts/base.njk
+title: Contact
+description: Call or message Milena at Onyx World Travel about an upcoming trip or a custom trip idea.
+---
+{%- from "macros.njk" import icon with context -%}
+
+<section class="page-head">
+  <div class="wrap">
+    <h1>Get in touch</h1>
+    <p class="lead">Questions about a trip, or an idea for one? I'd love to hear from you.</p>
+    <div class="grid grid-2">
+      <div class="card contact-card">
+        <h2 class="h3">Call me</h2>
+        {%- if site.phone %}
+        <a class="big-link" href="{{ site.phone | telHref }}">{{ site.phone }}</a>
+        {%- else %}
+        <p class="big-link">{% ph "Phone number" %}</p>
+        {%- endif %}
+        <p>The easiest way to reach me. {% if site.replyTime %}I usually get back to people {{ site.replyTime }}.{% else %}{% ph "How quickly Milena usually gets back to people" %}{% endif %}</p>
+      </div>
+      <div class="card contact-card">
+        <h2 class="h3">Email me</h2>
+        {%- if site.email %}
+        <a class="big-link" href="mailto:{{ site.email }}">{{ site.email }}</a>
+        {%- else %}
+        <p class="big-link">{% ph "Email address" %}</p>
+        {%- endif %}
+        <p>Based in {{ site.region }}. Happy to meet in person if you're local.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-white" aria-labelledby="message-heading">
+  <div class="wrap">
+    <div class="card form-card">
+      <h2 id="message-heading" class="h3">Send me a message</h2>
+      {% include "partials/contact-form.njk" %}
+    </div>
+  </div>
+</section>

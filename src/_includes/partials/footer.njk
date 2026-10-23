@@ -1,0 +1,41 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="/">
+          {% include "partials/logo-mark.njk" %}
+          <span class="brand-text"><span class="brand-name">Onyx</span> <span class="brand-sub">World Travel</span><span class="visually-hidden">, home</span></span>
+        </a>
+        <p class="footer-tagline">{{ site.tagline }}</p>
+        <p>Based in {{ site.region }}. Planning trips online, and in person if you're local.</p>
+      </div>
+      <div>
+        <h2>Get in touch</h2>
+        <ul class="footer-links">
+          <li>{% if site.phone %}<a href="{{ site.phone | telHref }}">Call {{ site.phone }}</a>{% else %}Call {% ph "phone" %}{% endif %}</li>
+          <li>{% if site.email %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% else %}Email {% ph "email" %}{% endif %}</li>
+          {%- for link in site.social %}
+          <li><a href="{{ link.url }}">{{ link.label }}</a></li>
+          {%- endfor %}
+          <li><a href="/contact/">Send me a message</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul class="footer-links">
+          {%- for item in nav %}
+          <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+          {%- endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p>&copy; {{ build.year }} {{ site.legalName or site.name }}. <a href="/terms/">Terms &amp; conditions</a> · <a href="/privacy/">Privacy</a></p>
+      {%- if site.registrations %}
+      <p>{{ site.registrations }}</p>
+      {%- elif site.draft %}
+      <p>{% ph "Legal business name and any seller-of-travel registration numbers" %}</p>
+      {%- endif %}
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,47 @@
+---
+layout: layouts/base.njk
+title: About
+description: Meet Milena, the friend who's been planning everyone's trips for over 10 years, and now does it as Onyx World Travel in Kentucky.
+---
+{%- from "macros.njk" import photo with context -%}
+
+<section class="page-head">
+  <div class="wrap split">
+    {{ photo("", "", "Milena") }}
+    <div class="measure">
+      <h1>Hi, I'm Milena!</h1>
+      <p class="lead">I'm the friend who plans the trips. I've been doing it for over 10 years, and now it's my job.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-white">
+  <div class="wrap">
+    <div class="prose">
+    <h2>How this started</h2>
+    <p>For more than 10 years, I've been designing trips for my friends. Year after year, they keep coming back to join me on the next adventure.</p>
+    <p>People kept telling me I should open a small travel agency. I finally listened, and that's how Onyx World Travel started.</p>
+
+    <h2>Why I come along</h2>
+    <p>Planning a trip is one thing. Being there is another. On the trips I create, I take care of everything before we leave and during the trip, so nobody has to worry about a thing.</p>
+    <p>My travelers tell me they love that they can just show up with their passports in their hands. They also feel safer knowing someone is with them, especially somewhere they've never been before, like Europe.</p>
+
+    <h2>Who I travel with</h2>
+    <p>Mostly folks who'd rather not spend their time planning, and would love to have everything done for them. If that sounds like you, you're in the right place.</p>
+
+    <h2>Where I'm based</h2>
+    <p>I'm based in {{ site.region }}. Most of my planning happens online, and if you're local and would rather meet in person, I'm happy to.</p>
+
+    {%- if site.draft %}
+    <h2>A little more about me</h2>
+    <p>{% ph "A few personal details Milena is happy to share" %}</p>
+    <p>{% ph "The story behind the name Onyx, if there is one" %}</p>
+    {%- endif %}
+
+    <div class="btn-row">
+      <a class="btn btn-primary" href="/services/#upcoming-trips">See upcoming trips</a>
+      <a class="btn btn-secondary" href="/services/#custom-trip">Plan a custom trip</a>
+    </div>
+  </div>
+  </div>
+</section>

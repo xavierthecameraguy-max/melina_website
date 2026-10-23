@@ -1,0 +1,26 @@
+{%- from "macros.njk" import icon -%}
+<header class="site-header">
+  {%- if site.draft %}
+  <div class="draft-banner">
+    <p class="wrap"><strong>Draft website.</strong> Anything in <span class="ph">[brackets]</span> is waiting on real content.</p>
+  </div>
+  {%- endif %}
+  <div class="wrap header-top">
+    <a class="brand" href="/">
+      {% include "partials/logo-mark.njk" %}
+      <span class="brand-text"><span class="brand-name">Onyx</span> <span class="brand-sub">World Travel</span><span class="visually-hidden">, home</span></span>
+    </a>
+    <div class="header-actions">
+      {% include "partials/call-link.njk" %}
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">{{ icon("menu") | safe }}<span>Menu</span></button>
+    </div>
+  </div>
+  <nav class="site-nav" id="site-nav" aria-label="Main" data-open="false">
+    <ul class="wrap">
+      {%- for item in nav %}
+      {%- set current = page.url == item.url or (item.url == "/services/" and "/trips/" in page.url) %}
+      <li><a href="{{ item.url }}"{% if current %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+      {%- endfor %}
+    </ul>
+  </nav>
+</header>

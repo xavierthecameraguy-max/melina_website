@@ -1,0 +1,15 @@
+{
+  "name": "onyx-world-travel",
+  "private": true,
+  "type": "module",
+  "description": "Website for Onyx World Travel",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.7",
+    "@fontsource-variable/fraunces": "5.3.0",
+    "@fontsource/atkinson-hyperlegible": "5.3.0"
+  }
+}
