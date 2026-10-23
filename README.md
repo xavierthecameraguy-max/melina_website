@@ -22,9 +22,10 @@ All content lives in `src/`.
 | To change | Edit |
 |---|---|
 | Phone, email, reply time, legal name, social links | `src/_data/site.json` |
+| Home and About photos | `photos` in `src/_data/site.json` (e.g. `"hero": "/assets/photos/group.jpg"`, plus a short description in `heroAlt`) |
 | Add a trip | Copy `src/trips/sample-trip.md`, rename it (the file name becomes the web address), fill in each line |
-| Take a trip off the list | In that trip's file, set `past: true` |
-| Mark a trip sold out | In that trip's file, set `status: soldout` (the form becomes a waitlist) |
+| A trip is over | In that trip's file, set `past: true`. It leaves the list; its page stays up (so links already sent still work) and says the trip has wrapped up |
+| A trip is sold out | In that trip's file, set `status: soldout`. The booking form becomes a waitlist |
 | Reviews | `src/_data/reviews.json`: `[{ "quote": "...", "name": "Sue", "trip": "Italy 2026" }]` |
 | Gallery photos | Put photos in `src/assets/photos/`, then list them in `src/_data/gallery.json`: `[{ "src": "/assets/photos/rome.jpg", "alt": "The group at the Colosseum", "caption": "Rome, 2025" }]` |
 | Page text | The matching file in `src/` (`index.njk` is Home) |
@@ -36,11 +37,13 @@ Keep photos under about 300 KB each (around 1600 pixels wide is plenty).
 
 ## Before launch
 
-1. **Connect the forms.** Go to [web3forms.com](https://web3forms.com), enter the email address that should receive form messages, and paste the access key it sends into `web3formsAccessKey` in `src/_data/site.json`. Until then, the forms say "This form isn't connected yet" and send nothing.
-2. **Fill in `site.json`:** phone, email, reply time, legal business name, and any registration numbers.
-3. **Replace every `[bracket]`**, including the sample trip.
-4. **Set `"draft": false`** in `site.json`. This removes the draft banner, hides the remaining placeholder notes, and lets search engines list the site.
-5. **Set `"url"`** in `site.json` to the site's full address, e.g. `https://onyxworldtravel.com`.
+1. **Connect the forms.** Go to [web3forms.com](https://web3forms.com), enter the email address that should receive form messages, and paste the access key it sends into `web3formsAccessKey` in `src/_data/site.json`. Until then, the forms say "This form isn't connected yet" and send nothing. After connecting, send one test message from each form and check that pressing Reply goes to the sender.
+2. **Fill in `site.json`:** phone, email, reply time (e.g. `"within a day"`), legal business name, any registration numbers, and the photos.
+3. **Replace every `[bracket]`**: the sample trip (delete it once real trips exist), Terms, Privacy, and the draft notes on Services and About.
+4. **Set `"url"`** in `site.json` to the site's address without the folder, e.g. `https://xavierthecameraguy-max.github.io` or `https://onyxworldtravel.com`.
+5. **Set `"draft": false`.** This removes the draft banner and draft-only notes and lets search engines list the site.
+
+With `"draft": false`, the build refuses to publish while any placeholder, placeholder photo, sample trip, missing phone number or missing forms key remains. It lists what's left, and the previous version stays live.
 
 ## Publishing (GitHub Pages)
 
@@ -50,4 +53,13 @@ One-time setup on GitHub: **Settings → Pages → Build and deployment → Sour
 
 GitHub Pages is free for public repositories. A private repository needs a paid GitHub plan (Pro or higher).
 
-The site appears at `https://xavierthecameraguy-max.github.io/melina_website/`. To use a custom domain, add it under **Settings → Pages → Custom domain**. The build adjusts its links automatically.
+**Before making this repository public:** a public repository shows every branch. The `claude/onyx-client-brief` branch holds internal planning notes about the client. Save a copy elsewhere and delete that branch from GitHub first (`git push origin --delete claude/onyx-client-brief`).
+
+The site appears at `https://xavierthecameraguy-max.github.io/melina_website/`.
+
+To use a custom domain:
+
+1. Add it under **Settings → Pages → Custom domain**.
+2. In the same sitting, set `"url"` in `src/_data/site.json` to the new address and push to `main` (or run **Actions → Deploy to GitHub Pages → Run workflow**).
+
+Links are rebuilt for the new address on that build. Until it finishes, the site at the new address looks unstyled.

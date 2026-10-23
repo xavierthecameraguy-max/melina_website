@@ -12,5 +12,11 @@
   "legalName": "",
   "registrations": "",
   "web3formsAccessKey": "",
-  "social": []
+  "social": [],
+  "photos": {
+    "hero": "",
+    "heroAlt": "",
+    "milena": "",
+    "milenaAlt": ""
+  }
 }

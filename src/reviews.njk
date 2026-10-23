@@ -6,12 +6,13 @@ description: What travelers say about trips with Milena and Onyx World Travel.
 <section class="page-head">
   <div class="wrap">
     <h1>What my travelers say</h1>
-    <p class="lead">The best review is a friend who comes back for the next trip. Here's what a few of them have to say.</p>
+    <p class="lead">The best review is a friend who comes back for the next trip.{% if reviews.length or site.draft %} Here's what a few of them have to say.{% endif %}</p>
   </div>
 </section>
 
 <section class="section section-white">
   <div class="wrap">
+    {%- if reviews.length or site.draft %}
     <div class="grid grid-2">
       {%- if reviews.length %}
       {%- for review in reviews %}
@@ -27,10 +28,11 @@ description: What travelers say about trips with Milena and Onyx World Travel.
         <figcaption>{% ph "First name, Trip and year" %}</figcaption>
       </figure>
       {%- endfor %}
-      {%- else %}
-      <p>Reviews are on their way. In the meantime, I'd love to tell you about my trips myself.</p>
       {%- endif %}
     </div>
+    {%- else %}
+    <p class="lead">My first reviews are on their way. In the meantime, I'd love to tell you about my trips myself: <a href="/contact/">get in touch</a>.</p>
+    {%- endif %}
     <div class="card more-card space-above">
       <h2 class="h3">Traveled with me before?</h2>
       <p>I'd love to hear how it went. <a href="/contact/">Send me a note</a></p>

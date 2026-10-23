@@ -1,13 +1,13 @@
-{#- Opening of every form. Set `formSubject` before including. Submissions go to Web3Forms
+{#- Opening of every form. Set `formSubject` and `thanksPath` before including. Submissions go to Web3Forms
     (free; the access key in site.json decides which inbox gets them). -#}
 <form class="js-form" action="https://api.web3forms.com/submit" method="POST"
-  data-thanks="{{ '/thanks/' | htmlBaseUrl }}"
+  data-thanks="{{ thanksPath | htmlBaseUrl }}"
   data-connected="{{ 'yes' if site.web3formsAccessKey else 'no' }}">
   <div class="form-alert" tabindex="-1" hidden></div>
   <input type="hidden" name="access_key" value="{{ site.web3formsAccessKey }}">
   <input type="hidden" name="subject" value="{{ formSubject }}">
   <input type="hidden" name="from_name" value="{{ site.name }} website">
   {%- if site.url %}
-  <input type="hidden" name="redirect" value="{{ '/thanks/' | htmlBaseUrl(site.url) }}">
+  <input type="hidden" name="redirect" value="{{ thanksPath | htmlBaseUrl(site.url) }}">
   {%- endif %}
   <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" aria-hidden="true">

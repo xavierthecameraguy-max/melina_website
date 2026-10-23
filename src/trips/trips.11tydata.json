@@ -1,4 +1,7 @@
 {
   "layout": "layouts/trip.njk",
-  "permalink": "/trips/{{ page.fileSlug }}/"
+  "permalink": "/trips/{{ page.fileSlug }}/",
+  "eleventyComputed": {
+    "description": "{{ destination }}, {{ dates }}. {{ summary }} Milena comes along on this trip and takes care of everything."
+  }
 }

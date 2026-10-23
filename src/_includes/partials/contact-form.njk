@@ -1,11 +1,13 @@
+{#- Contact: name, phone or email (either is fine), message. -#}
 {%- from "macros.njk" import textField, textArea, radios -%}
 {%- set formSubject = "New message from the website" -%}
+{%- set thanksPath = "/thanks/" -%}
 {%- set submitLabel = "Send message" -%}
 {%- set submitNote = "" -%}
 {% include "partials/form-open.njk" %}
-  {{ textField("m-name", "Name", required=true, autocomplete="name") }}
-  {{ textField("m-phone", "Phone", type="tel", required=true, autocomplete="tel") }}
-  {{ textField("m-email", "Email", type="email", autocomplete="email") }}
+  {{ textField("m-name", "Name", required=true, autocomplete="name", error="Please add your name.") }}
+  {{ textField("m-phone", "Phone", type="tel", hint="Phone or email, whichever you prefer.", autocomplete="tel") }}
+  {{ textField("m-email", "Email", type="email", hint="Phone or email, whichever you prefer.", autocomplete="email") }}
   {{ radios("m-reach", "Best way to reach you", ["Call", "Text", "Email"], inline=true) }}
-  {{ textArea("m-message", "Message", required=true) }}
+  {{ textArea("m-message", "Message", required=true, error="Please write a quick message.") }}
 {% include "partials/form-actions.njk" %}

@@ -1,19 +1,20 @@
 ---
 layout: layouts/base.njk
 title: Gallery
-description: Photos from trips with Milena and Onyx World Travel.
+description: Photos from past trips with Milena.
 ---
 {%- from "macros.njk" import photo with context -%}
 
 <section class="page-head">
   <div class="wrap">
     <h1>Gallery</h1>
-    <p class="lead">Snapshots from our trips together. Tap any photo to see it bigger.</p>
+    <p class="lead">Snapshots from our trips together.{% if gallery.length %} Tap or click any photo to see it bigger.{% endif %}</p>
   </div>
 </section>
 
 <section class="section section-white">
   <div class="wrap">
+    {%- if gallery.length or site.draft %}
     <ul class="gallery">
       {%- if gallery.length %}
       {%- for item in gallery %}
@@ -30,12 +31,15 @@ description: Photos from trips with Milena and Onyx World Travel.
       {%- for i in range(9) %}
       <li>
         <figure>
-          {{ photo("", "", "from a past trip") }}
+          {{ photo("", "", "a past trip") }}
           <figcaption>{% ph "Place, Year" %}</figcaption>
         </figure>
       </li>
       {%- endfor %}
       {%- endif %}
     </ul>
+    {%- else %}
+    <p class="lead">Photos from past trips are on their way. Check back soon!</p>
+    {%- endif %}
   </div>
 </section>

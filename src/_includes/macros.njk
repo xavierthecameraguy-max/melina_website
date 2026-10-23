@@ -22,9 +22,10 @@
 {%- endmacro %}
 
 {#- A photo, or a labeled placeholder until the real one arrives. -#}
-{% macro photo(src, alt, label, class="") -%}
+{% macro photo(src, alt, label, class="", lazy=true) -%}
+{%- set label = label | replace("[", "") | replace("]", "") -%}
 {%- if src -%}
-<div class="photo {{ class }}"><img src="{{ src }}" alt="{{ alt }}" loading="lazy"></div>
+<div class="photo {{ class }}"><img src="{{ src }}" alt="{{ alt }}"{% if lazy %} loading="lazy"{% endif %}></div>
 {%- else -%}
 <div class="photo photo-ph {{ class }}" role="img" aria-label="Photo coming soon: {{ label }}"><span aria-hidden="true">[Photo: {{ label }}]</span></div>
 {%- endif -%}
@@ -34,12 +35,12 @@
 <article class="card trip-card">
   {{ photo(trip.data.image, trip.data.imageAlt, trip.data.destination) }}
   <div class="trip-card-body">
-    {% if trip.data.status == "soldout" %}
-      <span class="pill pill-soldout">Sold out: join the waitlist</span>
-    {% else %}
-      <span class="pill pill-open">Spots open</span>
-    {% endif %}
     <h3><a href="{{ trip.url }}">{{ trip.data.title | ph | safe }}</a></h3>
+    {% if trip.data.status == "soldout" -%}
+    <span class="pill pill-soldout">Sold out: join the waitlist</span>
+    {%- else -%}
+    <span class="pill pill-open">Spots open</span>
+    {%- endif %}
     <p class="trip-meta">{{ trip.data.destination | ph | safe }} · {{ trip.data.dates | ph | safe }}</p>
     <p class="trip-price"><strong>{{ trip.data.price | ph | safe }}</strong> per person</p>
     <span class="trip-card-more" aria-hidden="true">See the trip</span>
@@ -48,25 +49,26 @@
 {%- endmacro %}
 
 {#- Form fields: label above, hint under the label, error under the field. -#}
-{% macro textField(id, label, type="text", required=false, hint="", autocomplete="", value="") -%}
+{% macro textField(id, label, type="text", required=false, hint="", autocomplete="", value="", error="") -%}
 <div class="field">
   <label for="{{ id }}">{{ label }}{% if required %} <span class="req">(required)</span>{% endif %}</label>
   {% if hint %}<p class="hint" id="{{ id }}-hint">{{ hint }}</p>{% endif %}
-  <input id="{{ id }}" name="{{ label }}" type="{{ type }}"
+  <input id="{{ id }}" name="{{ 'email' if type == 'email' else label }}" type="{{ type }}"
     {%- if autocomplete %} autocomplete="{{ autocomplete }}"{% endif %}
     {%- if type == "tel" %} inputmode="tel"{% endif %}
     {%- if value %} value="{{ value }}"{% endif %}
     {%- if required %} required{% endif %}
+    {%- if error %} data-error="{{ error }}"{% endif %}
     aria-describedby="{% if hint %}{{ id }}-hint {% endif %}{{ id }}-error">
   <p class="error" id="{{ id }}-error" hidden></p>
 </div>
 {%- endmacro %}
 
-{% macro textArea(id, label, required=false, hint="") -%}
+{% macro textArea(id, label, required=false, hint="", error="") -%}
 <div class="field">
   <label for="{{ id }}">{{ label }}{% if required %} <span class="req">(required)</span>{% endif %}</label>
   {% if hint %}<p class="hint" id="{{ id }}-hint">{{ hint }}</p>{% endif %}
-  <textarea id="{{ id }}" name="{{ label }}" rows="5"{% if required %} required{% endif %}
+  <textarea id="{{ id }}" name="{{ label }}" rows="5"{% if required %} required{% endif %}{% if error %} data-error="{{ error }}"{% endif %}
     aria-describedby="{% if hint %}{{ id }}-hint {% endif %}{{ id }}-error"></textarea>
   <p class="error" id="{{ id }}-error" hidden></p>
 </div>

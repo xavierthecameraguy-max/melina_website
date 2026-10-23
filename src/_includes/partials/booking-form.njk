@@ -2,18 +2,19 @@
 {%- from "macros.njk" import textField, textArea, radios -%}
 {%- set soldOut = status == "soldout" -%}
 {%- set formSubject = ("Waitlist request: " if soldOut else "Trip booking request: ") + title -%}
+{%- set thanksPath = "/thanks/waitlist/" if soldOut else "/thanks/booking/" -%}
 {%- set submitLabel = "Join the waitlist" if soldOut else "Save my spot" -%}
-{%- set submitNote = "No payment yet. I'll be in touch to confirm your spot and explain payment." -%}
+{%- set submitNote = "No payment. I'll let you know as soon as a spot opens up." if soldOut else "No payment yet. I'll be in touch to confirm your spot and explain payment." -%}
 {% include "partials/form-open.njk" %}
   <div class="field">
     <p class="field-label"><strong>Trip</strong></p>
     <p class="field-readonly">{{ title | ph | safe }} · {{ dates | ph | safe }}</p>
     <input type="hidden" name="Trip" value="{{ title }}, {{ dates }}">
   </div>
-  {{ textField("b-name", "Full name", required=true, autocomplete="name") }}
-  {{ textField("b-phone", "Phone", type="tel", required=true, autocomplete="tel") }}
+  {{ textField("b-name", "Full name", required=true, autocomplete="name", error="Please add your name.") }}
+  {{ textField("b-phone", "Phone", type="tel", required=true, autocomplete="tel", error="Please add a phone number so I can reach you.") }}
   {{ textField("b-email", "Email", type="email", hint="If you leave this blank, I'll confirm by phone.", autocomplete="email") }}
-  {{ radios("b-count", "How many people are traveling, including you?", ["1", "2", "3", "4", "5", "6 or more"], required=true, inline=true) }}
+  {{ radios("b-count", "How many people are traveling?", ["1", "2", "3", "4", "5", "6 or more"], required=true, hint="Count yourself if you're coming.", inline=true) }}
   {{ radios("b-room", "Room", ["A room to myself", "Sharing with someone I know", "Not sure yet"]) }}
   {{ textArea("b-notes", "Anything I should know?", hint="Walking or mobility needs, food needs, questions. Anything at all.") }}
   {{ textField("b-state", "State you live in", autocomplete="address-level1") }}

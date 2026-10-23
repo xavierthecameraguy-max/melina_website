@@ -6,7 +6,7 @@ title: "[Trip name]"
 sample: true
 destination: "[Destination]"
 startDate: 2027-06-01          # used to sort trips, soonest first
-dates: "[Month day to day, year]"
+dates: "[Dates, e.g. June 1 to 10, 2027]"
 length: "[X days]"
 price: "[$X,XXX]"
 singlePrice: "[$X,XXX]"
@@ -18,10 +18,10 @@ activity: "[Easy, Moderate or Active]"
 walking: "[About how much walking there is each day]"
 bookBy: "[Month day, year]"
 status: open                    # open, or soldout
-# past: true                    # uncomment once the trip is over to take it off the list
+# past: true                    # uncomment once the trip is over: it leaves the list and its page says it has wrapped up
 image: ""                       # e.g. /assets/photos/italy-2027.jpg
 imageAlt: ""                    # describe the photo for people who can't see it
-summary: "[One or two lines on why this trip is so much fun]"
+summary: "[One-line teaser for the top of this page and the trip card.]"   # end with a period
 days:
   - title: "[Arrival day]"
     text: "[What happens today]"

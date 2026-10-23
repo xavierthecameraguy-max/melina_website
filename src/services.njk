@@ -10,18 +10,18 @@ description: Two ways to plan a trip with Milena. Join one of her upcoming trips
     <h1>Services &amp; Upcoming Trips</h1>
     <p class="lead">Two ways to plan a trip with me: join one of my upcoming trips, or have one designed just for you.</p>
     <div class="grid grid-2">
-      <div class="card">
-        <h2 class="h3">Upcoming Trips</h2>
-        <p>Trips I've designed and come along on. Pick one, save your spot, and I'll take care of the rest.</p>
-        <p><a href="#upcoming-trips">See upcoming trips</a></p>
+      <div class="card service-card">
+        <p class="h3">Upcoming Trips</p>
+        <p>Trips I've designed, and I come along on every one. Pick one, save your spot, and I'll take care of the rest.</p>
+        <p class="btn-row"><a class="btn btn-primary" href="#upcoming-trips">See upcoming trips</a></p>
       </div>
-      <div class="card">
-        <h2 class="h3">Custom Trip Planner</h2>
+      <div class="card service-card">
+        <p class="h3">Custom Trip Planner</p>
         <p>Have somewhere in mind? Tell me where and who's coming, and I'll design the trip and send you a quote.</p>
         {%- if site.draft %}
         <p>{% ph "Is the quote free, or is there a planning fee?" %}</p>
         {%- endif %}
-        <p><a href="#custom-trip">Plan a custom trip</a></p>
+        <p class="btn-row"><a class="btn btn-secondary" href="#custom-trip">Plan a custom trip</a></p>
       </div>
     </div>
   </div>
@@ -29,10 +29,12 @@ description: Two ways to plan a trip with Milena. Join one of her upcoming trips
 
 {%- if site.draft %}
 <section class="section section-lagoon" aria-labelledby="included-heading">
-  <div class="wrap measure">
-    <h2 id="included-heading">What "everything" includes</h2>
-    <p>When I say I take care of everything, here's what that usually means:</p>
-    <p>{% ph "What's usually included: flights? hotels? transfers? tickets? meals?" %}</p>
+  <div class="wrap">
+    <div class="measure">
+      <h2 id="included-heading">What “everything” includes</h2>
+      <p>When I say I take care of everything, here's what that usually means:</p>
+      <p>{% ph "What's usually included: flights? hotels? transfers? tickets? meals?" %}</p>
+    </div>
   </div>
 </section>
 {%- endif %}
@@ -40,13 +42,19 @@ description: Two ways to plan a trip with Milena. Join one of her upcoming trips
 <section class="section section-white" id="upcoming-trips" aria-labelledby="trips-heading">
   <div class="wrap">
     <div class="section-head">
-      <h2 id="trips-heading">Upcoming trips</h2>
-      <p class="lead">Where are we going next? Here's what's coming up.</p>
+      <h2 id="trips-heading">Upcoming Trips</h2>
+      <p class="lead">Where are we going next? {% if collections.upcomingTrips.length %}Here's what's coming up.{% else %}The next trip is in the works.{% endif %}</p>
     </div>
     <div class="grid grid-3">
       {%- for trip in collections.upcomingTrips %}
       {{ tripCard(trip) }}
       {%- endfor %}
+      {%- if not collections.upcomingTrips.length %}
+      <div class="card more-card">
+        <h3>More trips are on the way</h3>
+        <p>I'm always planning the next one. Want to hear about it first? <a href="/contact/">Get in touch</a> and I'll let you know.</p>
+      </div>
+      {%- endif %}
       <div class="card more-card">
         <h3>Don't see what you want?</h3>
         <p>I'll design a trip just for you. <a href="#custom-trip">Plan a custom trip</a></p>

@@ -1,0 +1,17 @@
+---
+layout: layouts/base.njk
+title: You're on the list!
+permalink: /thanks/waitlist/
+eleventyExcludeFromCollections: true
+---
+<section class="section">
+  <div class="wrap measure">
+    <h1>You're on the list!</h1>
+    <p class="lead">I'll let you know as soon as a spot opens up. There's nothing to pay.</p>
+    <p>If it's urgent, {% if site.phone %}<a href="{{ site.phone | telHref }}">call me at <span class="nowrap">{{ site.phone }}</span></a>{% else %}call me at {% ph "phone" %}{% endif %}.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="/services/#upcoming-trips">See upcoming trips</a>
+      <a class="btn btn-sun" href="/">Back to home</a>
+    </div>
+  </div>
+</section>

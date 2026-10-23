@@ -1,0 +1,17 @@
+---
+layout: layouts/base.njk
+title: Got it!
+permalink: /thanks/booking/
+eleventyExcludeFromCollections: true
+---
+<section class="section">
+  <div class="wrap measure">
+    <h1>Got it!</h1>
+    <p class="lead">Your request to save a spot is on its way to me. There's nothing to pay yet. I'll be in touch {% if site.replyTime %}{{ site.replyTime }}{% else %}{% ph "how fast Milena replies, e.g. within a day" %}{% endif %} to confirm your spot and explain payment.</p>
+    <p>If it's urgent, {% if site.phone %}<a href="{{ site.phone | telHref }}">call me at <span class="nowrap">{{ site.phone }}</span></a>{% else %}call me at {% ph "phone" %}{% endif %}.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="/services/#upcoming-trips">See upcoming trips</a>
+      <a class="btn btn-sun" href="/">Back to home</a>
+    </div>
+  </div>
+</section>

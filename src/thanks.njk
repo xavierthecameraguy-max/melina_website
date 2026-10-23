@@ -1,13 +1,14 @@
 ---
 layout: layouts/base.njk
-title: Thank you
+title: Thank you!
+permalink: /thanks/
 eleventyExcludeFromCollections: true
 ---
 <section class="section">
   <div class="wrap measure">
     <h1>Thank you!</h1>
-    <p class="lead">Your note is on its way to me. I'll get back to you {% if site.replyTime %}{{ site.replyTime }}{% else %}{% ph "within X days" %}{% endif %}.</p>
-    <p>If it's urgent, {% if site.phone %}<a href="{{ site.phone | telHref }}">call me at {{ site.phone }}</a>{% else %}call me at {% ph "phone" %}{% endif %}.</p>
+    <p class="lead">Your message is on its way to me. I'll get back to you {% if site.replyTime %}{{ site.replyTime }}{% else %}{% ph "how fast Milena replies, e.g. within a day" %}{% endif %}.</p>
+    <p>If it's urgent, {% if site.phone %}<a href="{{ site.phone | telHref }}">call me at <span class="nowrap">{{ site.phone }}</span></a>{% else %}call me at {% ph "phone" %}{% endif %}.</p>
     <div class="btn-row">
       <a class="btn btn-primary" href="/services/#upcoming-trips">See upcoming trips</a>
       <a class="btn btn-sun" href="/">Back to home</a>

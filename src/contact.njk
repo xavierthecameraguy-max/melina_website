@@ -13,16 +13,16 @@ description: Call or message Milena at Onyx World Travel about an upcoming trip 
       <div class="card contact-card">
         <h2 class="h3">Call me</h2>
         {%- if site.phone %}
-        <a class="big-link" href="{{ site.phone | telHref }}">{{ site.phone }}</a>
+        <a class="big-link" href="{{ site.phone | telHref }}"><span class="nowrap">{{ site.phone }}</span></a>
         {%- else %}
         <p class="big-link">{% ph "Phone number" %}</p>
         {%- endif %}
-        <p>The easiest way to reach me. {% if site.replyTime %}I usually get back to people {{ site.replyTime }}.{% else %}{% ph "How quickly Milena usually gets back to people" %}{% endif %}</p>
+        <p>I usually get back to people {% if site.replyTime %}{{ site.replyTime }}{% else %}{% ph "how fast Milena replies, e.g. within a day" %}{% endif %}.</p>
       </div>
       <div class="card contact-card">
         <h2 class="h3">Email me</h2>
         {%- if site.email %}
-        <a class="big-link" href="mailto:{{ site.email }}">{{ site.email }}</a>
+        <a class="big-link" href="mailto:{{ site.email }}">{{ site.email | emailBreak | safe }}</a>
         {%- else %}
         <p class="big-link">{% ph "Email address" %}</p>
         {%- endif %}

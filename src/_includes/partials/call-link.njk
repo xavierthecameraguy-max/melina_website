@@ -1,7 +1,7 @@
 {#- Tap-to-call button. Until a phone number is set in site.json it points to the Contact page. -#}
 {%- from "macros.njk" import icon -%}
 {%- if site.phone -%}
-<a class="btn btn-call" href="{{ site.phone | telHref }}">{{ icon("phone") | safe }}<span>Call {{ site.phone }}</span></a>
+<a class="btn btn-call" href="{{ site.phone | telHref }}">{{ icon("phone") | safe }}<span>Call <span class="nowrap">{{ site.phone }}</span></span></a>
 {%- else -%}
 <a class="btn btn-call" href="/contact/">{{ icon("phone") | safe }}<span>Call {% ph "phone" %}</span></a>
 {%- endif -%}

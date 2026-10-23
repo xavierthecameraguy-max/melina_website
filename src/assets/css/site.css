@@ -90,7 +90,8 @@ svg {
 h1,
 h2,
 h3,
-h4 {
+h4,
+.h3 {
   font-family: var(--font-head);
   font-weight: 650;
   font-variation-settings: "SOFT" 100;
@@ -115,6 +116,15 @@ ul,
 ol,
 dl {
   margin: 0 0 1em;
+}
+
+p,
+.lead {
+  text-wrap: pretty;
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 
 a {
@@ -294,7 +304,7 @@ main:focus {
   padding: 0.6rem 0;
 }
 .draft-banner p {
-  margin: 0;
+  margin-block: 0;
 }
 .draft-banner strong {
   color: var(--sun);
@@ -366,6 +376,9 @@ main:focus {
 .btn-call:hover {
   color: var(--onyx);
 }
+.btn-call span {
+  white-space: nowrap;
+}
 
 .menu-toggle {
   display: none;
@@ -412,7 +425,7 @@ main:focus {
   border-color: var(--onyx);
   color: var(--onyx);
 }
-.site-nav a[aria-current="page"] {
+.site-nav a[aria-current] {
   background: var(--sun);
   border-color: var(--onyx);
 }
@@ -442,16 +455,27 @@ main:focus {
   }
 }
 
-@media (max-width: 30em) {
+@media (max-width: 36em) {
   .header-top {
     flex-wrap: wrap;
   }
   .header-actions {
-    width: 100%;
+    display: contents;
   }
-  .header-actions > * {
-    flex: 1;
+  .menu-toggle {
+    order: 2;
+    margin-left: auto;
+  }
+  .btn-call {
+    order: 3;
+    flex: 1 1 100%;
     justify-content: center;
+  }
+}
+
+@media (max-width: 20em) {
+  .btn-call span {
+    white-space: normal;
   }
 }
 
@@ -472,7 +496,8 @@ main:focus {
   background: var(--lagoon-soft);
   border-block: var(--border);
 }
-.section + .section-white,
+.section-sun + .section-white,
+.section-lagoon + .section-white,
 .section-white + .section-white {
   border-top: 0;
 }
@@ -679,6 +704,9 @@ main:focus {
   flex: 1;
   padding: 1.25rem 1.4rem 1.5rem;
 }
+.trip-card-body .pill {
+  order: -1;
+}
 .trip-card h3 a {
   color: var(--onyx);
   text-decoration: none;
@@ -738,13 +766,27 @@ main:focus {
   background: var(--sun);
 }
 
+.service-card {
+  display: flex;
+  flex-direction: column;
+}
+.service-card .btn-row {
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
 .more-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
   background: var(--lagoon-soft);
-  box-shadow: none;
-  border-style: dashed;
+}
+@media (min-width: 56em) {
+  .grid-3 > .more-card:nth-child(2):last-child {
+    grid-column: span 2;
+    align-self: center;
+    padding: 2.5rem;
+  }
 }
 
 /* ---------- Quotes ---------- */
@@ -814,7 +856,15 @@ main:focus {
   border-radius: var(--radius-lg);
   width: 100%;
   max-width: 22rem;
-  justify-self: center;
+}
+@media (max-width: 47.99em) {
+  .split .photo {
+    aspect-ratio: 4 / 3;
+    max-width: none;
+  }
+  .page-head .split > .measure {
+    order: -1;
+  }
 }
 @media (min-width: 48em) {
   .split {
@@ -856,10 +906,21 @@ main:focus {
     grid-template-columns: 1.15fr 0.85fr;
   }
 }
+.trip-intro {
+  display: flex;
+  flex-direction: column;
+}
+.trip-intro .badges {
+  order: -1;
+}
 .badges {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.badges .pill {
+  margin-bottom: 0;
 }
 
 .facts {
@@ -948,6 +1009,9 @@ main:focus {
 
 .form-card {
   max-width: 44rem;
+}
+.steps + .form-card {
+  margin-top: clamp(2rem, 5vw, 3rem);
 }
 .form-card h2,
 .form-card h3 {
@@ -1089,6 +1153,11 @@ fieldset.field {
 .form-actions p {
   margin: 0;
 }
+@media (max-width: 37.5em) {
+  .form-actions .btn {
+    width: 100%;
+  }
+}
 .form-note {
   font-size: 1rem;
   color: var(--gray);
@@ -1102,14 +1171,16 @@ fieldset.field {
 /* ---------- Contact ---------- */
 
 .contact-card .big-link {
-  display: inline-block;
   font-family: var(--font-head);
   font-variation-settings: "SOFT" 100;
   font-weight: 700;
   font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
   line-height: 1.2;
   margin-bottom: 0.4rem;
-  word-break: break-word;
+  min-height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  overflow-wrap: anywhere;
 }
 
 /* ---------- Gallery ---------- */
@@ -1117,7 +1188,7 @@ fieldset.field {
 .gallery {
   display: grid;
   gap: clamp(1rem, 2.5vw, 1.5rem);
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
   list-style: none;
   padding: 0;
 }
@@ -1213,11 +1284,12 @@ fieldset.field {
   padding: 0;
 }
 .footer-links li {
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.1rem;
 }
 .footer-links a {
   display: inline-block;
-  padding-block: 0.2rem;
+  padding-block: 0.6rem;
+  overflow-wrap: anywhere;
 }
 .footer-legal {
   border-top: 1px solid #5c534c;
@@ -1227,6 +1299,7 @@ fieldset.field {
 }
 .footer-legal p {
   margin: 0 0 0.4rem;
+  line-height: 2;
 }
 .site-footer .ph {
   color: var(--onyx);

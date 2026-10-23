@@ -5,13 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if page.url == "/" %}{{ site.name }}: {{ site.tagline }}{% else %}{{ title }} | {{ site.name }}{% endif %}</title>
   <meta name="description" content="{{ description or site.description }}">
-  {%- if site.draft %}
+  {%- if site.draft or past %}
   <meta name="robots" content="noindex, nofollow">
   {%- endif %}
   <meta name="theme-color" content="#fff7ec">
   <meta property="og:title" content="{{ title if page.url != '/' else site.name }}">
   <meta property="og:description" content="{{ description or site.description }}">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.name }}">
+  {%- if site.url %}
+  <meta property="og:url" content="{{ page.url | htmlBaseUrl(site.url) }}">
+  {%- if image %}
+  <meta property="og:image" content="{{ image | htmlBaseUrl(site.url) }}">
+  {%- endif %}
+  {%- endif %}
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/assets/fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/fraunces-latin-soft-normal.woff2" as="font" type="font/woff2" crossorigin>

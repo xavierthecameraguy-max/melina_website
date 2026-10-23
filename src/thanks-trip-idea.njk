@@ -1,0 +1,17 @@
+---
+layout: layouts/base.njk
+title: Got it!
+permalink: /thanks/trip-idea/
+eleventyExcludeFromCollections: true
+---
+<section class="section">
+  <div class="wrap measure">
+    <h1>Got it!</h1>
+    <p class="lead">I'll start dreaming up ideas and get back to you with a quote {% if site.replyTime %}{{ site.replyTime }}{% else %}{% ph "how fast Milena replies, e.g. within a day" %}{% endif %}.</p>
+    <p>If it's urgent, {% if site.phone %}<a href="{{ site.phone | telHref }}">call me at <span class="nowrap">{{ site.phone }}</span></a>{% else %}call me at {% ph "phone" %}{% endif %}.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="/services/#upcoming-trips">See upcoming trips</a>
+      <a class="btn btn-sun" href="/">Back to home</a>
+    </div>
+  </div>
+</section>

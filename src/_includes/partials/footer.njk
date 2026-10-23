@@ -12,8 +12,8 @@
       <div>
         <h2>Get in touch</h2>
         <ul class="footer-links">
-          <li>{% if site.phone %}<a href="{{ site.phone | telHref }}">Call {{ site.phone }}</a>{% else %}Call {% ph "phone" %}{% endif %}</li>
-          <li>{% if site.email %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% else %}Email {% ph "email" %}{% endif %}</li>
+          <li>{% if site.phone %}<a href="{{ site.phone | telHref }}">Call <span class="nowrap">{{ site.phone }}</span></a>{% else %}Call {% ph "phone" %}{% endif %}</li>
+          <li>{% if site.email %}<a href="mailto:{{ site.email }}">{{ site.email | emailBreak | safe }}</a>{% else %}Email {% ph "email" %}{% endif %}</li>
           {%- for link in site.social %}
           <li><a href="{{ link.url }}">{{ link.label }}</a></li>
           {%- endfor %}

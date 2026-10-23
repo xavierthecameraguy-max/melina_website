@@ -7,7 +7,7 @@ title: Home
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow">Onyx World Travel · Based in {{ site.region }}</p>
+      <p class="eyebrow">Onyx World Travel · <span class="nowrap">Based in {{ site.region }}</span></p>
       <h1>You bring the passport. I'll bring everything else.</h1>
       <p class="lead">Hi, I'm Milena! I design fun, budget-friendly trips for groups and individuals. On my upcoming trips, I come along and take care of every little thing, before the trip and during it.</p>
       <div class="btn-row">
@@ -17,7 +17,7 @@ title: Home
     </div>
     <div class="hero-art">
       <div class="postcard">
-        {{ photo("", "", "Milena with her travelers") }}
+        {{ photo(site.photos.hero, site.photos.heroAlt, "Milena with her travelers", lazy=false) }}
         <p class="postcard-caption">Wish you were here? You could be.</p>
         {% include "partials/stamp.njk" %}
       </div>
@@ -37,11 +37,11 @@ title: Home
       </li>
       <li>
         <h3>I handle the details</h3>
-        <p>Before the trip and during it, I take care of everything. No spreadsheets, no stress.</p>
+        <p>I plan every detail, so you don't have to. No spreadsheets, no stress.</p>
       </li>
       <li>
         <h3>Show up with your passport</h3>
-        <p>That's it. Really. Bring your passport (and maybe comfy shoes).</p>
+        <p>That's it. Really. (Okay, maybe pack comfy shoes too.)</p>
       </li>
     </ol>
   </div>
@@ -51,7 +51,7 @@ title: Home
   <div class="wrap">
     <div class="section-head">
       <h2 id="next-heading">Where are we going next?</h2>
-      <p class="lead">I get asked this a lot. Here's the answer.</p>
+      <p class="lead">I get asked this a lot. {% if collections.upcomingTrips.length %}Here's the answer.{% else %}The next one is in the works.{% endif %}</p>
     </div>
     <div class="grid grid-3">
       {%- for trip in collections.upcomingTrips | head(3) %}
@@ -95,10 +95,10 @@ title: Home
 
 <section class="section" aria-labelledby="story-heading">
   <div class="wrap split">
-    {{ photo("", "", "Milena") }}
+    {{ photo(site.photos.milena, site.photos.milenaAlt, "Milena") }}
     <div class="measure">
       <h2 id="story-heading">Ten-plus years of planning trips for my friends</h2>
-      <p>For over 10 years, I've been the one planning the trips, and my friends keep coming back year after year for the next adventure. Enough people told me I should open a small travel agency that I finally listened.</p>
+      <p>My friends keep coming back year after year for the next adventure. So many people told me to open a small travel agency that I finally listened.</p>
       <p><a href="/about/">Read my story</a></p>
     </div>
   </div>

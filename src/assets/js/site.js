@@ -18,9 +18,11 @@
     toggle.addEventListener("click", function () {
       setOpen(toggle.getAttribute("aria-expanded") !== "true");
     });
-    small.addEventListener("change", function () {
+    var reset = function () {
       setOpen(false);
-    });
+    };
+    if (small.addEventListener) small.addEventListener("change", reset);
+    else if (small.addListener) small.addListener(reset); // Safari 13 and older
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
         setOpen(false);
@@ -35,15 +37,21 @@
     return label ? label.childNodes[0].textContent.trim() : "This field";
   };
 
+  // The element an error belongs to: the field, or the fieldset for a radio group.
+  var errorTarget = function (field) {
+    return field.type === "radio" ? field.closest(".field") : field;
+  };
+
   var problemWith = function (field) {
+    var form = field.form;
     var value = (field.value || "").trim();
     if (field.type === "radio") {
-      var group = field.form.querySelectorAll('input[name="' + CSS.escape(field.name) + '"]');
+      var group = form.querySelectorAll('input[name="' + CSS.escape(field.name) + '"]');
       var picked = Array.prototype.some.call(group, function (r) { return r.checked; });
       return field.required && !picked ? "Please pick one." : "";
     }
     if (field.required && !value) {
-      return "Please fill in " + labelText(field).toLowerCase() + ".";
+      return field.dataset.error || "Please fill this in.";
     }
     if (value && field.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
       return "That email doesn't look quite right. It should look like name@example.com.";
@@ -51,13 +59,23 @@
     if (value && field.type === "tel" && value.replace(/\D/g, "").length < 10) {
       return "Please include the area code, like 859 555 0123.";
     }
+    // Contact form: a phone number or an email, whichever they prefer.
+    var phone = form.querySelector("#m-phone");
+    var email = form.querySelector("#m-email");
+    if (field === phone && !value && !email.value.trim()) {
+      return "Please give me a phone number or an email so I can reply.";
+    }
+    var reach = form.querySelector('input[name="Best way to reach you"]:checked');
+    if (field === email && !value && reach && reach.value === "Email") {
+      return "You picked email, so please add your email address.";
+    }
     return "";
   };
 
   var showError = function (field, message) {
     var box = field.closest(".field");
     var error = box.querySelector(".error");
-    var target = field.type === "radio" ? box : field;
+    var target = errorTarget(field);
     if (message) {
       error.textContent = message;
       error.hidden = false;
@@ -78,17 +96,35 @@
     alert.scrollIntoView({ block: "center" });
   };
 
+  // Once a field is fixed, take it off the "things to fix" list too.
+  var clearFromSummary = function (form, id) {
+    var alert = form.querySelector(".form-alert");
+    var item = alert.querySelector('li[data-for="' + id + '"]');
+    if (!item) return;
+    item.remove();
+    var left = alert.querySelectorAll("li").length;
+    if (!left) alert.hidden = true;
+    else alert.querySelector("h3").textContent = left === 1 ? "One thing to fix" : left + " things to fix";
+  };
+
   document.querySelectorAll(".js-form").forEach(function (form) {
     form.noValidate = true;
     var fields = form.querySelectorAll(".field input:not([type=hidden]), .field textarea, .field select");
 
-    // Clear an error as soon as it's fixed.
-    fields.forEach(function (field) {
-      field.addEventListener("change", function () {
-        if (field.closest(".field").querySelector(".error:not([hidden])")) {
-          showError(field, problemWith(field));
-        }
+    // Re-check every flagged field while typing: fixing one (adding an email) can fix
+    // another (the "phone or email" rule). Doing it on input rather than on blur keeps
+    // the page from shifting under the next click.
+    var recheck = function () {
+      fields.forEach(function (f) {
+        if (!errorTarget(f).hasAttribute("aria-invalid")) return;
+        var message = problemWith(f);
+        showError(f, message);
+        if (!message) clearFromSummary(form, errorTarget(f).id);
       });
+    };
+    fields.forEach(function (field) {
+      field.addEventListener("input", recheck);
+      field.addEventListener("change", recheck);
     });
 
     form.addEventListener("submit", function (e) {
@@ -107,8 +143,12 @@
 
       if (problems.length) {
         var items = problems.map(function (p) {
-          var id = p.field.type === "radio" ? p.field.closest(".field").id : p.field.id;
-          return '<li><a href="#' + id + '">' + labelText(p.field) + "</a>: " + p.message + "</li>";
+          var id = errorTarget(p.field).id;
+          // Custom messages already name the field; generic ones get the label in front.
+          var text = p.field.dataset.error === p.message || p.field.id === "m-phone" || p.field.id === "m-email"
+            ? p.message
+            : labelText(p.field).replace(/([^?])$/, "$1:") + " " + p.message;
+          return '<li data-for="' + id + '"><a href="#' + id + '">' + text + "</a></li>";
         });
         showAlert(
           form,
@@ -133,14 +173,17 @@
       button.disabled = true;
       button.textContent = "Sending...";
 
+      var data = new FormData(form);
+      data.delete("redirect"); // only for the no-JavaScript fallback
+
       fetch(form.action, {
         method: "POST",
         headers: { Accept: "application/json" },
-        body: new FormData(form),
+        body: data,
       })
         .then(function (response) {
-          return response.json().then(function (data) {
-            if (!response.ok || !data.success) throw new Error(data.message || "Not sent");
+          return response.json().then(function (result) {
+            if (!response.ok || !result.success) throw new Error(result.message || "Not sent");
           });
         })
         .then(function () {
@@ -152,8 +195,9 @@
           var call = form.querySelector(".form-actions p");
           showAlert(
             form,
-            "<h3>Sorry, that didn't send</h3><p>Please try again in a minute. " +
-              (call ? call.innerHTML.replace("Rather talk? ", "Or ") : "") + "</p>"
+            "<h3>Sorry, that didn't send</h3><p>Please try again in a minute" +
+              (call ? ". " + call.innerHTML.replace("Rather talk? ", "Or ").replace("Call me", "call me") + "." : ".") +
+              "</p>"
           );
         });
     });
