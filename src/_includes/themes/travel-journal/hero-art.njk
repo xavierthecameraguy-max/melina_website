@@ -1,0 +1,21 @@
+{#- Travel Journal hero artwork: a scrapbook page. The hero photo is taped in at an angle with a
+    handwritten caption, a route is doodled down the margin, and a luggage tag is tucked in the corner. -#}
+{%- from "macros.njk" import photo with context -%}
+<div class="tj-spread">
+  <svg class="tj-route" viewBox="0 0 100 220" aria-hidden="true" focusable="false">
+    <path d="M14 214c30-10 52-30 40-58s-30-40-8-66 34-30 26-62" fill="none" style="stroke:var(--link)" stroke-width="3.2" stroke-dasharray="8 7" stroke-linecap="round"/>
+    <path d="M66 6l16 16M82 6L66 22" fill="none" style="stroke:var(--primary-text)" stroke-width="5" stroke-linecap="round"/>
+  </svg>
+  <div class="tj-print">
+    {{ photo(site.photos.hero, site.photos.heroAlt, "Milena with her travelers", lazy=false) }}
+    <p class="tj-caption" aria-hidden="true">Wish you were here?</p>
+  </div>
+  <svg class="tj-tag" viewBox="0 0 230 124" aria-hidden="true" focusable="false">
+    <path d="M46 12h168a9 9 0 0 1 9 9v82a9 9 0 0 1-9 9H46L14 86V38z" style="fill:var(--highlight);stroke:var(--ink)" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="38" cy="62" r="12" style="fill:var(--surface);stroke:var(--ink)" stroke-width="3"/>
+    <circle cx="38" cy="62" r="5" style="fill:var(--ink)"/>
+    <path d="M38 62c-14-8-30-2-30 12 0 8 6 12 14 10M30 70c-10 12-16 28-12 46M36 72c-2 14 0 30 8 42" fill="none" style="stroke:var(--ink)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="138" y="66" text-anchor="middle" font-family="Young Serif, Georgia, serif" font-size="44" style="fill:var(--ink)">Onyx</text>
+    <text x="138" y="94" text-anchor="middle" font-family="Atkinson Hyperlegible, Verdana, sans-serif" font-weight="700" font-size="15" letter-spacing="3" style="fill:var(--ink)">WORLD TRAVEL</text>
+  </svg>
+</div>

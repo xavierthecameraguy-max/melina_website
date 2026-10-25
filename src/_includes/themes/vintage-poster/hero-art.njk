@@ -1,0 +1,26 @@
+{#- Vintage Travel Poster hero artwork: a framed travel poster holding the hero photo,
+    with a sunburst behind it and a round seal. All decoration is aria-hidden. -#}
+{%- from "macros.njk" import photo with context -%}
+<div class="vp-hero-art">
+  <div class="vp-sunburst" aria-hidden="true"></div>
+  <div class="vp-poster">
+    <div class="vp-poster-band vp-poster-top" aria-hidden="true">Onyx World Travel</div>
+    <div class="vp-poster-picture">
+      {{ photo(site.photos.hero, site.photos.heroAlt, "Milena with her travelers", lazy=false) }}
+      <svg class="vp-seal" viewBox="0 0 160 160" aria-hidden="true" focusable="false">
+        <defs><path id="vp-seal-ring" d="M80 80m-55 0a55 55 0 1 1 110 0a55 55 0 1 1-110 0"/></defs>
+        <circle cx="80" cy="80" r="76" style="fill:var(--primary);stroke:var(--ink)" stroke-width="4"/>
+        <circle cx="80" cy="80" r="68" fill="none" style="stroke:var(--ink)" stroke-width="2"/>
+        <circle cx="80" cy="80" r="40" style="fill:var(--highlight);stroke:var(--ink)" stroke-width="3"/>
+        <text font-family="Oswald, 'Arial Narrow', sans-serif" font-weight="600" font-size="13.5" letter-spacing="1" style="fill:var(--ink)">
+          <textPath href="#vp-seal-ring" textLength="340" lengthAdjust="spacing">WISH YOU WERE HERE? · WHERE ARE WE GOING NEXT? ·</textPath>
+        </text>
+        <g transform="translate(80 80) rotate(-30)" style="fill:var(--ink)">
+          <path d="M-24 0C-24-5-19-6-13-6H20C26-6 30-3 30 0S26 6 20 6H-13C-19 6-24 5-24 0Z"/>
+          <path d="M4-5-10-25H-2L16-5Z M4 5-10 25H-2L16 5Z M-20-4-27-16H-21L-13-4Z"/>
+        </g>
+      </svg>
+    </div>
+    <div class="vp-poster-band vp-poster-bottom" aria-hidden="true">Just bring your passport</div>
+  </div>
+</div>

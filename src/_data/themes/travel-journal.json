@@ -1,0 +1,13 @@
+{
+  "label": "Travel Journal",
+  "description": "Milena's trip scrapbook: warm paper, terracotta, mustard and sage, with photos taped in, ink-stamp step numbers and doodled routes.",
+  "themeColor": "#f7efe1",
+  "fonts": [
+    "node_modules/@fontsource/young-serif/files/young-serif-latin-400-normal.woff2",
+    "node_modules/@fontsource-variable/caveat/files/caveat-latin-wght-normal.woff2"
+  ],
+  "preload": [
+    "atkinson-hyperlegible-latin-400-normal.woff2",
+    "young-serif-latin-400-normal.woff2"
+  ]
+}

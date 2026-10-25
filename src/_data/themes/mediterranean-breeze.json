@@ -1,0 +1,12 @@
+{
+  "label": "Mediterranean Breeze",
+  "description": "Whitewash, sea blue, lemon and terracotta, with arched photo frames, blue-and-white tiles and lots of breathing room.",
+  "themeColor": "#fbfaf6",
+  "fonts": [
+    "node_modules/@fontsource-variable/outfit/files/outfit-latin-wght-normal.woff2"
+  ],
+  "preload": [
+    "atkinson-hyperlegible-latin-400-normal.woff2",
+    "outfit-latin-wght-normal.woff2"
+  ]
+}

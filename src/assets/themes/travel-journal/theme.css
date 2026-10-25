@@ -1,0 +1,895 @@
+/* Travel Journal: the site as Milena's trip scrapbook.
+   Warm paper, terracotta, mustard and sage; photos taped in at an angle, ink-stamp step numbers,
+   doodled routes and torn page edges. Young Serif headings, Atkinson Hyperlegible for reading,
+   Caveat only for big handwritten notes (never body text, buttons, labels or prices).
+   Ratios are WCAG 2.x contrast for pairs that carry text. */
+
+@font-face {
+  font-family: "Young Serif";
+  src: url("../../fonts/young-serif-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Caveat";
+  src: url("../../fonts/caveat-latin-wght-normal.woff2") format("woff2-variations");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --ink: #2b2a33;            /* text: 12.4 on page, 13.6 on surface */
+  --page: #f7efe1;           /* paper */
+  --surface: #fffaf1;        /* fresh pages and cards */
+  --muted: #5e5548;          /* 6.4 on page, 5.6 on mustard tint */
+  --primary: #b5512f;        /* terracotta buttons; white text 5.0 */
+  --on-primary: #ffffff;
+  --primary-text: #a8452a;   /* 5.2 on page, 4.5 on mustard tint */
+  --primary-soft: #f4d6c8;   /* ink 10.3 */
+  --highlight: #e8b23a;      /* mustard; ink 7.3 */
+  --highlight-soft: #f3dfae; /* ink 10.8 */
+  --secondary: #4a6b52;      /* deep sage; white text 6.0 */
+  --on-secondary: #ffffff;
+  --secondary-soft: #dbe6d6; /* ink 11.0 */
+  --link: #2f4b7c;           /* ink blue: 7.6 on page, 6.6 on mustard tint */
+  --rule: #d9cbb3;
+  --footer-rule: #66756a;
+  --ph-bg: #ffe08a;          /* highlighter; ink 11.0 */
+
+  --cover: #2d3a32;          /* notebook cover (draft banner, footer): page text 10.4, mustard 6.2 */
+  --print: #ffffff;          /* photo prints */
+  --hand: "Caveat", "Segoe Print", "Bradley Hand", cursive;
+  --margin-line: rgb(181 81 47 / 0.42);
+  --ruled: rgb(47 75 124 / 0.2);
+
+  --font-head: "Young Serif", Georgia, "Times New Roman", serif;
+  --head-weight: 400;
+  --head-settings: normal;
+
+  --radius: 0.45rem;
+  --radius-lg: 0.6rem;
+  --cut: 7px 11px 6px 12px / 12px 6px 11px 7px;            /* hand-cut paper corners */
+  --wonky: 0.95rem 0.45rem 0.9rem 0.5rem / 0.5rem 0.9rem 0.45rem 0.95rem; /* hand-drawn buttons */
+  --border: 2px solid var(--ink);
+  --pop: 0 1px 2px rgb(74 56 34 / 0.12), 0 14px 26px -16px rgb(74 56 34 / 0.5);
+  --print-shadow: 0 0 0 1px rgb(43 42 51 / 0.07), 0 2px 3px rgb(74 56 34 / 0.14), 0 14px 22px -12px rgb(74 56 34 / 0.45);
+
+  --tape-sun: repeating-linear-gradient(-45deg, rgb(232 178 58 / 0.78) 0 7px, rgb(243 223 174 / 0.82) 7px 14px);
+  --tape-clay: radial-gradient(circle at 50% 50%, rgb(255 250 241 / 0.85) 0 2px, transparent 2.5px) 0 0 / 11px 11px, rgb(224 150 118 / 0.78);
+  --tape-sage: repeating-linear-gradient(90deg, rgb(130 164 136 / 0.72) 0 5px, rgb(170 196 172 / 0.72) 5px 10px);
+  --tape-edge: polygon(2% 0, 98% 0, 100% 16%, 97.5% 33%, 100% 50%, 97.5% 67%, 100% 84%, 98% 100%, 2% 100%, 0 84%, 2.5% 67%, 0 50%, 2.5% 33%, 0 16%);
+}
+
+/* ---------- Base ---------- */
+
+body {
+  background: var(--page) url("paper.svg");
+  font-synthesis: none; /* Young Serif has one weight: never fake a bold */
+}
+
+h1,
+h2,
+h3,
+h4,
+.h3 {
+  letter-spacing: -0.005em;
+  line-height: 1.18;
+}
+h1 {
+  font-size: clamp(2.2rem, 1.45rem + 3vw, 3.6rem);
+  line-height: 1.12;
+}
+h2 {
+  font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.5rem);
+}
+h3,
+.h3 {
+  font-size: clamp(1.3rem, 1.2rem + 0.45vw, 1.5rem);
+}
+
+/* Page titles get a quick marker underline */
+h1::after {
+  content: "";
+  display: block;
+  width: clamp(7.5rem, 40%, 11.5rem);
+  height: 1.15rem;
+  margin-top: 0.25em;
+  background: url("swoosh.svg") left center / 100% 100% no-repeat;
+}
+
+.eyebrow {
+  color: var(--primary-text);
+  letter-spacing: 0.12em;
+}
+
+a:hover {
+  color: var(--primary-text);
+}
+
+.ph {
+  background: var(--ph-bg);
+  border-bottom: 2px dashed var(--primary-text);
+  border-radius: 3px 5px 3px 5px;
+}
+
+.skip-link {
+  border-radius: var(--wonky);
+}
+
+/* ---------- Buttons: solid fills, hand-drawn corners, crisp ink outline ---------- */
+
+.btn {
+  position: relative;
+  border-radius: var(--wonky);
+  transition: none;
+}
+.btn::after {
+  /* a stitched edge, like a sewn-on label */
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1.5px dashed rgb(255 255 255 / 0.6);
+  border-radius: 0.7rem 0.3rem 0.65rem 0.35rem / 0.35rem 0.65rem 0.3rem 0.7rem;
+  pointer-events: none;
+}
+.btn-sun::after,
+.btn-call::after {
+  border-color: rgb(43 42 51 / 0.45);
+}
+.btn-dark::after {
+  border-color: rgb(247 239 225 / 0.45);
+}
+.btn-primary,
+.btn-secondary {
+  box-shadow: none;
+}
+.btn:hover {
+  transform: none;
+  box-shadow: none;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+.btn-primary:hover {
+  background: #9c4426; /* white text 6.4 */
+}
+.btn-secondary:hover {
+  background: #3d5a45; /* white text 7.7 */
+}
+.btn-sun:hover,
+.btn-call:hover {
+  background: #f0c45e; /* ink 8.6 */
+}
+.btn-dark:hover {
+  background: #000;
+  color: var(--page); /* 18.4 */
+}
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+/* ---------- Draft banner ---------- */
+
+.draft-banner {
+  background: var(--cover);
+}
+
+/* ---------- Header: a page of the journal with index tabs ---------- */
+
+.site-header {
+  background: var(--surface);
+  border-bottom: 2px solid var(--ink);
+}
+.brand-name {
+  font-weight: 400;
+  font-size: 1.95rem;
+  letter-spacing: 0;
+}
+.brand-sub {
+  color: var(--primary-text); /* 5.7 on surface */
+  letter-spacing: 0.17em;
+}
+@media (max-width: 56em) {
+  .brand-name {
+    font-size: 1.6rem;
+  }
+  .brand-sub {
+    letter-spacing: 0.12em;
+  }
+}
+.btn-call {
+  border-radius: var(--wonky);
+}
+.menu-toggle {
+  border-radius: var(--wonky);
+}
+
+.site-nav {
+  border-top: 1px dashed var(--rule);
+  background: transparent;
+}
+.site-nav a {
+  border-radius: 0.6rem 0.8rem 0.55rem 0.75rem / 0.75rem 0.55rem 0.8rem 0.6rem;
+}
+.site-nav a:hover {
+  background: var(--highlight-soft);
+  border-color: var(--ink);
+}
+.site-nav a[aria-current] {
+  background: var(--highlight);
+  border-color: var(--ink);
+}
+
+@media (min-width: 56em) {
+  .site-nav {
+    border-top: 0;
+  }
+  .site-nav ul {
+    align-items: flex-end;
+    gap: 0.4rem;
+    padding: 0.2rem 0 0;
+  }
+  .site-nav a {
+    /* index tabs sitting on the header's bottom rule */
+    border-bottom: 0;
+    border-radius: 0.75rem 0.95rem 0 0 / 0.7rem 0.85rem 0 0;
+    padding: 0.45em 1.15em 0.5em;
+  }
+}
+
+/* ---------- Sections: fresh pages with torn edges ---------- */
+
+.section-white,
+.section-sun,
+.section-lagoon {
+  position: relative;
+  border-block: 0;
+}
+.section-white {
+  background: var(--surface);
+}
+.section-sun {
+  background: var(--highlight-soft);
+}
+.section-lagoon {
+  background: var(--secondary-soft);
+}
+.section-white::before,
+.section-white::after,
+.section-sun::before,
+.section-sun::after,
+.section-lagoon::before,
+.section-lagoon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 14px;
+  background: url("torn-surface.svg") 0 0 / 320px 14px repeat-x;
+  pointer-events: none;
+}
+.section-sun::before,
+.section-sun::after {
+  background-image: url("torn-sun.svg");
+}
+.section-lagoon::before,
+.section-lagoon::after {
+  background-image: url("torn-sage.svg");
+}
+.section-white::before,
+.section-sun::before,
+.section-lagoon::before {
+  top: -13px;
+}
+.section-white::after,
+.section-sun::after,
+.section-lagoon::after {
+  bottom: -13px;
+  transform: scaleY(-1);
+  background-position: -141px 0;
+}
+.page-head {
+  padding-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+.trip-hero {
+  padding-bottom: clamp(2.75rem, 6vw, 4rem);
+}
+
+/* two fresh pages in a row: one torn edge between them is enough */
+:is(.section-white, .section-sun, .section-lagoon) + :is(.section-white, .section-sun, .section-lagoon)::before {
+  display: none;
+}
+
+/* ---------- Hero: a scrapbook spread ---------- */
+
+.hero {
+  isolation: isolate;
+  padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(3rem, 7vw, 5.5rem);
+}
+.hero h1 {
+  max-width: 15ch;
+}
+
+.tj-spread {
+  position: relative;
+  isolation: isolate;
+  max-width: 33rem;
+  margin-inline: auto;
+  padding: 2.5rem 1rem 5.25rem 1.5rem;
+}
+.tj-spread::before {
+  /* a dot-grid journal page */
+  content: "";
+  position: absolute;
+  inset: 0.5rem 0.25rem 1.5rem 0.4rem;
+  z-index: -1;
+  background: radial-gradient(circle, rgb(94 85 72 / 0.3) 1.3px, transparent 1.8px) 10px 10px / 22px 22px, var(--surface);
+  border-radius: var(--cut);
+  box-shadow: var(--pop);
+  transform: rotate(1.8deg);
+}
+.tj-route {
+  /* a route doodled down the margin of the page, ending at an X */
+  position: absolute;
+  z-index: 0;
+  top: 0.9rem;
+  right: 0.5rem;
+  width: 22%;
+  height: auto;
+}
+.tj-print {
+  position: relative;
+  z-index: 1;
+  width: 82%;
+  background: var(--print);
+  padding: 0.75rem 0.75rem 0;
+  box-shadow: var(--print-shadow);
+  transform: rotate(-2.5deg);
+}
+.tj-print .photo {
+  aspect-ratio: 4 / 3;
+  border-radius: 1px;
+  --tilt: -2.5deg;
+}
+.tj-caption {
+  font-family: var(--hand);
+  font-weight: 600;
+  font-size: clamp(1.65rem, 1.4rem + 1vw, 2.2rem);
+  line-height: 1.15;
+  color: var(--link); /* 8.7 on white */
+  text-align: center;
+  margin: 0.35rem 0 0.55rem;
+}
+@media (max-width: 30em) {
+  .tj-spread {
+    padding: 2.25rem 0.5rem 4.75rem 1rem;
+  }
+  .tj-print {
+    width: 90%;
+  }
+  .tj-route {
+    width: 18%;
+  }
+}
+.tj-tag {
+  position: absolute;
+  z-index: 2;
+  right: 0.25rem;
+  bottom: 0;
+  width: 42%;
+  max-width: 13rem;
+  overflow: visible;
+  transform: rotate(-6deg);
+}
+
+/* ---------- Photos: prints taped into the journal ---------- */
+
+.photo {
+  border-radius: 1px;
+}
+.photo-ph {
+  background: url("scene.svg") center / cover no-repeat, var(--highlight-soft);
+}
+.photo-ph span {
+  position: relative;
+  z-index: 1;
+  background: var(--surface);
+  border: 2px dashed var(--primary-text);
+  border-radius: 3px 6px 4px 6px;
+  box-shadow: 0 2px 6px rgb(43 42 51 / 0.15);
+  transform: rotate(calc(-1 * var(--tilt, 0deg))); /* keep the label level on a tilted print */
+}
+
+.split .photo,
+.trip-hero .photo,
+.trip-card .photo,
+.gallery .photo {
+  overflow: visible;
+  border: 0.6rem solid var(--print);
+  border-radius: 1px;
+  box-shadow: var(--print-shadow);
+  transform: rotate(var(--tilt, 0deg));
+}
+.photo img {
+  border-radius: 0;
+}
+
+/* washi tape */
+.tj-print::before,
+.tj-print::after,
+.split .photo::before,
+.trip-hero .photo::before,
+.trip-card .photo::before,
+.gallery .photo::before,
+.quote::before,
+.more-card::before,
+main > .section:only-child > .wrap.measure::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 6.5rem;
+  height: 1.85rem;
+  background: var(--tape, var(--tape-sun));
+  clip-path: var(--tape-edge);
+  pointer-events: none;
+}
+.split .photo::before,
+.trip-hero .photo::before,
+.trip-card .photo::before,
+.gallery .photo::before,
+.quote::before,
+.more-card::before,
+main > .section:only-child > .wrap.measure::before {
+  top: -1.45rem;
+  left: 50%;
+  margin-left: -3.25rem;
+  transform: rotate(var(--tape-tilt, -3deg));
+}
+.tj-print::before {
+  top: -0.8rem;
+  left: -2rem;
+  transform: rotate(-38deg);
+  --tape: var(--tape-sun);
+}
+.tj-print::after {
+  top: -0.6rem;
+  right: -2rem;
+  transform: rotate(36deg);
+  background: var(--tape-sage);
+}
+
+.split .photo {
+  --tilt: -2deg;
+  --tape: var(--tape-clay);
+  border-bottom-width: 2.25rem; /* instant-photo frame */
+  border-radius: 1px;
+}
+@media (max-width: 47.99em) {
+  .split .photo {
+    width: calc(100% - 1.25rem);
+    margin-inline: auto;
+    margin-top: 1rem;
+  }
+}
+
+/* ---------- Cards: notebook pages with a margin line ---------- */
+
+.card {
+  --pad: clamp(1.25rem, 3vw, 2rem);
+  --mx: calc(var(--pad) * 0.55);
+  position: relative;
+  padding: var(--pad) var(--pad) var(--pad) calc(var(--pad) + var(--mx));
+  background:
+    linear-gradient(90deg, transparent var(--mx), var(--margin-line) var(--mx), var(--margin-line) calc(var(--mx) + 2px), transparent calc(var(--mx) + 2px)),
+    var(--surface);
+  border: 1px solid rgb(94 85 72 / 0.28);
+  border-radius: var(--cut);
+  box-shadow: var(--pop);
+}
+
+/* Steps: ink-stamp numbers joined by a doodled route */
+.steps li::before {
+  width: 3.9rem;
+  height: 3.9rem;
+  border: 3px solid var(--primary-text);
+  outline: 1.5px solid var(--primary-text);
+  outline-offset: -8px;
+  background: transparent;
+  color: var(--primary-text); /* 5.7 on surface */
+  font-family: var(--font-head);
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 1;
+  transform: rotate(-9deg);
+  -webkit-mask: url("grain-mask.svg") 0 0 / 120px 120px;
+  mask: url("grain-mask.svg") 0 0 / 120px 120px;
+}
+.steps li:nth-child(2)::before {
+  transform: rotate(6deg);
+}
+.steps li:nth-child(3)::before {
+  transform: rotate(-4deg);
+}
+@media (min-width: 56em) {
+  .steps li {
+    padding-top: 5.25rem;
+  }
+  .steps li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 0.9rem;
+    left: 5.1rem;
+    right: calc(-1 * clamp(1.25rem, 3vw, 2rem) + 0.6rem);
+    height: 2rem;
+    background:
+      url("arrowhead.svg") right 0 top 0.35rem / 1.1rem 1.1rem no-repeat,
+      url("route.svg") left 0 top 0 / calc(100% - 0.35rem) 100% no-repeat;
+    pointer-events: none;
+  }
+}
+@media (max-width: 55.99em) {
+  .steps.grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .steps li {
+    min-height: 4.5rem;
+    padding: 0.35rem 0 2rem 5.25rem;
+  }
+  .steps li:last-child {
+    padding-bottom: 0;
+  }
+  .steps li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 1.85rem;
+    top: 4.6rem;
+    bottom: 0.6rem;
+    border-left: 2.5px dashed var(--secondary);
+  }
+}
+
+/* ---------- Trip cards: a page with the photo taped in ---------- */
+
+.trip-card {
+  padding: 0;
+}
+.trip-card .photo {
+  margin: 1.6rem 1.1rem 0 calc(var(--mx) + 1rem);
+  aspect-ratio: 3 / 2;
+  border-width: 0.5rem;
+  --tilt: -1.4deg;
+}
+.trip-card:nth-child(even) .photo {
+  --tilt: 1.2deg;
+  --tape: var(--tape-clay);
+  --tape-tilt: 3deg;
+}
+.trip-card:nth-child(3n) .photo {
+  --tape: var(--tape-sage);
+}
+.trip-card-body {
+  padding: 1.25rem var(--pad) var(--pad) calc(var(--pad) + var(--mx));
+}
+.trip-card h3 a:hover,
+.trip-card:hover h3 a {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+.trip-card:hover {
+  box-shadow: 0 1px 2px rgb(74 56 34 / 0.14), 0 20px 30px -16px rgb(74 56 34 / 0.6);
+}
+.trip-price strong {
+  font-size: 1.3em;
+}
+
+/* Tags: pills look like little luggage tags with a punched hole
+   (drawn as a background, so the pill stays under a trip card's whole-card link) */
+.pill {
+  background-color: var(--surface);
+  background-image: radial-gradient(circle at 0.8em 50%, var(--page) 0 0.16em, var(--ink) 0.18em 0.3em, transparent 0.32em);
+  border: 2px solid var(--ink);
+  border-radius: 3px 7px 4px 7px / 6px 3px 7px 4px;
+  padding: 0.15em 0.75em 0.15em 1.5em;
+}
+.pill-open {
+  background-color: var(--secondary-soft);
+}
+.pill-soldout {
+  background-color: var(--primary-soft);
+}
+.pill-sun {
+  background-color: var(--highlight);
+}
+
+/* Notes: "more trips" cards and reviews are taped on */
+.quote::before,
+.more-card::before {
+  top: -1.1rem;
+}
+.grid:has(> .quote, > .more-card) {
+  row-gap: clamp(2.25rem, 4vw, 2.75rem);
+}
+.more-card {
+  background: var(--secondary-soft);
+  border: 0;
+  padding: calc(var(--pad) + 0.5rem) var(--pad) var(--pad);
+  --tape: var(--tape-sun);
+  --tape-tilt: 2deg;
+}
+.quote {
+  padding-top: calc(var(--pad) + 0.5rem);
+  background: var(--surface);
+  padding-left: var(--pad);
+  --tape-tilt: -2deg;
+}
+.grid > .quote:nth-child(3n + 2) {
+  --tape: var(--tape-clay);
+  --tape-tilt: 3deg;
+}
+.grid > .quote:nth-child(3n) {
+  --tape: var(--tape-sage);
+}
+.quote blockquote {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+.quote blockquote::before {
+  font-size: 4rem;
+  line-height: 0.75;
+  margin-bottom: 0.1rem;
+}
+.quote-ph {
+  border: 2px dashed rgb(94 85 72 / 0.55);
+  box-shadow: var(--pop);
+}
+
+/* ---------- Band: a ticket stub ---------- */
+
+.band {
+  background: transparent;
+  border-block: 0;
+  color: var(--ink);
+}
+.band .wrap {
+  --tpad: clamp(1.5rem, 4vw, 2.5rem);
+  position: relative;
+  overflow: hidden;
+  gap: 0;
+  align-items: stretch;
+  padding: 0 var(--tpad);
+  background: var(--highlight);
+  border: 2px solid var(--ink);
+  border-radius: var(--cut);
+  box-shadow: var(--pop);
+}
+.band .wrap > div {
+  position: relative;
+  padding-block: var(--tpad);
+  border-bottom: 2px dashed var(--ink);
+}
+.band .wrap > div::before,
+.band .wrap > div::after {
+  /* the notches where the stub tears off */
+  content: "";
+  position: absolute;
+  bottom: calc(-1rem - 1px);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--page);
+  border: 2px solid var(--ink);
+}
+.band .wrap > div::before {
+  left: calc(-1 * var(--tpad) - 1rem - 2px);
+}
+.band .wrap > div::after {
+  right: calc(-1 * var(--tpad) - 1rem - 2px);
+}
+.band .btn {
+  margin-block: var(--tpad);
+  align-self: center;
+}
+@media (min-width: 48em) {
+  .band .wrap {
+    grid-template-columns: 1fr auto;
+  }
+  .band .wrap > div {
+    border-bottom: 0;
+    border-right: 2px dashed var(--ink);
+    padding-right: var(--tpad);
+  }
+  .band .wrap > div::before {
+    left: auto;
+    top: calc(-1rem - 2px);
+    bottom: auto;
+    right: calc(-1rem - 1px);
+  }
+  .band .wrap > div::after {
+    right: calc(-1rem - 1px);
+    bottom: calc(-1rem - 2px);
+  }
+  .band .btn {
+    margin: var(--tpad) 0 var(--tpad) var(--tpad);
+  }
+}
+
+.prose ul:not([class]) li::marker {
+  color: var(--primary-text);
+}
+
+/* ---------- Trip page ---------- */
+
+.trip-hero .photo {
+  --tilt: 1.2deg;
+  --tape: var(--tape-clay);
+  margin-top: 1.5rem;
+}
+@media (max-width: 55.99em) {
+  .trip-hero .photo {
+    width: calc(100% - 1.25rem);
+    margin: 1.75rem auto 0.75rem;
+  }
+}
+.trip-intro .btn-row {
+  margin-bottom: 0.5rem;
+}
+.facts div {
+  border-bottom: 1.5px solid var(--ruled);
+}
+.facts div:last-child {
+  border-bottom: 0;
+}
+
+.days li {
+  position: relative;
+  grid-template-columns: 4.6rem 1fr;
+  padding-left: 2.1rem;
+  border-bottom: 1.5px solid var(--ruled);
+}
+.days li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.45rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 3px solid var(--primary);
+}
+.days li:not(:last-child)::after {
+  /* the route on to the next day */
+  content: "";
+  position: absolute;
+  left: calc(0.575rem - 1.25px);
+  top: 2.75rem;
+  bottom: -1.3rem;
+  border-left: 2.5px dashed var(--secondary);
+}
+.day-num {
+  font-weight: 400;
+  color: var(--primary-text);
+  font-size: 1.15rem;
+  padding-top: 0.1rem;
+}
+
+/* ---------- Forms ---------- */
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="tel"],
+.field select,
+.field textarea,
+.option {
+  background: #fff; /* muted border 7.3 */
+  border-radius: 0.35rem 0.55rem 0.4rem 0.6rem / 0.55rem 0.35rem 0.6rem 0.4rem;
+}
+.field-readonly {
+  border-radius: 0.35rem 0.55rem 0.4rem 0.6rem / 0.55rem 0.35rem 0.6rem 0.4rem;
+}
+.form-alert {
+  border-radius: var(--cut);
+}
+
+/* ---------- Contact ---------- */
+
+.contact-card .big-link {
+  font-weight: 400;
+}
+
+/* ---------- Gallery: a wall of taped prints ---------- */
+
+.gallery {
+  gap: clamp(1.75rem, 3.5vw, 2.5rem) clamp(1.25rem, 3vw, 2rem);
+  padding-top: 0.75rem;
+}
+.gallery .photo {
+  border-width: 0.55rem;
+  --tilt: -1.5deg;
+}
+.gallery li:nth-child(3n + 2) .photo {
+  --tilt: 1.2deg;
+  --tape: var(--tape-clay);
+  --tape-tilt: 4deg;
+}
+.gallery li:nth-child(3n) .photo {
+  --tilt: -0.6deg;
+  --tape: var(--tape-sage);
+}
+.gallery a {
+  border-radius: 2px;
+}
+@media (max-width: 40em) {
+  .gallery {
+    padding-inline: 0.6rem;
+  }
+}
+.gallery figcaption {
+  margin-top: 0.75rem;
+  padding-inline: 0.25rem;
+}
+.lightbox {
+  border-radius: var(--cut);
+}
+
+/* ---------- Short pages (thank-you, 404): a note card ---------- */
+
+main > .section:only-child > .wrap.measure {
+  position: relative;
+  padding: clamp(1.75rem, 5vw, 3rem);
+  padding-left: calc(clamp(1.75rem, 5vw, 3rem) + 0.75rem);
+  background:
+    linear-gradient(90deg, transparent 1.1rem, var(--margin-line) 1.1rem, var(--margin-line) calc(1.1rem + 2px), transparent calc(1.1rem + 2px)),
+    var(--surface);
+  border: 1px solid rgb(94 85 72 / 0.28);
+  border-radius: var(--cut);
+  box-shadow: var(--pop);
+  --tape: var(--tape-clay);
+  --tape-tilt: -2deg;
+}
+
+/* ---------- Footer: the notebook's cloth cover ---------- */
+
+.site-footer {
+  background-color: var(--cover);
+  background-image:
+    repeating-linear-gradient(45deg, rgb(255 255 255 / 0.03) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(-45deg, rgb(0 0 0 / 0.08) 0 1px, transparent 1px 5px);
+}
+.site-footer .mark-shine {
+  stroke: var(--cover);
+}
+.site-footer .brand-sub {
+  color: var(--highlight); /* 6.2 on cover */
+}
+.footer-tagline {
+  font-family: var(--hand);
+  font-weight: 600;
+  font-size: clamp(2rem, 1.8rem + 0.8vw, 2.4rem);
+  line-height: 1.1;
+}
+.site-footer h2 {
+  font-size: 1.35rem;
+}
+
+@media print {
+  .section-white::before,
+  .section-white::after,
+  .section-sun::before,
+  .section-sun::after,
+  .section-lagoon::before,
+  .section-lagoon::after {
+    display: none;
+  }
+  .split .photo,
+  .trip-hero .photo,
+  .trip-card .photo,
+  .gallery .photo {
+    transform: none;
+  }
+}

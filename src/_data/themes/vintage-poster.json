@@ -1,0 +1,12 @@
+{
+  "label": "Vintage Travel Poster",
+  "description": "Navy, sunset orange and gold on aged cream, like a mid-century travel poster: bold condensed headings, framed photos, title bands, sunbursts and mountain silhouettes.",
+  "themeColor": "#f4ead5",
+  "fonts": [
+    "node_modules/@fontsource-variable/oswald/files/oswald-latin-wght-normal.woff2"
+  ],
+  "preload": [
+    "atkinson-hyperlegible-latin-400-normal.woff2",
+    "oswald-latin-wght-normal.woff2"
+  ]
+}
