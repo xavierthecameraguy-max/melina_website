@@ -1,0 +1,13 @@
+{
+  "label": "Postcard Pop",
+  "description": "A tropical postcard come to life: sand, hibiscus pink, mango and sky, with wavy section edges, tilted stickers, bubbly rounded cards and flat sun, palm and hibiscus shapes.",
+  "themeColor": "#ffffff",
+  "fonts": [
+    "node_modules/@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2",
+    "node_modules/@fontsource-variable/nunito-sans/files/nunito-sans-latin-wght-normal.woff2"
+  ],
+  "preload": [
+    "nunito-sans-latin-wght-normal.woff2",
+    "bricolage-grotesque-latin-wght-normal.woff2"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "label": "Color Block Modern",
+  "description": "Full-width blocks of tomato, sunflower and cobalt on warm white, with big bold Archivo headings, oversized step numbers, flat framed cards and photos cropped into circles, arches and quarter circles.",
+  "themeColor": "#faf7f2",
+  "fonts": [
+    "node_modules/@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2"
+  ],
+  "preload": [
+    "atkinson-hyperlegible-latin-400-normal.woff2",
+    "archivo-latin-wdth-normal.woff2"
+  ]
+}

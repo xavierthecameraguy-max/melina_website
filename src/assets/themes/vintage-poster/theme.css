@@ -86,6 +86,7 @@ h3,
 
 .ph {
   border-radius: 2px;
+  text-shadow: none; /* keeps [placeholders] in big headings crisp */
 }
 
 .skip-link {
@@ -244,6 +245,10 @@ h3,
 .section-lagoon {
   border-block: var(--double);
 }
+/* the gold field is a full-strength poster color; only headings and framed cards sit on it */
+.section-sun {
+  background: var(--highlight); /* navy 7.8 */
+}
 
 /* section headings carry a double rule out to the right edge */
 .section-head {
@@ -275,6 +280,31 @@ h3,
 .page-head {
   padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(2rem, 5vw, 3rem);
 }
+.page-head,
+main > .section:first-child {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+@media (min-width: 64em) {
+  /* on wide screens the sun rises out of the top corner of every page title, like the sky
+     of a poster; it stays clear of the words (the widest title ends well before it) */
+  .page-head::before,
+  main > .section:first-child::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    width: clamp(22rem, 34vw, 32rem);
+    aspect-ratio: 1;
+    translate: 50% -50%;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle, var(--primary) 0 19%, var(--highlight) 19.3% 27%, transparent 27.3% 33%, var(--page) 33.3% 35%, transparent 35.3%),
+      repeating-conic-gradient(var(--highlight) 0 5deg, var(--highlight-soft) 5deg 15deg);
+  }
+}
 
 /* ---------- Home hero: a framed travel poster in front of a sunburst ---------- */
 
@@ -302,13 +332,14 @@ h3,
   z-index: -1;
   left: 50%;
   top: 50%;
-  width: 135%;
+  width: 128%; /* stays inside the poster's height, so it only fans out at the sides */
   aspect-ratio: 1;
   translate: -50% -50%;
   border-radius: 50%;
+  /* two-tone gold rays, crisp and flat like a screen-printed sunburst */
   background:
-    radial-gradient(circle, var(--highlight) 0 22%, transparent 22.2%),
-    repeating-conic-gradient(var(--highlight-soft) 0 7.5deg, transparent 7.5deg 15deg);
+    radial-gradient(circle, transparent 0 69%, var(--page) 69.2% 71.5%, transparent 71.7%),
+    repeating-conic-gradient(var(--highlight) 0 6deg, var(--highlight-soft) 6deg 15deg);
 }
 
 .vp-poster {
@@ -550,8 +581,39 @@ h3,
   letter-spacing: 0.02em;
 }
 
+/* "More trips on the way" panels: words up top on a solid field, the next horizon below
+   (sun rising behind the mountains, a plane heading for it). The art never sits behind text. */
 .more-card {
   --card-bg: var(--secondary-soft);
+  container-type: inline-size; /* the art strip grows with the card's width */
+  justify-content: flex-start;
+}
+.card.more-card > :last-child {
+  margin-bottom: 1.25rem; /* the gap above the art */
+}
+.more-card::after {
+  /* a flex item after the words, sitting on the bottom frame line; in a tall grid cell it
+     grows up to a cap, and any spare room goes above it as plain sky */
+  content: "";
+  flex: 1 0 clamp(7rem, 20cqi, 11rem);
+  max-height: 16rem;
+  margin: auto calc(7px - var(--pad)) calc(7px - var(--pad));
+  background: url("horizon.svg") 90% 100% / cover no-repeat; /* keeps the sun and the plane in view at any crop */
+}
+@media (min-width: 56em) {
+  /* beside a single trip card it becomes a full-height poster panel */
+  .grid-3 > .more-card:nth-child(2):last-child {
+    --pad: 2.5rem;
+    align-self: stretch;
+    padding: var(--pad);
+  }
+  .grid-3 > .more-card:nth-child(2):last-child > :last-child {
+    margin-bottom: 1.5rem;
+  }
+  .grid-3 > .more-card:nth-child(2):last-child::after {
+    flex-basis: 14rem;
+    max-height: none;
+  }
 }
 
 /* ---------- Quotes ---------- */
@@ -636,6 +698,12 @@ h3,
   border: 2px solid var(--ink);
   border-radius: var(--radius);
 }
+/* errors keep their orange-red edge (the rule above would otherwise out-rank site.css's) */
+.field input[aria-invalid="true"],
+.field select[aria-invalid="true"],
+.field textarea[aria-invalid="true"] {
+  border: 3px solid var(--primary-text); /* 6.3 on surface */
+}
 .field-readonly {
   border-radius: var(--radius);
   border-color: var(--ink);
@@ -708,9 +776,15 @@ main > .band:last-child {
 
 @media print {
   .site-footer::before,
+  .page-head::before,
+  main > .section:first-child::before,
+  .more-card::after,
   .vp-sunburst,
   .vp-seal {
     display: none;
+  }
+  .section-sun {
+    background: none;
   }
   h1 {
     text-shadow: none;

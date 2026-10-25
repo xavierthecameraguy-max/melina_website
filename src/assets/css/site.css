@@ -491,6 +491,29 @@ main:focus {
   }
 }
 
+/* Small phones: keep the logo and the Menu button on one row */
+@media (max-width: 24em) {
+  .header-top {
+    gap: 0.5rem;
+  }
+  .brand {
+    gap: 0.4rem;
+  }
+  .brand-mark {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+  .brand-name {
+    font-size: 1.35rem;
+  }
+  .brand-sub {
+    letter-spacing: 0.06em;
+  }
+  .menu-toggle {
+    padding-inline: 0.8em;
+  }
+}
+
 @media (max-width: 20em) {
   .btn-call span {
     white-space: normal;
@@ -1035,7 +1058,11 @@ main:focus {
   outline-offset: 2px;
   border-color: var(--ink);
 }
-.field [aria-invalid="true"] {
+/* Specific enough to beat .field input[type=...] above; radio groups mark their options. */
+.field input[aria-invalid="true"],
+.field select[aria-invalid="true"],
+.field textarea[aria-invalid="true"],
+fieldset.field[aria-invalid="true"] .option {
   border: 3px solid var(--primary-text);
 }
 .field-readonly {

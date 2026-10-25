@@ -1,0 +1,1046 @@
+/* Postcard Pop: a tropical postcard come to life. Sand, hibiscus pink, mango and sky;
+   wavy section edges, tilted stickers, bubbly rounded cards with bright tops, and a few
+   bold flat shapes (sun, palm frond, hibiscus). Loaded after site.css.
+   Shape rule: ink outlines mean "you can press this" (buttons, fields, menu); cards and
+   stickers are flat color. WCAG 2.x contrast for each text pair is noted beside the roles. */
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("../../fonts/bricolage-grotesque-latin-wght-normal.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito Sans";
+  src: url("../../fonts/nunito-sans-latin-wght-normal.woff2") format("woff2");
+  font-weight: 200 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --ink: #1c1f24;            /* 15.0 on page, 16.5 on surface, 13.4 on sky tint */
+  --page: #fbf3e6;           /* sand */
+  --surface: #ffffff;
+  --muted: #55524f;          /* 7.1 on page, 7.8 on surface, 6.2+ on the tints */
+  --primary: #ec5c8c;        /* hibiscus fills: ink text 5.1; 2.9 on sand, so buttons keep an ink outline */
+  --on-primary: #1c1f24;
+  --primary-text: #b4285a;   /* berry: 5.6 on page, 6.2 on surface, 5.0 on sky tint */
+  --primary-soft: #fbd6e2;   /* ink 12.5 */
+  --highlight: #ff9a1f;      /* mango: ink 7.8 */
+  --highlight-soft: #ffe2bd; /* ink 13.3 */
+  --secondary: #11689e;      /* deep sky: white text 6.0 */
+  --on-secondary: #ffffff;
+  --secondary-soft: #d3ebf8; /* sky tint: ink 13.4 */
+  --link: #11689e;           /* 5.5 on page, 6.0 on surface, 4.9 on sky tint, 4.8 on mango tint */
+  --rule: #e2cfb3;
+  --footer-rule: #5b8fb6;
+  --ph-bg: #fff1a1;          /* lemon highlighter: ink 14.4 */
+
+  /* Decorative only: never text, never behind text without re-checking */
+  --sky: #4db3f0;            /* ink text on it is 7.1 (sticker, step number) */
+  --pp-leaf: #1f8a5f;
+  --pp-leaf-dark: #156b49;
+  --ocean: #0d5585;          /* footer: white 7.9, mango tint 6.4, lemon 6.9 */
+  --lip: rgb(28 31 36 / 0.11);
+
+  --font-head: "Bricolage Grotesque", "Trebuchet MS", Verdana, sans-serif;
+  --font-body: "Nunito Sans", "Segoe UI", Verdana, Arial, sans-serif;
+  --head-weight: 800;
+  --head-settings: normal;
+
+  --radius: 1.5rem;
+  --radius-lg: 2.25rem;
+  --border: 3px solid var(--ink);
+  --pop: 0 0.55rem 0 var(--lip);
+  --section: clamp(3.5rem, 8vw, 6.5rem);
+  --wave-h: clamp(1.4rem, 3vw, 2.6rem);
+  --wave-w: clamp(17rem, 44vw, 36rem);
+  --cap: var(--highlight);
+}
+
+/* ---------- Base ---------- */
+
+body {
+  line-height: 1.6;
+  /* Nunito Sans runs a little light; 450 gives older eyes sturdier letters without looking bold */
+  font-weight: 450;
+}
+.req {
+  font-weight: 450;
+}
+
+h1,
+h2,
+h3,
+h4,
+.h3 {
+  letter-spacing: -0.02em;
+}
+h1 {
+  font-size: clamp(2.5rem, 0.9rem + 4.6vw, 4.5rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+h2 {
+  font-size: clamp(2rem, 1.45rem + 2.2vw, 3rem);
+  line-height: 1.08;
+}
+h3,
+.h3 {
+  font-size: clamp(1.4rem, 1.25rem + 0.6vw, 1.65rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.lead {
+  font-size: 1.15em;
+}
+
+a:hover {
+  color: var(--primary-text);
+}
+
+.ph {
+  border-radius: 0.3em;
+  padding: 0 0.2em;
+}
+
+/* No motion anywhere */
+.btn,
+.trip-card {
+  transition: none;
+}
+
+/* The hero eyebrow is a tilted sticker */
+.eyebrow {
+  display: inline-block;
+  background: var(--surface);
+  color: var(--primary-text);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 0.4em 1em;
+  border-radius: 1.2rem;
+  transform: rotate(-2deg);
+  box-shadow: 0 4px 0 var(--lip);
+  margin-bottom: 1.25rem;
+}
+
+/* ---------- Buttons: chunky candy pills with an ink outline and lip ---------- */
+
+.btn {
+  border: var(--border);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  padding: 0.6em 1.5em;
+  box-shadow: 0 5px 0 var(--ink);
+}
+.btn-primary,
+.btn-secondary {
+  box-shadow: 0 5px 0 var(--ink);
+}
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn:hover {
+  transform: none;
+  box-shadow: 0 5px 0 var(--ink);
+}
+.btn-primary:hover {
+  background: #f27ba3; /* ink 6.4 */
+}
+.btn-secondary:hover {
+  background: var(--ocean);
+}
+.btn-sun:hover {
+  background: #ffb04f; /* ink 9.1 */
+}
+.btn-dark {
+  box-shadow: 0 5px 0 rgb(28 31 36 / 0.35);
+}
+.btn-dark:hover {
+  box-shadow: 0 5px 0 rgb(28 31 36 / 0.35);
+}
+.btn:active,
+.btn:hover:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 var(--ink);
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  position: relative;
+  z-index: 3;
+  border-bottom: 0;
+}
+.site-header::after {
+  /* the header's wavy bottom edge */
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% - 1px);
+  height: var(--wave-h);
+  background: var(--surface);
+  -webkit-mask: url("wave.svg") repeat-x 0 100% / var(--wave-w) 100%;
+  mask: url("wave.svg") repeat-x 0 100% / var(--wave-w) 100%;
+  transform: scaleY(-1);
+  pointer-events: none;
+}
+
+.header-top {
+  padding-block: 1rem 0.85rem;
+}
+.brand-name {
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: -0.03em;
+}
+.brand-sub {
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--primary-text);
+  margin-top: 0.25rem;
+}
+
+.btn-call {
+  background: var(--secondary);
+  color: var(--on-secondary);
+  box-shadow: 0 4px 0 var(--ink);
+}
+.btn-call:hover {
+  background: var(--ocean);
+  color: var(--on-secondary);
+}
+
+.menu-toggle {
+  border: var(--border);
+  box-shadow: 0 4px 0 var(--ink);
+  font-weight: 800;
+}
+
+.site-nav {
+  border-top: 2px dashed var(--rule);
+}
+.site-nav ul {
+  gap: 0.5rem;
+  padding: 0.75rem 0 0.6rem;
+}
+.site-nav a {
+  border: 3px solid transparent;
+  font-weight: 800;
+  padding: 0.4em 1.1em;
+}
+.site-nav a:hover {
+  background: var(--secondary-soft);
+  border-color: transparent;
+}
+.site-nav a[aria-current] {
+  background: var(--highlight);
+  border-color: var(--ink);
+  box-shadow: 0 3px 0 var(--ink);
+}
+@media (min-width: 56.01em) {
+  .site-nav a[aria-current] {
+    transform: rotate(-2.5deg);
+  }
+}
+
+@media (max-width: 56em) {
+  .brand-name {
+    font-size: 1.7rem;
+  }
+}
+
+/* Phones: logo on its own row, then an action row. Menu sits first, so it stays put
+   when its label changes to "Close menu"; Call fills the rest of the row. */
+@media (max-width: 36em) {
+  .header-top {
+    gap: 0.85rem 0.75rem;
+  }
+  .brand {
+    flex: 1 1 100%;
+  }
+  .menu-toggle {
+    order: 2;
+    margin-left: 0;
+    padding-inline: 0.85em;
+  }
+  .btn-call {
+    order: 3;
+    flex: 1 1 0;
+    min-width: 0;
+    padding-inline: 0.85em;
+  }
+}
+
+/* ---------- Waves: every section after the first gets a wavy top edge ---------- */
+
+main > section {
+  position: relative;
+}
+main > section + section::before,
+.site-footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% - 1px);
+  height: var(--wave-h);
+  background-color: inherit;
+  -webkit-mask: url("wave.svg") repeat-x 0 100% / var(--wave-w) 100%;
+  mask: url("wave.svg") repeat-x 0 100% / var(--wave-w) 100%;
+  pointer-events: none;
+}
+main > section:nth-of-type(odd)::before {
+  -webkit-mask-position: calc(var(--wave-w) * -0.5) 100%;
+  mask-position: calc(var(--wave-w) * -0.5) 100%;
+}
+.site-footer::before {
+  -webkit-mask-position: calc(var(--wave-w) * -0.25) 100%;
+  mask-position: calc(var(--wave-w) * -0.25) 100%;
+}
+
+/* ---------- Sections ---------- */
+
+.section,
+.section-white,
+.section-sun,
+.section-lagoon {
+  border-block: 0;
+}
+.section {
+  background-color: var(--page);
+  padding-block: var(--section) calc(var(--section) + var(--wave-h) * 0.6);
+}
+.section-white {
+  background-color: var(--surface);
+}
+.section-sun {
+  background-color: var(--highlight-soft);
+}
+.section-lagoon {
+  background-color: var(--primary-soft);
+}
+
+/* Every page opens in the sky: hero, page heads, trip heads and one-section pages */
+.hero,
+.page-head,
+.trip-hero,
+main > .section:only-child {
+  background-color: var(--secondary-soft);
+}
+.page-head,
+.trip-hero,
+main > .section:only-child {
+  overflow: hidden;
+}
+.page-head {
+  position: relative;
+  padding-block: calc(clamp(2.25rem, 5vw, 4rem) + var(--wave-h)) calc(clamp(1.75rem, 4vw, 3.25rem) + var(--wave-h));
+}
+.trip-hero {
+  padding-block: calc(clamp(1.75rem, 4vw, 3rem) + var(--wave-h)) calc(clamp(2.5rem, 5vw, 4rem) + var(--wave-h));
+}
+main > .section:only-child {
+  padding-top: calc(var(--section) + var(--wave-h));
+  min-height: 60vh;
+}
+main > section:first-child > .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+/* A flat sun peeking in at the top right of each page head */
+.page-head::after,
+.trip-hero::after,
+main > .section:only-child::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: calc(var(--wave-h) * 0.2);
+  right: clamp(-4rem, -4vw, -2rem);
+  width: clamp(7rem, 15vw, 12.5rem);
+  aspect-ratio: 1;
+  background: url("sun.svg") center / contain no-repeat;
+  pointer-events: none;
+}
+@media (min-width: 64em) {
+  main > .section:only-child:has(> .wrap.measure)::before {
+    content: "";
+    position: absolute;
+    left: -2rem;
+    bottom: -1rem;
+    width: clamp(14rem, 22vw, 20rem);
+    aspect-ratio: 240 / 200;
+    background: url("frond.svg") center / contain no-repeat;
+    transform: rotate(-12deg);
+    pointer-events: none;
+  }
+}
+/* Terms and privacy (left-aligned text): a palm frond leans in from the bottom right */
+@media (min-width: 64em) {
+  main > .section:only-child:has(> .wrap > .prose)::before {
+    content: "";
+    position: absolute;
+    right: -2rem;
+    bottom: -1rem;
+    width: clamp(14rem, 22vw, 20rem);
+    aspect-ratio: 240 / 200;
+    background: url("frond.svg") center / contain no-repeat;
+    transform: scaleX(-1) rotate(-12deg);
+    pointer-events: none;
+  }
+}
+@media (max-width: 37.5em) {
+  .page-head::after,
+  .trip-hero::after,
+  main > .section:only-child::after {
+    width: 6rem;
+    right: -2.6rem;
+    top: 0.2rem;
+  }
+}
+/* Trip pages: the facts card fills the top right, so a smaller sun peeks in above it */
+@media (min-width: 56em) {
+  .trip-hero::after {
+    width: 6rem;
+    top: calc(var(--wave-h) * 0.3);
+    right: -1.25rem;
+  }
+}
+
+.section-head {
+  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+/* ---------- Home hero ---------- */
+
+.hero {
+  padding-block: calc(clamp(2.25rem, 5vw, 4.5rem) + var(--wave-h)) calc(clamp(3rem, 7vw, 5.5rem) + var(--wave-h));
+}
+.hero h1 {
+  max-width: 13ch;
+}
+.hero-copy {
+  position: relative;
+  z-index: 1;
+}
+
+/* The collage: a sun, palm fronds, a pink postcard back and the photo postcard in front */
+.pp-collage {
+  position: relative;
+  width: 100%;
+  max-width: 36rem;
+  aspect-ratio: 1;
+  margin-inline: auto;
+}
+.pp-collage > * {
+  position: absolute;
+}
+.pp-sun {
+  z-index: 1;
+  width: 44%;
+  left: -5%;
+  top: -6%;
+}
+.pp-fronds {
+  /* the leaf tips run past the drawing's box; let them show instead of being cut flat */
+  overflow: visible;
+  z-index: 2;
+  width: 60%;
+  right: -10%;
+  bottom: 4%;
+  transform: scaleX(-1);
+}
+.pp-card {
+  border-radius: 1.1rem;
+  box-shadow: 0 0.6rem 0 var(--lip);
+}
+.pp-card-back {
+  z-index: 3;
+  width: 70%;
+  aspect-ratio: 3 / 2;
+  right: 1%;
+  top: 4%;
+  background: var(--primary);
+  transform: rotate(5deg);
+}
+.pp-card-back svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.pp-card-front {
+  z-index: 4;
+  width: 76%;
+  left: 0;
+  bottom: 3%;
+  background: var(--surface);
+  padding: 3.2%;
+  transform: rotate(-4deg);
+}
+.pp-card-front .photo {
+  aspect-ratio: 4 / 3;
+  border-radius: 0.7rem;
+}
+.pp-flower {
+  z-index: 5;
+  width: 21%;
+  left: -4%;
+  bottom: -2%;
+  transform: rotate(-8deg);
+}
+
+/* ---------- Photos and placeholders ---------- */
+
+.photo {
+  background: var(--secondary-soft);
+}
+.photo-ph {
+  background: url("scene.svg") center / cover no-repeat, var(--secondary-soft);
+}
+.photo-ph span {
+  border: 3px dashed var(--primary-text);
+  font-weight: 800;
+  box-shadow: 0 4px 0 var(--lip);
+  line-height: 1.35;
+}
+
+/* ---------- Cards: flat, rounded, with a bright colored top ---------- */
+
+.card {
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(var(--cap), var(--cap)) top / 100% 0.8rem no-repeat, var(--surface);
+  box-shadow: var(--pop);
+  padding: calc(clamp(1.35rem, 3vw, 2.1rem) + 0.6rem) clamp(1.35rem, 3vw, 2.1rem) clamp(1.35rem, 3vw, 2.1rem);
+}
+.grid > .card:nth-child(3n + 1) {
+  --cap: var(--primary);
+}
+.grid > .card:nth-child(3n + 2) {
+  --cap: var(--highlight);
+}
+.grid > .card:nth-child(3n + 3),
+.grid-2 > .card:nth-child(2) {
+  --cap: var(--sky);
+}
+.form-card {
+  --cap: var(--sky);
+}
+.section-white .card {
+  background: linear-gradient(var(--cap), var(--cap)) top / 100% 0.8rem no-repeat, var(--page);
+}
+
+.more-card,
+.section-white .more-card {
+  background: var(--secondary-soft);
+  box-shadow: none;
+  padding: clamp(1.5rem, 3.5vw, 2.25rem);
+}
+.page-head .more-card,
+.trip-hero .more-card {
+  background: var(--surface);
+}
+.more-card {
+  position: relative;
+}
+.more-card::after {
+  /* a hibiscus sticker on the corner */
+  content: "";
+  position: absolute;
+  top: -1.4rem;
+  right: 1.1rem;
+  width: 4.25rem;
+  aspect-ratio: 1;
+  background: url("hibiscus.svg") center / contain no-repeat;
+  transform: rotate(14deg);
+  pointer-events: none;
+}
+.more-card > :first-child {
+  padding-right: 3.75rem;
+}
+
+/* ---------- Steps: numbers in tilted blobs ---------- */
+
+.steps {
+  row-gap: 2.25rem;
+}
+.steps li {
+  padding-top: 5.75rem;
+}
+.steps li::before {
+  width: 4.5rem;
+  height: 4.25rem;
+  border: 0;
+  border-radius: 58% 42% 52% 48% / 50% 56% 44% 50%;
+  background: var(--primary);
+  color: var(--ink);
+  font-weight: 800;
+  font-size: 2.1rem;
+  line-height: 1;
+  transform: rotate(-7deg);
+  box-shadow: 0 5px 0 var(--lip);
+}
+.steps li:nth-child(3n + 2)::before {
+  background: var(--highlight);
+  border-radius: 44% 56% 62% 38% / 56% 44% 56% 44%;
+  transform: rotate(5deg);
+}
+.steps li:nth-child(3n + 3)::before {
+  background: var(--sky);
+  border-radius: 52% 48% 40% 60% / 44% 58% 42% 56%;
+  transform: rotate(-3deg);
+}
+
+.feature-icon {
+  width: 4rem;
+  height: 4rem;
+}
+
+/* ---------- Trip cards: a photo top with a sticker on its edge ---------- */
+
+.trip-card {
+  box-shadow: var(--pop);
+  padding: 0;
+}
+.trip-card .photo {
+  border-bottom: 0;
+}
+.trip-card-body {
+  padding: 0 1.5rem 1.6rem;
+}
+.trip-card-body .pill {
+  position: relative;
+  margin-top: -1.15rem;
+  margin-bottom: 0.9rem;
+}
+.trip-card:hover {
+  box-shadow: 0 0.55rem 0 var(--primary);
+}
+.trip-card h3 {
+  margin-bottom: 0.35em;
+}
+.trip-price strong {
+  font-family: var(--font-head);
+  font-weight: 800;
+}
+.trip-card-more {
+  font-weight: 800;
+}
+.trip-card-more::after {
+  content: " \2192";
+}
+
+/* ---------- Stickers (pills): flat color, white die-cut edge, a slight tilt ---------- */
+
+.pill {
+  border: 0;
+  padding: 0.3em 0.95em;
+  font-weight: 800;
+  background: var(--ink);
+  color: var(--page);
+  transform: rotate(-2.5deg);
+  box-shadow: 0 0 0 3px var(--surface), 0 5px 0 3px var(--lip);
+}
+.pill-open {
+  background: var(--sky);
+  color: var(--ink);
+}
+.pill-soldout {
+  background: var(--primary);
+  color: var(--ink);
+}
+.pill-sun {
+  background: var(--highlight);
+  color: var(--ink);
+}
+.badges {
+  gap: 0.85rem 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.badges .pill:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+/* ---------- Quotes: speech bubbles ---------- */
+
+.card.quote,
+.section-white .card.quote {
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+}
+.quote blockquote {
+  --bubble: var(--secondary-soft);
+  position: relative;
+  background: var(--bubble);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.6rem 1.6rem;
+  margin: 0 0 1.6rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+.quote blockquote p {
+  margin: 0;
+}
+.grid > .quote:nth-child(3n + 2) blockquote {
+  --bubble: var(--primary-soft);
+}
+.grid > .quote:nth-child(3n + 3) blockquote {
+  --bubble: var(--highlight-soft);
+}
+.quote blockquote::before {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 4rem;
+  line-height: 0.9;
+  height: 2.6rem;
+}
+.quote blockquote::after {
+  /* the bubble's tail */
+  content: "";
+  position: absolute;
+  left: 2.25rem;
+  bottom: -0.85rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  background: var(--bubble);
+  border-radius: 0 0 0.45rem 0;
+  transform: rotate(45deg);
+}
+.quote figcaption {
+  font-weight: 800;
+  padding-left: 1.25rem;
+}
+.quote-ph blockquote {
+  border: 3px dashed var(--muted);
+}
+.quote-ph blockquote::after {
+  border: 3px dashed var(--muted);
+  border-top: 0;
+  border-left: 0;
+}
+
+/* ---------- Band ---------- */
+
+.band {
+  border-block: 0;
+  padding-block: clamp(3rem, 7vw, 5rem) calc(clamp(3rem, 7vw, 5rem) + var(--wave-h) * 0.6);
+}
+
+/* ---------- Split: photo with a mango blob behind it ---------- */
+
+.split {
+  position: relative;
+  isolation: isolate;
+}
+.split .photo,
+.trip-hero .photo {
+  border: 0;
+  box-shadow: none;
+  overflow: visible;
+  border-radius: var(--radius-lg);
+}
+.split .photo img,
+.trip-hero .photo img {
+  border-radius: inherit;
+}
+.split .photo::before,
+.trip-hero .photo::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -5% -7% -7% -6%;
+  background: var(--highlight);
+  border-radius: 62% 38% 46% 54% / 48% 60% 40% 52%;
+  transform: rotate(-5deg);
+}
+.split .photo::after,
+.trip-hero .photo::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 24%;
+  aspect-ratio: 1;
+  right: -6%;
+  top: -7%;
+  border-radius: 50%;
+  background: var(--primary);
+}
+.trip-hero-grid,
+.trip-intro {
+  isolation: isolate;
+}
+.trip-hero-grid {
+  row-gap: clamp(3rem, 6vw, 3.5rem);
+}
+.trip-hero .photo::before {
+  inset: -4% -4% -6% -4%;
+  background: var(--primary);
+  transform: rotate(3deg);
+}
+.trip-hero .photo::after {
+  background: var(--highlight);
+  right: auto;
+  left: -5%;
+  top: auto;
+  bottom: -9%;
+}
+@media (max-width: 47.99em) {
+  .split .photo::before,
+  .trip-hero .photo::before {
+    inset: -4% -2% -6% -2%;
+    transform: rotate(-2deg);
+  }
+  .split .photo::after,
+  .trip-hero .photo::after {
+    right: -3%;
+    width: 20%;
+  }
+  .trip-hero .photo::after {
+    left: -3%;
+  }
+}
+
+/* ---------- Prose and trip pages ---------- */
+
+.facts div {
+  border-bottom: 2px dashed var(--rule);
+}
+.facts dt {
+  font-weight: 800;
+}
+.trip-hero .card {
+  --cap: var(--highlight);
+}
+
+.days li {
+  grid-template-columns: 5rem 1fr;
+  gap: 1.1rem;
+  border-bottom: 2px dashed var(--rule);
+}
+.day-num {
+  align-self: start;
+  display: grid;
+  place-items: center;
+  min-height: 3.25rem;
+  padding: 0.35rem 0.4rem;
+  border-radius: 1rem;
+  background: var(--primary);
+  color: var(--ink);
+  font-weight: 800;
+  font-size: 1.05rem;
+  text-align: center;
+  transform: rotate(-4deg);
+}
+.days li:nth-child(3n + 2) .day-num {
+  background: var(--highlight);
+  transform: rotate(3deg);
+}
+.days li:nth-child(3n + 3) .day-num {
+  background: var(--sky);
+}
+
+.qa dt {
+  font-weight: 800;
+}
+
+/* Long-text pages: each heading gets a little painted wave under it, in rotating colors */
+.prose h2::after {
+  content: "";
+  display: block;
+  width: 4.5rem;
+  height: 0.75rem;
+  margin-top: 0.35em;
+  background: var(--primary);
+  -webkit-mask: url("squiggle.svg") no-repeat 0 0 / 100% 100%;
+  mask: url("squiggle.svg") no-repeat 0 0 / 100% 100%;
+}
+.prose h2:nth-of-type(3n + 2)::after {
+  background: var(--highlight);
+}
+.prose h2:nth-of-type(3n)::after {
+  background: var(--sky);
+}
+.prose ul:not([class]) li::marker {
+  color: var(--primary-text);
+}
+
+/* ---------- Forms ---------- */
+
+.field > label,
+.field legend {
+  font-weight: 800;
+}
+.hint,
+.form-note {
+  font-size: 1.0625rem;
+}
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="tel"],
+.field select,
+.field textarea {
+  border-radius: 0.9rem;
+  min-height: 3.25rem;
+}
+.field-readonly {
+  border-radius: 0.9rem;
+  background: var(--surface);
+}
+.option {
+  border-radius: 1rem;
+  min-height: 3.25rem;
+}
+.option:hover {
+  border-color: var(--ink);
+}
+.option:has(input:checked) {
+  background: var(--secondary-soft);
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+/* A field with a problem gets a thick berry border (beats the field selectors above) */
+.field input[aria-invalid="true"],
+.field select[aria-invalid="true"],
+.field textarea[aria-invalid="true"],
+fieldset.field[aria-invalid="true"] .option {
+  border: 3px solid var(--primary-text);
+}
+.error {
+  font-weight: 800;
+}
+.form-alert {
+  border-radius: var(--radius);
+}
+
+/* ---------- Contact ---------- */
+
+.contact-card .big-link {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Gallery: little postcards, gently tilted ---------- */
+
+.gallery {
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+}
+.gallery figure {
+  background: var(--page);
+  border-radius: var(--radius);
+  padding: 0.75rem 0.75rem 1rem;
+  box-shadow: var(--pop);
+  transform: rotate(-1.2deg);
+}
+.gallery li:nth-child(even) figure {
+  transform: rotate(1deg);
+}
+.gallery li:nth-child(3n) figure {
+  transform: rotate(-0.4deg);
+}
+.gallery .photo {
+  border: 0;
+  border-radius: 0.8rem;
+}
+.gallery figcaption {
+  margin: 0.75rem 0.25rem 0;
+  font-weight: 800;
+}
+
+/* The gallery and the contact form sit on sand, so the postcards and the form card
+   can be crisp white (like the forms on the services and trip pages) */
+main > .section-white:has(.gallery),
+main > .section-white:has(> .wrap > .form-card) {
+  background-color: var(--page);
+}
+main > .section-white:has(.gallery) .gallery figure {
+  background: var(--surface);
+}
+main > .section-white:has(> .wrap > .form-card) .form-card {
+  background: linear-gradient(var(--cap), var(--cap)) top / 100% 0.8rem no-repeat, var(--surface);
+}
+
+.lightbox {
+  border: 0;
+  border-radius: var(--radius);
+}
+
+/* ---------- Footer: the deep blue sea ---------- */
+
+.site-footer {
+  position: relative;
+  background-color: var(--ocean);
+  color: #fff;
+}
+.site-footer a {
+  color: #fff;
+}
+.site-footer a:hover {
+  color: var(--highlight-soft);
+}
+.site-footer .brand,
+.site-footer .brand:hover {
+  color: #fff;
+}
+.site-footer .brand-sub {
+  color: var(--highlight-soft);
+}
+.site-footer .mark-stone {
+  fill: #fff;
+}
+.site-footer .mark-shine {
+  stroke: var(--ocean);
+}
+.site-footer h2 {
+  color: var(--highlight-soft);
+  font-size: 1.35rem;
+}
+.footer-tagline {
+  color: var(--highlight-soft);
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+}
+.footer-legal {
+  border-top: 2px dashed var(--footer-rule);
+}
+
+/* ---------- Print ---------- */
+
+@media print {
+  main > section::before,
+  main > section::after,
+  .site-footer::before,
+  .site-header::after,
+  .pp-sun,
+  .pp-fronds,
+  .pp-flower,
+  .pp-card-back,
+  .split .photo::before,
+  .split .photo::after,
+  .trip-hero .photo::before,
+  .trip-hero .photo::after {
+    display: none !important;
+  }
+  .hero,
+  .page-head,
+  .trip-hero,
+  .section,
+  main > .section:only-child {
+    background: #fff !important;
+  }
+  .pp-collage {
+    aspect-ratio: auto;
+  }
+  .pp-card-front {
+    position: static;
+    transform: none;
+    width: 100%;
+  }
+}

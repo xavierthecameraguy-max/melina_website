@@ -12,18 +12,22 @@
   </defs>
   <rect width="400" height="400" fill="url(#sky)"/>
   <path d="M70 118c4-12 20-16 30-8 6-10 24-12 32 0 12-2 20 6 18 14H66c-4-2-2-6 4-6z" fill="#ffffff" opacity=".85"/>
-  <path d="M250 70c-6 0-10 2-12 6 2-2 6-3 12-2M250 74c4-5 9-7 14-6" fill="none" stroke="#33557a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M222 96c-4 0-7 1.5-8.5 4 1.5-1 4-2 8.5-1.5M222 98.5c3-3.5 6-5 10-4.5" fill="none" stroke="#33557a" stroke-width="2" stroke-linecap="round"/>
+  <g transform="translate(-8 24)">
+    <path d="M250 70c-6 0-10 2-12 6 2-2 6-3 12-2M250 74c4-5 9-7 14-6" fill="none" stroke="#33557a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M222 96c-4 0-7 1.5-8.5 4 1.5-1 4-2 8.5-1.5M222 98.5c3-3.5 6-5 10-4.5" fill="none" stroke="#33557a" stroke-width="2" stroke-linecap="round"/>
+  </g>
   <path d="M0 238c26-16 58-24 92-22 22 1 40 9 58 22z" fill="#b9d0e4"/>
   <rect y="236" width="400" height="164" fill="url(#sea)"/>
   <g fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="2.5" opacity=".5">
-    <path d="M30 270c8-5 16-5 24 0s16 5 24 0"/>
-    <path d="M150 290c8-5 16-5 24 0s16 5 24 0 16-5 24 0"/>
-    <path d="M56 318c8-5 16-5 24 0s16 5 24 0"/>
-    <path d="M262 312c8-5 16-5 24 0s16 5 24 0 16-5 24 0"/>
+    <path d="M96 260c8-5 16-5 24 0s16 5 24 0"/>
+    <path d="M190 264c8-5 16-5 24 0s16 5 24 0 16-5 24 0"/>
+    <path d="M48 300c8-5 16-5 24 0s16 5 24 0"/>
+    <path d="M296 292c8-5 16-5 24 0s16 5 24 0 16-5 24 0"/>
   </g>
-  <path d="M60 300l22-40v40z" fill="#ffffff"/>
-  <path d="M56 302h34l-6 8H62z" fill="#dc8459"/>
+  <g transform="translate(-6 -18)">
+    <path d="M60 300l22-40v40z" fill="#ffffff"/>
+    <path d="M56 302h34l-6 8H62z" fill="#dc8459"/>
+  </g>
   <path d="M176 240c26-32 60-58 100-72 40-14 86-20 124-18v90z" fill="#efe2cc"/>
   <path d="M176 240c26-32 60-58 100-72 40-14 86-20 124-18" fill="none" stroke="#e2d1b4" stroke-width="3"/>
   <g fill="#ffffff">

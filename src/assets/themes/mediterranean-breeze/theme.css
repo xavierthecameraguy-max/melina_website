@@ -55,6 +55,7 @@
   --mb-arch-4x3: 50% 50% 1rem 1rem / 40% 40% 1rem 1rem;  /* gentler arch on wide frames */
   --mb-arch-3x2: 50% 50% 0.75rem 0.75rem / 45% 45% 0.75rem 0.75rem;
   --mb-tiles: 2.25rem;
+  --mb-branch: clamp(9.5rem, 6rem + 14vw, 13rem); /* page-head lemon branch on phones and tablets */
 }
 
 /* ---------- Type ---------- */
@@ -308,7 +309,16 @@ a:hover {
   padding-block: clamp(3rem, 7vw, 5rem) clamp(2rem, 4.5vw, 3rem);
 }
 /* a lemon branch in the empty top corner of plain page headings, thank-you pages and
-   the legal pages (wide screens only, never behind text) */
+   the legal pages, never behind text. Phones and tablets: it hangs in its own space
+   above the heading, so every page gets a little sunshine, not just wide screens. */
+@media (max-width: 63.99em) {
+  .page-head:not(:has(.split)),
+  .section:has(> .wrap.measure > h1),
+  .section:has(> .wrap > .prose > h1) {
+    padding-top: calc(1rem + var(--mb-branch) * 150 / 290 + 0.75rem);
+    background: url("branch.svg") right calc(var(--gutter) - 0.5rem) top 1rem / var(--mb-branch) auto no-repeat;
+  }
+}
 @media (min-width: 64em) {
   .page-head:not(:has(.split)),
   .section:has(> .wrap.measure > h1),
@@ -401,6 +411,9 @@ a:hover {
 }
 .photo-ph {
   background: url("scene.svg") center / cover no-repeat, var(--primary-soft);
+  /* the label floats on the calm sea, so the whitewashed village above stays in view */
+  place-items: end center;
+  padding-bottom: max(1rem, 9%);
 }
 .photo-ph span {
   border: 2px dashed var(--primary);
@@ -612,7 +625,7 @@ a:hover {
   background: var(--mb-mist);
   border: 1px solid #c9d9e8;
   color: var(--primary-text);
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   white-space: nowrap;
@@ -672,6 +685,12 @@ a:hover {
 .field select[aria-invalid="true"],
 .field textarea[aria-invalid="true"] {
   border: 3px solid var(--mb-error);
+}
+/* hints and notes are the smallest text on the site: give older eyes a little more */
+.hint,
+.form-note {
+  font-size: 1.0625rem;
+  line-height: 1.5;
 }
 .field-readonly {
   border: 2px dashed var(--mb-field);
@@ -748,4 +767,8 @@ a:hover {
 .site-footer h2 {
   font-weight: 600;
   letter-spacing: 0.04em;
+}
+/* rows without a link (e.g. "Call [phone]" in the draft) keep the same rhythm as the links */
+.footer-links li:not(:has(a)) {
+  padding-block: 0.6rem;
 }

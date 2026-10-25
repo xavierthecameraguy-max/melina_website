@@ -11,7 +11,7 @@
     var small = window.matchMedia("(max-width: 56em)");
     var setOpen = function (open) {
       toggle.setAttribute("aria-expanded", String(open));
-      toggle.querySelector("span").textContent = open ? "Close menu" : "Menu";
+      toggle.querySelector("span").textContent = open ? "Close" : "Menu";
       nav.setAttribute("data-open", String(open || !small.matches));
     };
     setOpen(false);

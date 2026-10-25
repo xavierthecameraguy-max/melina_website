@@ -1,0 +1,14 @@
+{#- Color Block Modern hero artwork: the hero photo cropped into a big circle, with flat
+    geometric shapes around it (a sun, cobalt stripes, a tomato quarter circle, a mint half
+    circle and a dot grid). The shapes are decoration only. -#}
+{%- from "macros.njk" import photo with context -%}
+<div class="cb-art">
+  <span class="cb-shape cb-sun" aria-hidden="true"></span>
+  <span class="cb-shape cb-stripes" aria-hidden="true"></span>
+  <span class="cb-shape cb-half" aria-hidden="true"></span>
+  <div class="cb-circle">
+    {{ photo(site.photos.hero, site.photos.heroAlt, "Milena with her travelers", lazy=false) }}
+  </div>
+  <span class="cb-shape cb-quarter" aria-hidden="true"></span>
+  <span class="cb-shape cb-dots" aria-hidden="true"></span>
+</div>
