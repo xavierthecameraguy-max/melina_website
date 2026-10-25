@@ -1,0 +1,12 @@
+{
+  "label": "Sunny Passport",
+  "description": "Cream, coral and sunshine, with postcard and passport-stamp details and chunky outlined cards.",
+  "themeColor": "#fff7ec",
+  "fonts": [
+    "node_modules/@fontsource-variable/fraunces/files/fraunces-latin-soft-normal.woff2"
+  ],
+  "preload": [
+    "atkinson-hyperlegible-latin-400-normal.woff2",
+    "fraunces-latin-soft-normal.woff2"
+  ]
+}

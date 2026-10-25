@@ -16,11 +16,7 @@ title: Home
       </div>
     </div>
     <div class="hero-art">
-      <div class="postcard">
-        {{ photo(site.photos.hero, site.photos.heroAlt, "Milena with her travelers", lazy=false) }}
-        <p class="postcard-caption">Wish you were here? You could be.</p>
-        {% include "partials/stamp.njk" %}
-      </div>
+      {% include "themes/" + theme.id + "/hero-art.njk" %}
     </div>
   </div>
 </section>

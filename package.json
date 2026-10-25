@@ -9,7 +9,14 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "3.1.7",
+    "@fontsource-variable/archivo": "5.3.0",
+    "@fontsource-variable/bricolage-grotesque": "5.3.0",
+    "@fontsource-variable/caveat": "5.3.0",
     "@fontsource-variable/fraunces": "5.3.0",
-    "@fontsource/atkinson-hyperlegible": "5.3.0"
+    "@fontsource-variable/nunito-sans": "5.3.0",
+    "@fontsource-variable/oswald": "5.3.0",
+    "@fontsource-variable/outfit": "5.3.0",
+    "@fontsource/atkinson-hyperlegible": "5.3.0",
+    "@fontsource/young-serif": "5.3.0"
   }
 }

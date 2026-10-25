@@ -8,7 +8,7 @@
   {%- if site.draft or past %}
   <meta name="robots" content="noindex, nofollow">
   {%- endif %}
-  <meta name="theme-color" content="#fff7ec">
+  <meta name="theme-color" content="{{ theme.themeColor }}">
   <meta property="og:title" content="{{ title if page.url != '/' else site.name }}">
   <meta property="og:description" content="{{ description or site.description }}">
   <meta property="og:type" content="website">
@@ -20,13 +20,15 @@
   {%- endif %}
   {%- endif %}
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="/assets/fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/fonts/fraunces-latin-soft-normal.woff2" as="font" type="font/woff2" crossorigin>
+  {%- for font in theme.preload %}
+  <link rel="preload" href="/assets/fonts/{{ font }}" as="font" type="font/woff2" crossorigin>
+  {%- endfor %}
   <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/themes/{{ theme.id }}/theme.css">
   <script>document.documentElement.classList.add("js");</script>
   <script src="/assets/js/site.js" defer></script>
 </head>
-<body>
+<body class="theme-{{ theme.id }}">
   <a class="skip-link" href="#main">Skip to main content</a>
   {% include "partials/header.njk" %}
   <main id="main" tabindex="-1">

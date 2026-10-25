@@ -1,0 +1,16 @@
+{#- Sunny Passport hero artwork: a tilted postcard holding the hero photo, with a passport stamp. -#}
+{%- from "macros.njk" import photo with context -%}
+<div class="postcard">
+  {{ photo(site.photos.hero, site.photos.heroAlt, "Milena with her travelers", lazy=false) }}
+  <p class="postcard-caption">Wish you were here? You could be.</p>
+  <svg class="stamp" viewBox="0 0 140 140" aria-hidden="true" focusable="false">
+    <defs><path id="stamp-ring" d="M70 70m-48 0a48 48 0 1 1 96 0a48 48 0 1 1-96 0"/></defs>
+    <circle cx="70" cy="70" r="66" style="fill:var(--page);stroke:var(--primary-text)" stroke-width="4"/>
+    <circle cx="70" cy="70" r="58" fill="none" style="stroke:var(--primary-text)" stroke-width="2" stroke-dasharray="3 4"/>
+    <text font-family="Atkinson Hyperlegible, Verdana, sans-serif" font-weight="700" font-size="9.5" letter-spacing="1" style="fill:var(--primary-text)">
+      <textPath href="#stamp-ring" textLength="298" lengthAdjust="spacing">JUST BRING YOUR PASSPORT · ONYX WORLD TRAVEL ·</textPath>
+    </text>
+    <text x="70" y="66" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="22" style="fill:var(--primary-text)">ONYX</text>
+    <text x="70" y="86" text-anchor="middle" font-family="Atkinson Hyperlegible, Verdana, sans-serif" font-weight="700" font-size="11" letter-spacing="2" style="fill:var(--primary-text)">KENTUCKY</text>
+  </svg>
+</div>

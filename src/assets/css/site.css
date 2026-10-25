@@ -1,14 +1,8 @@
-/* Onyx World Travel
-   Palette A "Sunny Passport". Contrast ratios (WCAG 2.x) are noted where a pair carries text.
-   Rule: bright colors are fills with onyx text on top; never bright text on a light background. */
+/* Onyx World Travel: shared layout and components.
+   Colors and fonts come from the roles in :root, which each design overrides in
+   src/assets/themes/<name>/theme.css (loaded after this file).
+   Rule: bright colors are fills with ink text on top; never bright text on a light background. */
 
-@font-face {
-  font-family: "Fraunces";
-  src: url("../fonts/fraunces-latin-soft-normal.woff2") format("woff2-variations");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
 @font-face {
   font-family: "Atkinson Hyperlegible";
   src: url("../fonts/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2");
@@ -32,29 +26,38 @@
 }
 
 :root {
-  --onyx: #1f1a17;        /* text: 16.2 on cream, 17.2 on white */
-  --coral: #f2603f;       /* main buttons, onyx text 5.35 */
-  --sun: #ffc23c;         /* highlights, onyx text 10.7 */
-  --lagoon: #0e7c7b;      /* secondary buttons, white text 5.0 */
-  --cream: #fff7ec;       /* page background */
-  --gray: #5c534c;        /* secondary text: 7.1 on cream */
-  --coral-deep: #b8432a;  /* coral as text: 5.1 on cream, 5.4 on white */
-  --lagoon-deep: #0b6564; /* links: 6.5 on cream */
-  --white: #ffffff;
-  --sun-soft: #ffe9b3;    /* onyx 14.4, gray 6.3 */
-  --coral-soft: #fde1d8;  /* onyx 13.9, gray 6.1; no coral-deep text here */
-  --lagoon-soft: #d9efec; /* onyx 14.4, gray 6.3 */
+  /* Color roles. Each design (src/assets/themes/<name>/theme.css) redefines these.
+     Values here are Sunny Passport. Ratios are WCAG 2.x contrast where a pair carries text. */
+  --ink: #1f1a17;            /* text and outlines: 16.2 on page, 17.2 on surface */
+  --page: #fff7ec;           /* page background */
+  --surface: #ffffff;        /* cards, header, form fields */
+  --muted: #5c534c;          /* secondary text: 7.1 on page */
+  --primary: #f2603f;        /* main buttons */
+  --on-primary: #1f1a17;     /* text on main buttons: 5.35 */
+  --primary-text: #b8432a;   /* primary color used as text: 5.1 on page */
+  --primary-soft: #fde1d8;   /* tint; ink 13.9 */
+  --highlight: #ffc23c;      /* badges, current page, highlights; ink 10.7 */
+  --highlight-soft: #ffe9b3; /* tint; ink 14.4 */
+  --secondary: #0e7c7b;      /* secondary buttons */
+  --on-secondary: #ffffff;   /* text on secondary buttons: 5.0 */
+  --secondary-soft: #d9efec; /* tint; ink 14.4 */
+  --link: #0b6564;           /* links: 6.5 on page */
+  --rule: #d9cfc4;           /* thin divider lines */
+  --footer-rule: #5c534c;
+  --ph-bg: #fff0c2;          /* [placeholder] highlight */
 
   --font-head: "Fraunces", Georgia, "Times New Roman", serif;
   --font-body: "Atkinson Hyperlegible", "Segoe UI", Verdana, Arial, sans-serif;
+  --head-weight: 650;
+  --head-settings: "SOFT" 100;
 
   --wrap: 74rem;
   --measure: 40rem;
   --gutter: clamp(1rem, 4vw, 2rem);
   --radius: 1rem;
   --radius-lg: 1.75rem;
-  --border: 2px solid var(--onyx);
-  --pop: 6px 6px 0 var(--sun);
+  --border: 2px solid var(--ink);
+  --pop: 6px 6px 0 var(--highlight);
   --section: clamp(3rem, 7vw, 6rem);
 }
 
@@ -73,8 +76,8 @@ html {
 
 body {
   margin: 0;
-  background: var(--cream);
-  color: var(--onyx);
+  background: var(--page);
+  color: var(--ink);
   font-family: var(--font-body);
   /* 18px on phones up to 20px on desktop; nothing on the site goes below 16px */
   font-size: clamp(1.125rem, 1.05rem + 0.4vw, 1.25rem);
@@ -93,8 +96,8 @@ h3,
 h4,
 .h3 {
   font-family: var(--font-head);
-  font-weight: 650;
-  font-variation-settings: "SOFT" 100;
+  font-weight: var(--head-weight);
+  font-variation-settings: var(--head-settings);
   line-height: 1.15;
   letter-spacing: -0.01em;
   margin: 0 0 0.5em;
@@ -128,17 +131,17 @@ p,
 }
 
 a {
-  color: var(--lagoon-deep);
+  color: var(--link);
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 0.2em;
 }
 a:hover {
-  color: var(--coral-deep);
+  color: var(--primary-text);
 }
 
 :focus-visible {
-  outline: 4px solid var(--onyx);
+  outline: 4px solid var(--ink);
   outline-offset: 3px;
 }
 
@@ -178,7 +181,7 @@ strong {
 }
 
 .muted {
-  color: var(--gray);
+  color: var(--muted);
 }
 
 .visually-hidden {
@@ -195,8 +198,8 @@ strong {
   left: 1rem;
   top: -10rem;
   z-index: 100;
-  background: var(--sun);
-  color: var(--onyx);
+  background: var(--highlight);
+  color: var(--ink);
   padding: 0.75em 1.25em;
   border: var(--border);
   border-radius: var(--radius);
@@ -212,11 +215,11 @@ main:focus {
 
 /* Content still waiting on Milena: [like this] */
 .ph {
-  background: #fff0c2;
-  border-bottom: 2px dashed var(--coral-deep);
+  background: var(--ph-bg);
+  border-bottom: 2px dashed var(--primary-text);
   border-radius: 4px;
   padding: 0 0.15em;
-  color: var(--onyx);
+  color: var(--ink);
   font-style: normal;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
@@ -245,41 +248,43 @@ main:focus {
   flex: none;
 }
 .btn-primary {
-  background: var(--coral);
-  color: var(--onyx);
-  box-shadow: 4px 4px 0 var(--onyx);
+  background: var(--primary);
+  color: var(--on-primary);
+  box-shadow: 4px 4px 0 var(--ink);
 }
 .btn-secondary {
-  background: var(--lagoon);
-  color: var(--white);
-  box-shadow: 4px 4px 0 var(--onyx);
+  background: var(--secondary);
+  color: var(--on-secondary);
+  box-shadow: 4px 4px 0 var(--ink);
 }
 .btn-sun {
-  background: var(--sun);
-  color: var(--onyx);
+  background: var(--highlight);
+  color: var(--ink);
 }
 .btn-dark {
-  background: var(--onyx);
-  color: var(--cream);
+  background: var(--ink);
+  color: var(--page);
 }
 .btn-primary:hover,
 .btn-secondary:hover {
   transform: translate(-1px, -1px);
-  box-shadow: 6px 6px 0 var(--onyx);
+  box-shadow: 6px 6px 0 var(--ink);
 }
-.btn-primary:hover,
+.btn-primary:hover {
+  color: var(--on-primary);
+}
 .btn-sun:hover {
-  color: var(--onyx);
+  color: var(--ink);
 }
 .btn-secondary:hover {
-  color: var(--white);
+  color: var(--on-secondary);
 }
 .btn-dark:hover {
-  color: var(--sun);
+  color: var(--highlight);
 }
 .btn:active {
   transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0 var(--onyx);
+  box-shadow: 1px 1px 0 var(--ink);
 }
 
 .btn-row {
@@ -298,8 +303,8 @@ main:focus {
 /* ---------- Draft banner ---------- */
 
 .draft-banner {
-  background: var(--onyx);
-  color: var(--cream);
+  background: var(--ink);
+  color: var(--page);
   font-size: 1rem;
   padding: 0.6rem 0;
 }
@@ -307,13 +312,13 @@ main:focus {
   margin-block: 0;
 }
 .draft-banner strong {
-  color: var(--sun);
+  color: var(--highlight);
 }
 
 /* ---------- Header ---------- */
 
 .site-header {
-  background: var(--white);
+  background: var(--surface);
   border-bottom: var(--border);
 }
 
@@ -329,16 +334,29 @@ main:focus {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  color: var(--onyx);
+  color: var(--ink);
   text-decoration: none;
 }
 .brand:hover {
-  color: var(--onyx);
+  color: var(--ink);
 }
 .brand-mark {
   width: 3.25rem;
   height: 3.25rem;
   flex: none;
+}
+.mark-stone {
+  fill: var(--ink);
+}
+.mark-shine {
+  stroke: var(--page);
+}
+.mark-orbit {
+  stroke: var(--primary);
+}
+.mark-sun {
+  fill: var(--highlight);
+  stroke: var(--ink);
 }
 .brand-text {
   display: flex;
@@ -348,7 +366,7 @@ main:focus {
 .brand-name {
   font-family: var(--font-head);
   font-weight: 700;
-  font-variation-settings: "SOFT" 100;
+  font-variation-settings: var(--head-settings);
   font-size: 1.85rem;
   letter-spacing: -0.01em;
 }
@@ -367,14 +385,14 @@ main:focus {
 }
 
 .btn-call {
-  background: var(--sun);
-  color: var(--onyx);
+  background: var(--highlight);
+  color: var(--ink);
   min-height: 3rem;
   padding: 0.5em 1.1em;
   font-size: 1.05rem;
 }
 .btn-call:hover {
-  color: var(--onyx);
+  color: var(--ink);
 }
 .btn-call span {
   white-space: nowrap;
@@ -386,8 +404,8 @@ main:focus {
   gap: 0.5em;
   min-height: 3rem;
   padding: 0.5em 1em;
-  background: var(--white);
-  color: var(--onyx);
+  background: var(--surface);
+  color: var(--ink);
   border: var(--border);
   border-radius: 999px;
   font: 700 1.05rem/1 var(--font-body);
@@ -399,8 +417,8 @@ main:focus {
 }
 
 .site-nav {
-  border-top: 2px solid var(--onyx);
-  background: var(--white);
+  border-top: 2px solid var(--ink);
+  background: var(--surface);
 }
 .site-nav ul {
   display: flex;
@@ -417,17 +435,17 @@ main:focus {
   padding: 0.4em 1em;
   border: 2px solid transparent;
   border-radius: 999px;
-  color: var(--onyx);
+  color: var(--ink);
   font-weight: 700;
   text-decoration: none;
 }
 .site-nav a:hover {
-  border-color: var(--onyx);
-  color: var(--onyx);
+  border-color: var(--ink);
+  color: var(--ink);
 }
 .site-nav a[aria-current] {
-  background: var(--sun);
-  border-color: var(--onyx);
+  background: var(--highlight);
+  border-color: var(--ink);
 }
 
 /* Phones and small tablets: the menu collapses behind a labeled button (only when JS runs) */
@@ -485,15 +503,15 @@ main:focus {
   padding-block: var(--section);
 }
 .section-white {
-  background: var(--white);
+  background: var(--surface);
   border-block: var(--border);
 }
 .section-sun {
-  background: var(--sun-soft);
+  background: var(--highlight-soft);
   border-block: var(--border);
 }
 .section-lagoon {
-  background: var(--lagoon-soft);
+  background: var(--secondary-soft);
   border-block: var(--border);
 }
 .section-sun + .section-white,
@@ -521,18 +539,6 @@ main:focus {
   overflow: hidden;
   padding-block: clamp(2.5rem, 6vw, 5rem);
 }
-.hero::before {
-  /* the sun behind the postcard */
-  content: "";
-  position: absolute;
-  width: min(38rem, 80vw);
-  aspect-ratio: 1;
-  right: -8rem;
-  top: -6rem;
-  border-radius: 50%;
-  background: var(--sun-soft);
-  z-index: -1;
-}
 .hero-grid {
   display: grid;
   gap: clamp(2rem, 5vw, 4rem);
@@ -547,46 +553,13 @@ main:focus {
   }
 }
 
-.postcard {
-  position: relative;
-  background: var(--white);
-  border: var(--border);
-  border-radius: var(--radius);
-  box-shadow: 8px 8px 0 var(--coral);
-  padding: 0.9rem;
-  transform: rotate(-2deg);
-  max-width: 34rem;
-  margin-inline: auto;
-}
-.postcard .photo {
-  aspect-ratio: 4 / 3;
-}
-.postcard-caption {
-  font-family: var(--font-head);
-  font-variation-settings: "SOFT" 100;
-  font-size: 1.15rem;
-  margin: 0.75rem 0.25rem 0.1rem;
-}
-.stamp {
-  position: absolute;
-  width: clamp(6.5rem, 18vw, 8.5rem);
-  right: -1.5rem;
-  top: -2rem;
-  transform: rotate(12deg);
-}
-@media (max-width: 37.5em) {
-  .stamp {
-    right: -0.5rem;
-  }
-}
-
 /* ---------- Photos and placeholders ---------- */
 
 .photo {
   position: relative;
   border-radius: calc(var(--radius) - 0.35rem);
   overflow: hidden;
-  background: var(--sun-soft);
+  background: var(--highlight-soft);
 }
 .photo img {
   display: block;
@@ -598,11 +571,11 @@ main:focus {
   display: grid;
   place-items: center;
   padding: 1rem;
-  background: url("../img/placeholder-scene.svg") center / cover no-repeat, var(--sun-soft);
+  background: url("../img/placeholder-scene.svg") center / cover no-repeat, var(--highlight-soft);
 }
 .photo-ph span {
-  background: var(--white);
-  border: 2px dashed var(--coral-deep);
+  background: var(--surface);
+  border: 2px dashed var(--primary-text);
   border-radius: 999px;
   padding: 0.35em 0.9em;
   font-size: 1rem;
@@ -613,7 +586,7 @@ main:focus {
 /* ---------- Cards ---------- */
 
 .card {
-  background: var(--white);
+  background: var(--surface);
   border: var(--border);
   border-radius: var(--radius);
   box-shadow: var(--pop);
@@ -665,7 +638,7 @@ main:focus {
   height: 3.25rem;
   border: var(--border);
   border-radius: 50%;
-  background: var(--sun);
+  background: var(--highlight);
   font-family: var(--font-head);
   font-weight: 700;
   font-size: 1.6rem;
@@ -708,7 +681,7 @@ main:focus {
   order: -1;
 }
 .trip-card h3 a {
-  color: var(--onyx);
+  color: var(--ink);
   text-decoration: none;
 }
 .trip-card h3 a::after {
@@ -718,17 +691,17 @@ main:focus {
   inset: 0;
 }
 .trip-card:hover {
-  box-shadow: 6px 6px 0 var(--coral);
+  box-shadow: 6px 6px 0 var(--primary);
 }
 .trip-card:focus-within {
-  outline: 4px solid var(--onyx);
+  outline: 4px solid var(--ink);
   outline-offset: 3px;
 }
 .trip-card h3 a:focus-visible {
   outline: none;
 }
 .trip-meta {
-  color: var(--gray);
+  color: var(--muted);
   margin-bottom: 0.5em;
 }
 .trip-price {
@@ -740,7 +713,7 @@ main:focus {
 .trip-card-more {
   margin-top: auto;
   font-weight: 700;
-  color: var(--lagoon-deep);
+  color: var(--link);
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 0.2em;
@@ -757,13 +730,13 @@ main:focus {
   margin-bottom: 0.75rem;
 }
 .pill-open {
-  background: var(--lagoon-soft);
+  background: var(--secondary-soft);
 }
 .pill-soldout {
-  background: var(--coral-soft);
+  background: var(--primary-soft);
 }
 .pill-sun {
-  background: var(--sun);
+  background: var(--highlight);
 }
 
 .service-card {
@@ -779,7 +752,7 @@ main:focus {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: var(--lagoon-soft);
+  background: var(--secondary-soft);
 }
 @media (min-width: 56em) {
   .grid-3 > .more-card:nth-child(2):last-child {
@@ -797,7 +770,7 @@ main:focus {
 .quote blockquote {
   margin: 0 0 1rem;
   font-family: var(--font-head);
-  font-variation-settings: "SOFT" 100;
+  font-variation-settings: var(--head-settings);
   font-size: 1.25rem;
   line-height: 1.45;
 }
@@ -806,7 +779,7 @@ main:focus {
   display: block;
   font-size: 3.5rem;
   line-height: 0.8;
-  color: var(--coral-deep);
+  color: var(--primary-text);
 }
 .quote figcaption {
   font-weight: 700;
@@ -819,8 +792,8 @@ main:focus {
 /* ---------- Bands ---------- */
 
 .band {
-  background: var(--coral);
-  color: var(--onyx);
+  background: var(--primary);
+  color: var(--ink);
   border-block: var(--border);
   padding-block: clamp(2.5rem, 6vw, 4.5rem);
 }
@@ -931,7 +904,7 @@ main:focus {
   grid-template-columns: minmax(8.5rem, 0.9fr) 1.1fr;
   gap: 0.75rem;
   padding: 0.6rem 0;
-  border-bottom: 1px solid #d9cfc4;
+  border-bottom: 1px solid var(--rule);
 }
 .facts div:last-child {
   border-bottom: 0;
@@ -959,14 +932,14 @@ main:focus {
   grid-template-columns: 4.5rem 1fr;
   gap: 1rem;
   padding: 1.1rem 0;
-  border-bottom: 2px dashed #d9cfc4;
+  border-bottom: 2px dashed var(--rule);
 }
 .days li:last-child {
   border-bottom: 0;
 }
 .day-num {
   font-family: var(--font-head);
-  font-variation-settings: "SOFT" 100;
+  font-variation-settings: var(--head-settings);
   font-weight: 700;
   line-height: 1.2;
 }
@@ -1029,10 +1002,10 @@ main:focus {
 }
 .req {
   font-weight: 400;
-  color: var(--gray);
+  color: var(--muted);
 }
 .hint {
-  color: var(--gray);
+  color: var(--muted);
   font-size: 1rem;
   margin: 0 0 0.4rem;
 }
@@ -1045,9 +1018,9 @@ main:focus {
   width: 100%;
   min-height: 3rem;
   padding: 0.55em 0.75em;
-  background: var(--white);
-  color: var(--onyx);
-  border: 2px solid var(--gray); /* 7.5 on white */
+  background: var(--surface);
+  color: var(--ink);
+  border: 2px solid var(--muted); /* 7.5 on white */
   border-radius: 0.6rem;
   font: inherit;
 }
@@ -1058,17 +1031,17 @@ main:focus {
 .field input:focus-visible,
 .field select:focus-visible,
 .field textarea:focus-visible {
-  outline: 4px solid var(--lagoon-deep);
+  outline: 4px solid var(--link);
   outline-offset: 2px;
-  border-color: var(--onyx);
+  border-color: var(--ink);
 }
 .field [aria-invalid="true"] {
-  border: 3px solid var(--coral-deep);
+  border: 3px solid var(--primary-text);
 }
 .field-readonly {
   padding: 0.55em 0.75em;
-  background: var(--cream);
-  border: 2px dashed var(--gray);
+  background: var(--page);
+  border: 2px dashed var(--muted);
   border-radius: 0.6rem;
   margin: 0;
 }
@@ -1092,25 +1065,25 @@ fieldset.field {
   gap: 0.75rem;
   min-height: 3rem;
   padding: 0.5em 0.9em;
-  background: var(--white);
-  border: 2px solid var(--gray);
+  background: var(--surface);
+  border: 2px solid var(--muted);
   border-radius: 0.6rem;
   cursor: pointer;
 }
 .option:has(input:checked) {
-  border-color: var(--onyx);
-  background: var(--lagoon-soft);
+  border-color: var(--ink);
+  background: var(--secondary-soft);
 }
 .option input {
   width: 1.4rem;
   height: 1.4rem;
   margin: 0;
   flex: none;
-  accent-color: var(--lagoon-deep);
+  accent-color: var(--link);
 }
 
 .error {
-  color: var(--coral-deep);
+  color: var(--primary-text);
   font-weight: 700;
   margin: 0.4rem 0 0;
 }
@@ -1119,14 +1092,14 @@ fieldset.field {
 }
 
 .form-alert {
-  border: 3px solid var(--coral-deep);
-  background: var(--white);
+  border: 3px solid var(--primary-text);
+  background: var(--surface);
   border-radius: var(--radius);
   padding: 1rem 1.25rem;
   margin-bottom: 1.5rem;
 }
 .form-alert:focus {
-  outline: 4px solid var(--onyx);
+  outline: 4px solid var(--ink);
   outline-offset: 3px;
 }
 .form-alert h3 {
@@ -1136,8 +1109,8 @@ fieldset.field {
   margin: 0;
 }
 .form-alert.is-info {
-  border-color: var(--lagoon-deep);
-  background: var(--lagoon-soft);
+  border-color: var(--link);
+  background: var(--secondary-soft);
 }
 .form-alert[hidden] {
   display: none;
@@ -1160,7 +1133,7 @@ fieldset.field {
 }
 .form-note {
   font-size: 1rem;
-  color: var(--gray);
+  color: var(--muted);
   margin-top: 1rem;
 }
 
@@ -1172,7 +1145,7 @@ fieldset.field {
 
 .contact-card .big-link {
   font-family: var(--font-head);
-  font-variation-settings: "SOFT" 100;
+  font-variation-settings: var(--head-settings);
   font-weight: 700;
   font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
   line-height: 1.2;
@@ -1214,8 +1187,8 @@ fieldset.field {
   padding: 1rem;
   max-width: min(64rem, 100% - 2rem);
   max-height: calc(100% - 2rem);
-  background: var(--white);
-  color: var(--onyx);
+  background: var(--surface);
+  color: var(--ink);
 }
 .lightbox::backdrop {
   background: rgb(31 26 23 / 0.85);
@@ -1235,29 +1208,29 @@ fieldset.field {
 /* ---------- Footer ---------- */
 
 .site-footer {
-  background: var(--onyx);
-  color: var(--cream);
+  background: var(--ink);
+  color: var(--page);
   padding-block: clamp(2.5rem, 6vw, 4rem) 2rem;
   font-size: 1.05rem;
 }
 .site-footer a {
-  color: var(--cream);
+  color: var(--page);
 }
 .site-footer a:hover {
-  color: var(--sun);
+  color: var(--highlight);
 }
 .site-footer :focus-visible {
-  outline-color: var(--sun);
+  outline-color: var(--highlight);
 }
 .site-footer .brand,
 .site-footer .brand:hover {
-  color: var(--cream);
+  color: var(--page);
 }
 .site-footer .mark-stone {
-  fill: var(--cream);
+  fill: var(--page);
 }
 .site-footer .mark-shine {
-  stroke: var(--onyx);
+  stroke: var(--ink);
 }
 .footer-grid {
   display: grid;
@@ -1270,14 +1243,14 @@ fieldset.field {
 }
 .footer-tagline {
   font-family: var(--font-head);
-  font-variation-settings: "SOFT" 100;
+  font-variation-settings: var(--head-settings);
   font-size: 1.35rem;
-  color: var(--sun);
+  color: var(--highlight);
   margin-top: 1rem;
 }
 .site-footer h2 {
   font-size: 1.25rem;
-  color: var(--sun);
+  color: var(--highlight);
 }
 .footer-links {
   list-style: none;
@@ -1292,7 +1265,7 @@ fieldset.field {
   overflow-wrap: anywhere;
 }
 .footer-legal {
-  border-top: 1px solid #5c534c;
+  border-top: 1px solid var(--footer-rule);
   margin-top: 2rem;
   padding-top: 1.25rem;
   font-size: 1rem;
@@ -1302,7 +1275,7 @@ fieldset.field {
   line-height: 2;
 }
 .site-footer .ph {
-  color: var(--onyx);
+  color: var(--ink);
 }
 
 /* ---------- Motion and print ---------- */

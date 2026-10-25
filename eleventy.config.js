@@ -1,8 +1,9 @@
 import fs from "node:fs";
 import { HtmlBasePlugin } from "@11ty/eleventy";
+import { activeTheme } from "./lib/theme.js";
 
+// Body font every design can use, plus the active design's own fonts (listed in its theme json).
 const FONT_FILES = [
-  "node_modules/@fontsource-variable/fraunces/files/fraunces-latin-soft-normal.woff2",
   "node_modules/@fontsource/atkinson-hyperlegible/files/atkinson-hyperlegible-latin-400-normal.woff2",
   "node_modules/@fontsource/atkinson-hyperlegible/files/atkinson-hyperlegible-latin-400-italic.woff2",
   "node_modules/@fontsource/atkinson-hyperlegible/files/atkinson-hyperlegible-latin-700-normal.woff2",
@@ -20,7 +21,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(HtmlBasePlugin);
 
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
-  for (const file of FONT_FILES) {
+  const themeFonts = activeTheme().fonts || [];
+  for (const file of [...FONT_FILES, ...themeFonts]) {
     eleventyConfig.addPassthroughCopy({ [file]: `assets/fonts/${file.split("/").pop()}` });
   }
 
