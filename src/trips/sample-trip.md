@@ -19,8 +19,9 @@ walking: "[About how much walking there is each day]"
 bookBy: "[Month day, year]"
 status: open                    # open, or soldout
 # past: true                    # uncomment once the trip is over: it leaves the list and its page says it has wrapped up
-image: ""                       # e.g. /assets/photos/italy-2027.jpg
-imageAlt: ""                    # describe the photo for people who can't see it
+image: "/assets/photos/trips/ancient-theater.jpg"   # e.g. /assets/photos/trips/italy-2027.jpg
+imageAlt: "An ancient stone theater with tiers of marble seats under a blue sky"   # describe the photo for people who can't see it
+imagePosition: "50% 55%"        # focal point to crop around (left-right, top-bottom)
 summary: "[One-line teaser for the top of this page and the trip card.]"   # end with a period
 days:
   - title: "[Arrival day]"
