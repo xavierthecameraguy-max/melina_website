@@ -22,7 +22,7 @@ All content lives in `src/`.
 | To change | Edit |
 |---|---|
 | Phone, email, reply time, legal name, social links | `src/_data/site.json` |
-| Home, About and Contact photos | `photos` in `src/_data/site.json`: the file (`hero` = top of Home, `milena` = About page, `friends` = Home's "ten-plus years" section, `contact` = top of Contact), a short description for screen readers (`heroAlt`, `milenaAlt`, `friendsAlt`, `contactAlt`), and the focal point to crop around (`heroPosition`, e.g. `"50% 61%"` = centered left-right, 61% down) |
+| Home, About and Contact photos | `photos` in `src/_data/site.json`: the file (`hero` = top of Home, `milena` = About page, `friends` = Home's "ten-plus years" section, `contact` = top of Contact, `postcard` = the travel photo in the "Wish you were here?" postcard or poster at the top of Home in the Sunny Passport, Travel Journal, Vintage Poster and Postcard Pop designs, which use it in place of `hero`), a short description for screen readers (`heroAlt`, `milenaAlt`, `friendsAlt`, `contactAlt`, `postcardAlt`), and the focal point to crop around (`heroPosition`, e.g. `"50% 61%"` = centered left-right, 61% down) |
 | Add a trip | Copy `src/trips/sample-trip.md`, rename it (the file name becomes the web address), fill in each line |
 | A trip is over | In that trip's file, set `past: true`. It leaves the list; its page stays up (so links already sent still work) and says the trip has wrapped up |
 | A trip is sold out | In that trip's file, set `status: soldout`. The booking form becomes a waitlist |

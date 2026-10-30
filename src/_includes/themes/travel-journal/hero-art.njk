@@ -1,4 +1,4 @@
-{#- Travel Journal hero artwork: a scrapbook page. The hero photo is taped in at an angle with a
+{#- Travel Journal hero artwork: a scrapbook page. The postcard photo is taped in at an angle with a
     handwritten caption, a route is doodled down the margin, and a luggage tag is tucked in the corner. -#}
 {%- from "macros.njk" import photo with context -%}
 <div class="tj-spread">
@@ -7,7 +7,7 @@
     <path d="M66 6l16 16M82 6L66 22" fill="none" style="stroke:var(--primary-text)" stroke-width="5" stroke-linecap="round"/>
   </svg>
   <div class="tj-print">
-    {{ photo(site.photos.hero, site.photos.heroAlt, "Milena with her travelers", lazy=false, position=site.photos.heroPosition) }}
+    {{ photo(site.photos.postcard, site.photos.postcardAlt, "A favorite trip destination", lazy=false, position=site.photos.postcardPosition) }}
     <p class="tj-caption" aria-hidden="true">Wish you were here?</p>
   </div>
   <svg class="tj-tag" viewBox="0 0 230 124" aria-hidden="true" focusable="false">
