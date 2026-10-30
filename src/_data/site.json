@@ -16,10 +16,13 @@
   "social": [],
   "photos": {
     "hero": "/assets/photos/hero.jpg",
-    "heroAlt": "Six smiling travelers arm in arm in a whitewashed island lane with blue doors",
-    "heroPosition": "50% 61%",
+    "heroAlt": "Milena smiling with a friend in front of moss-covered lava rocks",
+    "heroPosition": "50% 38%",
     "milena": "/assets/photos/milena.jpg",
-    "milenaAlt": "Milena smiling on flower-painted village steps",
-    "milenaPosition": "50% 22%"
+    "milenaAlt": "Milena smiling on a windy hilltop above the city",
+    "milenaPosition": "50% 25%",
+    "friends": "/assets/photos/friends.jpg",
+    "friendsAlt": "Four friends smiling at the rim of a huge red-rock canyon",
+    "friendsPosition": "50% 50%"
   }
 }
