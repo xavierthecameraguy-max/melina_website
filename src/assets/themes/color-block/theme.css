@@ -925,6 +925,7 @@ main:has(.contact-card) > .page-head {
 @media (min-width: 75em) {
   .form-card {
     overflow: visible;
+    margin-inline: 0; /* the art fills the space to its right */
   }
   .form-card::before {
     border-radius: calc(var(--radius) - 3px) calc(var(--radius) - 3px) 0 0;
@@ -932,7 +933,8 @@ main:has(.contact-card) > .page-head {
   .form-card::after {
     content: "";
     position: absolute;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%); /* level with the middle of the form, however long it is */
     left: calc(100% + clamp(4rem, 8vw, 8rem));
     width: 20rem;
     aspect-ratio: 320 / 440;

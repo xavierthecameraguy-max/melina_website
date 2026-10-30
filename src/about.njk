@@ -16,7 +16,7 @@ description: Meet Milena, who has planned trips for her friends for over 10 year
 </section>
 
 <section class="section section-white">
-  <div class="wrap">
+  <div class="wrap prose-aside">
     <div class="prose">
     <h2>How this started</h2>
     <p>For more than 10 years, I've been designing trips for my friends. Year after year, they keep coming back to join me on the next adventure.</p>
@@ -43,5 +43,16 @@ description: Meet Milena, who has planned trips for her friends for over 10 year
       <a class="btn btn-secondary" href="/services/#custom-trip">Plan a custom trip</a>
     </div>
   </div>
+    <aside class="card" aria-labelledby="glance-heading">
+      <h2 id="glance-heading" class="h3">Milena at a glance</h2>
+      <dl class="facts">
+        <div><dt>Based in</dt><dd>{{ site.region }}</dd></div>
+        <div><dt>Planning trips</dt><dd>For more than 10 years</dd></div>
+        <div><dt>Trips for</dt><dd>Groups and individuals</dd></div>
+        <div><dt>On upcoming trips</dt><dd>I come along</dd></div>
+        <div><dt>Call or text</dt><dd>{% if site.phone %}<a href="{{ site.phone | telHref }}"><span class="nowrap">{{ site.phone }}</span></a>{% else %}{% ph "phone" %}{% endif %}</dd></div>
+        <div><dt>Email</dt><dd>{% if site.email %}<a href="mailto:{{ site.email }}">{{ site.email | emailBreak | safe }}</a>{% else %}{% ph "email" %}{% endif %}</dd></div>
+      </dl>
+    </aside>
   </div>
 </section>

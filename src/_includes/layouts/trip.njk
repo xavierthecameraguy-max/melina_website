@@ -59,6 +59,7 @@ layout: layouts/base.njk
 
 <section class="section section-white">
   <div class="wrap">
+    <div class="trip-body">
     <div class="prose">
       <h2>Why I picked this trip</h2>
       {{ content | phHtml | safe }}
@@ -75,7 +76,9 @@ layout: layouts/base.njk
         </li>
         {%- endfor %}
       </ol>
+    </div>
 
+    <div class="prose">
       <h2>What's included</h2>
       <ul class="checklist">
         {%- for item in included %}
@@ -102,6 +105,7 @@ layout: layouts/base.njk
         {%- endfor %}
       </dl>
       {%- endif %}
+    </div>
     </div>
   </div>
 </section>

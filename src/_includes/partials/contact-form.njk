@@ -6,8 +6,8 @@
 {%- set submitNote = "" -%}
 {% include "partials/form-open.njk" %}
   {{ textField("m-name", "Name", required=true, autocomplete="name", error="Please add your name.") }}
-  {{ textField("m-phone", "Phone", type="tel", hint="Phone or email, whichever you prefer.", autocomplete="tel") }}
-  {{ textField("m-email", "Email", type="email", hint="Phone or email, whichever you prefer.", autocomplete="email") }}
+  {{ textField("m-phone", "Phone", type="tel", hint="Phone, email or both, whichever you prefer.", autocomplete="tel") }}
+  {{ textField("m-email", "Email", type="email", autocomplete="email") }}
   {{ radios("m-reach", "Best way to reach you", ["Call", "Text", "Email"], inline=true) }}
   {{ textArea("m-message", "Message", required=true, error="Please write a quick message.") }}
 {% include "partials/form-actions.njk" %}

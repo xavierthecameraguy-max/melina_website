@@ -24,6 +24,32 @@
   font-style: normal;
   font-display: swap;
 }
+/* Atkinson's zero has a slash through it, so "10" can read as "1Ø". The digit 0 alone comes
+   from plain-zero.woff2 (Archivo's zero, subset to that one character). Keep these last. */
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("../fonts/plain-zero.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0030;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("../fonts/plain-zero.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0030;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("../fonts/plain-zero.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0030;
+}
 
 :root {
   /* Color roles. Each design (src/assets/themes/<name>/theme.css) redefines these.
@@ -780,7 +806,7 @@ main:focus {
 @media (min-width: 56em) {
   .grid-3 > .more-card:nth-child(2):last-child {
     grid-column: span 2;
-    align-self: center;
+    align-self: stretch;
     padding: 2.5rem;
   }
 }
@@ -881,6 +907,19 @@ main:focus {
   margin-top: 0;
 }
 
+/* Long text with a short card beside it on wide screens (About) */
+.prose-aside {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3rem);
+  align-items: start;
+}
+@media (min-width: 56em) {
+  .prose-aside {
+    grid-template-columns: minmax(0, var(--measure)) minmax(17rem, 24rem);
+    justify-content: space-between;
+  }
+}
+
 /* ---------- Trip page ---------- */
 
 .trip-hero {
@@ -945,6 +984,21 @@ main:focus {
   }
 }
 
+/* The trip story (why + day by day) and the practical details sit side by side on wide screens */
+.trip-body {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+}
+@media (min-width: 56em) {
+  .trip-body {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    align-items: start;
+  }
+  .trip-body .prose {
+    max-width: none;
+  }
+}
+
 .days {
   list-style: none;
   padding: 0;
@@ -1005,6 +1059,7 @@ main:focus {
 
 .form-card {
   max-width: 44rem;
+  margin-inline: auto;
 }
 .steps + .form-card {
   margin-top: clamp(2rem, 5vw, 3rem);
