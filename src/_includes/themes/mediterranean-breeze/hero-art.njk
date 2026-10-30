@@ -3,7 +3,7 @@
 {%- from "macros.njk" import photo with context -%}
 <div class="mb-hero-art">
   <div class="mb-arch">
-    {{ photo(site.photos.hero, site.photos.heroAlt, "Milena with her travelers", lazy=false) }}
+    {{ photo(site.photos.hero, site.photos.heroAlt, "Milena with her travelers", lazy=false, position=site.photos.heroPosition) }}
   </div>
   <div class="mb-step" aria-hidden="true"></div>
 </div>

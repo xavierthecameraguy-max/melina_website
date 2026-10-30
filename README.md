@@ -22,7 +22,7 @@ All content lives in `src/`.
 | To change | Edit |
 |---|---|
 | Phone, email, reply time, legal name, social links | `src/_data/site.json` |
-| Home and About photos | `photos` in `src/_data/site.json` (e.g. `"hero": "/assets/photos/group.jpg"`, plus a short description in `heroAlt`) |
+| Home and About photos | `photos` in `src/_data/site.json`: the file (`hero`, `milena`), a short description for screen readers (`heroAlt`, `milenaAlt`), and the focal point to crop around (`heroPosition`, e.g. `"50% 61%"` = centered left-right, 61% down) |
 | Add a trip | Copy `src/trips/sample-trip.md`, rename it (the file name becomes the web address), fill in each line |
 | A trip is over | In that trip's file, set `past: true`. It leaves the list; its page stays up (so links already sent still work) and says the trip has wrapped up |
 | A trip is sold out | In that trip's file, set `status: soldout`. The booking form becomes a waitlist |

@@ -1,1 +1,104 @@
-[]
+[
+  {
+    "src": "/assets/photos/gallery/30-painted-steps.jpg",
+    "thumb": "/assets/photos/gallery/30-painted-steps-small.jpg",
+    "alt": "Six travelers smiling on flower-painted steps in a whitewashed island village",
+    "caption": "Painted steps in an island village · [Paros, Greece?] 2026"
+  },
+  {
+    "src": "/assets/photos/gallery/21-marble-gateway.jpg",
+    "thumb": "/assets/photos/gallery/21-marble-gateway-small.jpg",
+    "alt": "A giant ancient marble doorway silhouetted against an orange sunset over the sea",
+    "caption": "The marble gateway at sunset · [Naxos, Greece?] 2026"
+  },
+  {
+    "src": "/assets/photos/gallery/34-rooftop-evening.jpg",
+    "thumb": "/assets/photos/gallery/34-rooftop-evening-small.jpg",
+    "alt": "Evening view from a rooftop with roses over a busy square and a floodlit hilltop temple",
+    "caption": "Evening view from the rooftop · [Athens, Greece?] 2026"
+  },
+  {
+    "src": "/assets/photos/gallery/51-river-bend.jpg",
+    "thumb": "/assets/photos/gallery/51-river-bend-small.jpg",
+    "alt": "A green river looping around a red rock butte in a deep canyon",
+    "caption": "The river bend overlook · [Horseshoe Bend, Arizona?] 2026"
+  },
+  {
+    "src": "/assets/photos/gallery/43-salt-chapel.jpg",
+    "thumb": "/assets/photos/gallery/43-salt-chapel-small.jpg",
+    "alt": "An underground chapel carved from rock salt, with crystal chandeliers",
+    "caption": "A chapel carved from salt · [Wieliczka Salt Mine, Poland?] 2025"
+  },
+  {
+    "src": "/assets/photos/gallery/40-leaning-tower.jpg",
+    "thumb": "/assets/photos/gallery/40-leaning-tower-small.jpg",
+    "alt": "A leaning white marble bell tower beside a cathedral under big clouds",
+    "caption": "The Leaning Tower · [Pisa, Italy?] 2025"
+  },
+  {
+    "src": "/assets/photos/gallery/46-market-square.jpg",
+    "thumb": "/assets/photos/gallery/46-market-square-small.jpg",
+    "alt": "A long arcaded Renaissance hall across a wide old-town square",
+    "caption": "Old-town market square · [Kraków, Poland?] 2024"
+  },
+  {
+    "src": "/assets/photos/gallery/25-hot-springs.jpg",
+    "thumb": "/assets/photos/gallery/25-hot-springs-small.jpg",
+    "alt": "Steaming hot springs in a snowy valley below a mountain",
+    "caption": "Hot springs in the snow · [Place], 2023"
+  },
+  {
+    "src": "/assets/photos/gallery/31-snowy-coast.jpg",
+    "thumb": "/assets/photos/gallery/31-snowy-coast-small.jpg",
+    "alt": "The sun setting over the sea beside dark cliffs and a snowy, rocky shore",
+    "caption": "A snowy coast at sunset · [Place], 2023"
+  },
+  {
+    "src": "/assets/photos/gallery/12-truffle-pasta.jpg",
+    "thumb": "/assets/photos/gallery/12-truffle-pasta-small.jpg",
+    "alt": "A forkful of tagliatelle over a bowl of pasta with shaved truffle",
+    "caption": "Fresh pasta with truffle · [Place], 2023"
+  },
+  {
+    "src": "/assets/photos/gallery/10-farmhouse-sunrise.jpg",
+    "thumb": "/assets/photos/gallery/10-farmhouse-sunrise-small.jpg",
+    "alt": "Sunrise over rolling hills seen through an open farmhouse window",
+    "caption": "Sunrise from the farmhouse window · [Place], 2023"
+  },
+  {
+    "src": "/assets/photos/gallery/11-canyon-lake.jpg",
+    "thumb": "/assets/photos/gallery/11-canyon-lake-small.jpg",
+    "alt": "Five friends on a bench looking out over a blue lake winding through red canyons",
+    "caption": "Taking in the canyon lake · [Lake Powell?] 2022"
+  },
+  {
+    "src": "/assets/photos/gallery/09-slot-canyon.jpg",
+    "thumb": "/assets/photos/gallery/09-slot-canyon-small.jpg",
+    "alt": "Three smiling travelers inside a glowing orange slot canyon",
+    "caption": "Inside a slot canyon · [Place], 2022"
+  },
+  {
+    "src": "/assets/photos/gallery/28-red-buttes.jpg",
+    "thumb": "/assets/photos/gallery/28-red-buttes-small.jpg",
+    "alt": "A rider on horseback heading toward tall red buttes in the desert",
+    "caption": "Riding among the buttes · [Monument Valley?] 2021"
+  },
+  {
+    "src": "/assets/photos/gallery/07-beach-cove.jpg",
+    "thumb": "/assets/photos/gallery/07-beach-cove-small.jpg",
+    "alt": "A palm-lined beach cove below a cliffside garden on a sunny day",
+    "caption": "A palm-lined beach cove · [Place], 2019"
+  },
+  {
+    "src": "/assets/photos/gallery/26-sea-cliffs.jpg",
+    "thumb": "/assets/photos/gallery/26-sea-cliffs-small.jpg",
+    "alt": "Green fields divided by stone walls running down to sea cliffs",
+    "caption": "Stone walls and sea cliffs · [Place], 2018"
+  },
+  {
+    "src": "/assets/photos/gallery/01-glacier-lake.jpg",
+    "thumb": "/assets/photos/gallery/01-glacier-lake-small.jpg",
+    "alt": "The bow of a canoe on a still turquoise lake below a glacier peak",
+    "caption": "A canoe on a glacier lake · [Lake Louise, Canada?] 2009"
+  }
+]

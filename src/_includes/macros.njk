@@ -21,11 +21,12 @@
 {%- endif -%}
 {%- endmacro %}
 
-{#- A photo, or a labeled placeholder until the real one arrives. -#}
-{% macro photo(src, alt, label, class="", lazy=true) -%}
+{#- A photo, or a labeled placeholder until the real one arrives.
+    position = focal point for cropping, e.g. "50% 30%" (left-right, top-bottom). -#}
+{% macro photo(src, alt, label, class="", lazy=true, position="") -%}
 {%- set label = label | replace("[", "") | replace("]", "") -%}
 {%- if src -%}
-<div class="photo {{ class }}"><img src="{{ src }}" alt="{{ alt }}"{% if lazy %} loading="lazy"{% endif %}></div>
+<div class="photo {{ class }}"><img src="{{ src }}" alt="{{ alt }}"{% if position %} style="object-position: {{ position }}"{% endif %}{% if lazy %} loading="lazy"{% endif %}></div>
 {%- else -%}
 <div class="photo photo-ph {{ class }}" role="img" aria-label="Photo coming soon: {{ label }}"><span aria-hidden="true">[Photo: {{ label }}]</span></div>
 {%- endif -%}
@@ -33,7 +34,7 @@
 
 {% macro tripCard(trip) -%}
 <article class="card trip-card">
-  {{ photo(trip.data.image, trip.data.imageAlt, trip.data.destination) }}
+  {{ photo(trip.data.image, trip.data.imageAlt, trip.data.destination, position=trip.data.imagePosition) }}
   <div class="trip-card-body">
     <h3><a href="{{ trip.url }}">{{ trip.data.title | ph | safe }}</a></h3>
     {% if trip.data.status == "soldout" -%}

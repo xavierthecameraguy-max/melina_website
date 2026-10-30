@@ -29,7 +29,7 @@ layout: layouts/base.njk
         {%- else %}
         <p class="btn-row no-print"><a class="btn btn-primary" href="#book">{{ bookLabel }}</a></p>
         {%- endif %}
-        {{ photo(image, imageAlt, destination, lazy=false) }}
+        {{ photo(image, imageAlt, destination, lazy=false, position=imagePosition) }}
       </div>
       <div class="card">
         <h2 class="h3">Quick facts</h2>

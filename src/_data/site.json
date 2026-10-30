@@ -15,9 +15,11 @@
   "web3formsAccessKey": "",
   "social": [],
   "photos": {
-    "hero": "",
-    "heroAlt": "",
-    "milena": "",
-    "milenaAlt": ""
+    "hero": "/assets/photos/hero.jpg",
+    "heroAlt": "Six smiling travelers arm in arm in a whitewashed island lane with blue doors",
+    "heroPosition": "50% 61%",
+    "milena": "/assets/photos/milena.jpg",
+    "milenaAlt": "Milena smiling on flower-painted village steps",
+    "milenaPosition": "50% 22%"
   }
 }

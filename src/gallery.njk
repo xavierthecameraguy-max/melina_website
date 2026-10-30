@@ -21,9 +21,9 @@ description: Photos from past trips with Milena.
       <li>
         <figure>
           <a class="js-lightbox" href="{{ item.src }}" data-caption="{{ item.caption }}">
-            <div class="photo"><img src="{{ item.src }}" alt="{{ item.alt }}" loading="lazy"></div>
+            <div class="photo"><img src="{{ item.thumb or item.src }}" alt="{{ item.alt }}"{% if item.position %} style="object-position: {{ item.position }}"{% endif %} loading="lazy"></div>
           </a>
-          <figcaption>{{ item.caption }}</figcaption>
+          <figcaption>{{ item.caption | ph | safe }}</figcaption>
         </figure>
       </li>
       {%- endfor %}

@@ -1,7 +1,7 @@
 {#- Sunny Passport hero artwork: a tilted postcard holding the hero photo, with a passport stamp. -#}
 {%- from "macros.njk" import photo with context -%}
 <div class="postcard">
-  {{ photo(site.photos.hero, site.photos.heroAlt, "Milena with her travelers", lazy=false) }}
+  {{ photo(site.photos.hero, site.photos.heroAlt, "Milena with her travelers", lazy=false, position=site.photos.heroPosition) }}
   <p class="postcard-caption">Wish you were here? You could be.</p>
   <svg class="stamp" viewBox="0 0 140 140" aria-hidden="true" focusable="false">
     <defs><path id="stamp-ring" d="M70 70m-48 0a48 48 0 1 1 96 0a48 48 0 1 1-96 0"/></defs>
