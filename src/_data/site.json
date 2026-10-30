@@ -23,6 +23,9 @@
     "milenaPosition": "50% 26%",
     "friends": "/assets/photos/friends.jpg",
     "friendsAlt": "Four friends smiling at the rim of a huge red-rock canyon",
-    "friendsPosition": "50% 50%"
+    "friendsPosition": "50% 50%",
+    "contact": "/assets/photos/contact.jpg",
+    "contactAlt": "Milena smiling, her arms folded over the back of a white chair",
+    "contactPosition": "50% 24%"
   }
 }

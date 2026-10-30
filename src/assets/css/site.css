@@ -893,6 +893,10 @@ main:focus {
     grid-template-columns: 0.8fr 1.2fr;
   }
 }
+/* Contact: beside the photo the call and email cards stack, so the email address keeps to one line */
+.split .grid-2 {
+  grid-template-columns: 1fr;
+}
 
 /* ---------- Prose (long-form pages) ---------- */
 
