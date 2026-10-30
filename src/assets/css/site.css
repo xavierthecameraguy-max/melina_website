@@ -897,6 +897,10 @@ main:focus {
 .split .grid-2 {
   grid-template-columns: 1fr;
 }
+/* and the lead wraps as two even lines instead of leaving "from you." on its own */
+.split:has(.contact-card) .lead {
+  max-width: 19.5em;
+}
 
 /* ---------- Prose (long-form pages) ---------- */
 
@@ -986,6 +990,11 @@ main:focus {
     grid-template-columns: 1fr;
     gap: 0;
   }
+}
+/* the email address is too long for the narrow value column: label above, address below */
+.facts div:has(> dd a[href^="mailto:"]) {
+  grid-template-columns: 1fr;
+  gap: 0.15rem;
 }
 
 /* The trip story (why + day by day) and the practical details sit side by side on wide screens */
@@ -1344,6 +1353,10 @@ fieldset.field {
 }
 .footer-links li {
   margin-bottom: 0.1rem;
+}
+/* when the email address wraps, it splits before the "@" rather than leaving ".com" alone */
+.footer-links li:has(> a[href^="mailto:"]) {
+  text-wrap: balance;
 }
 .footer-links a {
   display: inline-block;

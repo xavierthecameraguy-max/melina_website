@@ -847,6 +847,19 @@ main > .section:only-child > .wrap.measure::before {
 .contact-card .big-link {
   font-weight: 400;
 }
+/* Size the phone and email links to their card, so the address sits on one line when there's room
+   and otherwise wraps once before the "@" (never leaving ".com" on a line of its own) */
+.page-head .contact-card {
+  container-type: inline-size;
+}
+.page-head .contact-card .big-link {
+  font-size: min(2rem, 8.2cqi);
+}
+@container (min-width: 25rem) {
+  .page-head .contact-card .big-link {
+    font-size: min(2rem, 6.4cqi);
+  }
+}
 
 /* ---------- Gallery: a wall of taped prints ---------- */
 

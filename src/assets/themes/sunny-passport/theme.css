@@ -56,3 +56,16 @@
     right: -0.5rem;
   }
 }
+
+/* ---------- Contact ---------- */
+
+/* when the email wraps, break it at the "@" rather than leaving ".com" alone on a line */
+.contact-card .big-link {
+  text-wrap: balance;
+}
+/* very small phones: a size down, so "@onyxworldtravel.com" fits on its line */
+@media (max-width: 22.49em) {
+  .contact-card .big-link {
+    font-size: 1.2rem;
+  }
+}

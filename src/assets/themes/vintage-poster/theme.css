@@ -722,9 +722,17 @@ main > .section:first-child {
 
 /* ---------- Contact ---------- */
 
+/* The taller Contact head puts its lead level with the corner sun; the shared two-line lead
+   (site.css) keeps the words clear of the rays. */
+
+.contact-card {
+  container-type: inline-size; /* the big links scale with the card */
+}
 .contact-card .big-link {
   font-family: var(--font-body);
   font-weight: 700;
+  /* the wide body face is capped to the card, so the email address stays on one line */
+  font-size: min(clamp(1.5rem, 1.2rem + 1.2vw, 2rem), 7cqi);
 }
 
 /* ---------- Lightbox ---------- */

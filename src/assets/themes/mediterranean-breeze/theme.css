@@ -103,7 +103,7 @@ a:hover {
 .trip-intro h1::after,
 .section > .wrap.measure > h1::after,
 .prose > h1::after,
-.split h2::after,
+.split > .measure > h2::after,
 .section .measure > h2:first-child::after {
   content: "";
   display: block;
@@ -729,6 +729,22 @@ a:hover {
 .contact-card .big-link {
   font-weight: 600;
   letter-spacing: 0.01em;
+}
+/* beside the photo (and on phones) the cards are narrow: shrink the number and address a
+   little with the card, never past the usual size, so the email keeps ".com" on its line */
+.split .contact-card {
+  container-type: inline-size;
+}
+.split .contact-card .big-link {
+  font-size: clamp(1.25rem, min(7cqi, 1.2rem + 1.2vw), 2rem);
+  text-wrap: balance; /* below 360px it wraps before the "@", never leaving ".com" alone */
+}
+/* narrower screens: smaller "Call me" / "Email me" labels, so the number and address stay the
+   biggest thing in each card */
+@media (max-width: 63.99em) {
+  .split .contact-card h2 {
+    font-size: 1.125rem;
+  }
 }
 
 /* ---------- Gallery ---------- */

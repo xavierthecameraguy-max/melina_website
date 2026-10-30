@@ -405,13 +405,13 @@ main:has(.space-above) > .page-head {
   --deco-2: var(--secondary);
 }
 main:has(.contact-card) > .page-head {
-  /* Contact: mint, ink text 12.8 */
+  /* Contact: mint, ink text 12.8; a cobalt corner, since the sunflower circle sits behind the photo */
   --block: var(--mint);
-  --deco-1: var(--secondary);
-  --deco-2: var(--highlight);
+  --deco-1: var(--highlight);
+  --deco-2: var(--secondary);
 }
 
-/* Heads with cards (Services, Contact): a smaller sun, with room below the cards so it sits
+/* Heads with cards (Services): a smaller sun, with room below the cards so it sits
    on the bottom edge instead of peeking out from behind a card */
 .page-head:has(.grid) {
   padding-bottom: clamp(4.5rem, 8vw, 6.5rem);
@@ -420,7 +420,7 @@ main:has(.contact-card) > .page-head {
   width: clamp(6rem, 11vw, 9.5rem);
 }
 
-/* About's page head: text and arched photo; the sun moves behind the photo instead */
+/* About and Contact heads: text and arched photo; the sun moves behind the photo instead */
 .page-head:has(.split)::after {
   display: none;
 }
@@ -806,6 +806,17 @@ main:has(.contact-card) > .page-head {
     bottom: -2rem;
   }
 }
+/* Contact: the heading, lead and two cards are taller than the photo, which sits centered beside
+   them, so the circle is placed in the photo's grid cell and lifted by half the photo's height
+   (4:5, at most 22rem wide; margin percentages follow the cell's width) to stay tucked behind the
+   arch's top corner, as on About */
+@media (min-width: 48em) {
+  .split:has(.contact-card)::before {
+    grid-area: 1 / 1 / 2 / 2;
+    top: 50%;
+    margin-top: calc(-0.625 * min(22rem, 100%) - 1.75rem);
+  }
+}
 
 /* ---------- Prose: a short color bar over each heading ---------- */
 
@@ -990,7 +1001,14 @@ fieldset.field[aria-invalid="true"] .option {
 
 .contact-card .big-link {
   font-weight: 850;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em; /* keeps the address on one line in the narrower card next to the photo */
+  text-wrap: balance; /* when it must wrap, it splits before the @ instead of leaving ".com" alone */
+}
+/* very small phones: a size down, so "@onyxworldtravel.com" fits on its line */
+@media (max-width: 22.49em) {
+  .contact-card .big-link {
+    font-size: 1.2rem;
+  }
 }
 
 /* ---------- Gallery: each photo gets a different geometric crop ---------- */
