@@ -56,13 +56,9 @@ With `"draft": false`, the build refuses to publish while `"demo"` is still true
 
 ## Publishing (GitHub Pages)
 
-Every push to `main` rebuilds and publishes the site through `.github/workflows/deploy.yml`.
+Every push to `main` rebuilds the site and publishes it to the `gh-pages` branch (`.github/workflows/deploy.yml`), which GitHub Pages serves. It's set up already (**Settings → Pages → Source: Deploy from a branch, `gh-pages`, / (root)**). Don't edit `gh-pages` by hand: each publish replaces it.
 
-One-time setup on GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-
-GitHub Pages is free for public repositories. A private repository needs a paid GitHub plan (Pro or higher).
-
-**Before making this repository public:** a public repository shows every branch. The `claude/onyx-client-brief` branch holds internal planning notes about the client. Save a copy elsewhere and delete that branch from GitHub first (`git push origin --delete claude/onyx-client-brief`).
+The repository is public, which is what keeps GitHub Pages free. Keep anything private about the client (notes, contracts) out of it, on every branch.
 
 The site appears at `https://xavierthecameraguy-max.github.io/melina_website/`.
 

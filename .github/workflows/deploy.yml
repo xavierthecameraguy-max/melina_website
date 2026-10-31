@@ -1,21 +1,23 @@
 name: Deploy to GitHub Pages
 
+# Builds the site and publishes it to the gh-pages branch, which GitHub Pages serves
+# (Settings → Pages → Source: Deploy from a branch, gh-pages, / (root)).
+
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
+  pages: read
 
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -40,16 +42,21 @@ jobs:
           else
             npx @11ty/eleventy --pathprefix="$BASE_PATH/"
           fi
-      - uses: actions/upload-pages-artifact@v5
-        with:
-          path: _site
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v5
+      # Replaces gh-pages with the new build. Keeps the CNAME file GitHub adds there when a custom
+      # domain is set in Settings → Pages, so publishing never drops the domain.
+      - name: Publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git ls-remote --exit-code origin gh-pages > /dev/null; then
+            git fetch --depth=1 origin gh-pages
+            git show FETCH_HEAD:CNAME > _site/CNAME 2> /dev/null || rm -f _site/CNAME
+          fi
+          touch _site/.nojekyll
+          cd _site
+          git init -q -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Publish ${GITHUB_SHA::7}"
+          git push --force -q "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
