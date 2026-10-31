@@ -65,6 +65,7 @@ export default function (eleventyConfig) {
     const site = JSON.parse(fs.readFileSync("src/_data/site.json", "utf8"));
     if (site.draft) return;
     const problems = [];
+    if (site.demo) problems.push('site.json: "demo" is still true, so the design preview would be published instead of the site');
     if (!site.web3formsAccessKey) problems.push("site.json: web3formsAccessKey is empty, so the forms can't send");
     if (!site.phone) problems.push("site.json: phone is empty");
     for (const { url, content } of results) {

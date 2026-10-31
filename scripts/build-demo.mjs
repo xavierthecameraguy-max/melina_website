@@ -41,6 +41,8 @@ fs.cpSync("demo/previews", "_site/previews", { recursive: true });
 fs.copyFileSync(`_site/${DESIGNS[0][0]}/404.html`, "_site/404.html");
 
 const font = `${DESIGNS[0][0]}/assets/fonts/atkinson-hyperlegible-latin`;
+// Shown under the link when it's texted or emailed
+const blurb = escapeHtml(`Six looks for ${site.owner}'s new website. Open any of them and pick your favorite.`);
 const cards = DESIGNS.map(([id, line]) => `
     <li class="pick">
       <div class="shots" aria-hidden="true">
@@ -59,6 +61,13 @@ fs.writeFileSync("_site/index.html", `<!doctype html>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>${escapeHtml(site.name)}: pick your favorite design</title>
+  <meta name="description" content="${blurb}">
+  <meta property="og:title" content="${escapeHtml(site.name)}: pick your favorite design">
+  <meta property="og:description" content="${blurb}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="${baseUrl}/">
+  <meta property="og:image" content="${baseUrl}/previews/${DESIGNS[0][0]}-computer.jpg">
+  <link rel="icon" href="${DESIGNS[0][0]}/assets/img/favicon.svg" type="image/svg+xml">
   <style>
     @font-face { font-family: "Atkinson Hyperlegible"; src: url("${font}-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
     @font-face { font-family: "Atkinson Hyperlegible"; src: url("${font}-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; }
@@ -98,7 +107,7 @@ fs.writeFileSync("_site/index.html", `<!doctype html>
       <h1>${escapeHtml(site.name)}: <span>pick your favorite design</span></h1>
       <p>Hi ${escapeHtml(site.owner)}! Here are six looks for your new website. Each one is the whole site, so open any of them and click around every page.</p>
       <ul>
-        <li>The words and photos are the same in all six. Only the look changes.</li>
+        <li>The words are the same in all six, and any of your photos can go in any of them. Only the look changes.</li>
         <li>Anything in <span class="ph">[brackets]</span> is still to fill in, like your first trip and your reviews.</li>
         <li>The forms don't send anything yet.</li>
         <li>The bar at the top of every page has <strong>Next</strong>, which shows the same page in the next look.</li>

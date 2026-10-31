@@ -375,10 +375,8 @@ main:focus {
 }
 .demo-bar a,
 .demo-bar a:hover {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3em;
-  min-height: 2.75rem;
+  display: inline-block;
+  padding-block: 0.75rem; /* 45px tall to tap */
   color: #ffc23c;
   font-weight: 700;
   text-decoration-thickness: 2px;

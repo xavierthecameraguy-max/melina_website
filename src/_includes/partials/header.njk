@@ -1,6 +1,6 @@
 {%- from "macros.njk" import icon -%}
 <header class="site-header">
-  {%- if site.draft %}
+  {%- if site.draft and not demo %}
   <div class="draft-banner">
     <p class="wrap"><strong>Draft website.</strong> Anything in <span class="ph">[brackets]</span> is waiting on real content.</p>
   </div>
