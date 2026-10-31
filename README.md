@@ -35,13 +35,22 @@ Anything written in `[square brackets]` shows up highlighted on the site as "sti
 
 Keep photos under about 300 KB each (around 1600 pixels wide is plenty).
 
+## Design preview (while Milena picks a design)
+
+While `"demo": true` in `src/_data/site.json`, the published site is a design preview instead of the real site. Its address opens a "pick your favorite design" page with all six designs. Each design is the full site in its own folder (`…/sunny-passport/`, `…/travel-journal/` and so on), with a bar on every page that jumps to the same page in the previous or next design. Nothing on it is final: it keeps the draft banner, the forms send nothing, and search engines are asked not to list it.
+
+- **Once she picks:** set `"theme"` to her design (`sunny-passport`, `travel-journal`, `vintage-poster`, `mediterranean-breeze`, `postcard-pop` or `color-block`) and `"demo": false`, then push to `main`. The same address then shows just that design, and the design folders go away.
+- **Screenshots on the pick page** are in `demo/previews/` (`<design>-computer.jpg`, 1000×625, and `<design>-phone.jpg`, 250×541, each the top of Home without the bars). Retake them if a design changes.
+- **The short line under each design** and the welcome text are in `scripts/build-demo.mjs`.
+
 ## Before launch
 
-1. **Connect the forms.** Go to [web3forms.com](https://web3forms.com), enter the email address that should receive form messages, and paste the access key it sends into `web3formsAccessKey` in `src/_data/site.json`. Until then, the forms say "This form isn't connected yet" and send nothing. After connecting, send one test message from each form and check that pressing Reply goes to the sender.
-2. **Fill in `site.json`:** phone, email, reply time (e.g. `"within a day"`), legal business name, any registration numbers, and the photos.
-3. **Replace every `[bracket]`**: the sample trip (delete it once real trips exist), Terms, Privacy, and the draft notes on Services and About.
-4. **Set `"url"`** in `site.json` to the site's address without the folder, e.g. `https://xavierthecameraguy-max.github.io` or `https://onyxworldtravel.com`.
-5. **Set `"draft": false`.** This removes the draft banner and draft-only notes and lets search engines list the site.
+1. **Pick the design.** See "Design preview" above.
+2. **Connect the forms.** Go to [web3forms.com](https://web3forms.com), enter the email address that should receive form messages, and paste the access key it sends into `web3formsAccessKey` in `src/_data/site.json`. Until then, the forms say "This form isn't connected yet" and send nothing. After connecting, send one test message from each form and check that pressing Reply goes to the sender.
+3. **Fill in `site.json`:** phone, email, reply time (e.g. `"within a day"`), legal business name, any registration numbers, and the photos.
+4. **Replace every `[bracket]`**: the sample trip (delete it once real trips exist), Terms, Privacy, and the draft notes on Services and About.
+5. **Set `"url"`** in `site.json` to the site's address without the folder, e.g. `https://xavierthecameraguy-max.github.io` or `https://onyxworldtravel.com`.
+6. **Set `"draft": false`.** This removes the draft banner and draft-only notes and lets search engines list the site.
 
 With `"draft": false`, the build refuses to publish while any placeholder, placeholder photo, sample trip, missing phone number or missing forms key remains. It lists what's left, and the previous version stays live.
 

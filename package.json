@@ -5,6 +5,7 @@
   "description": "Website for Onyx World Travel",
   "scripts": {
     "build": "eleventy",
+    "build:demo": "node scripts/build-demo.mjs",
     "start": "eleventy --serve"
   },
   "devDependencies": {

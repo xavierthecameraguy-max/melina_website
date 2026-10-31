@@ -30,6 +30,18 @@
 </head>
 <body class="theme-{{ theme.id }}">
   <a class="skip-link" href="#main">Skip to main content</a>
+  {%- if demo %}
+  <nav class="demo-bar" aria-label="Design preview">
+    <div class="wrap">
+      <p>Previewing the <strong>{{ theme.label }}</strong> design</p>
+      <ul>
+        <li><a href="{{ demo.home }}{{ demo.prev.id }}{{ page.url }}" title="{{ demo.prev.label }}"><span aria-hidden="true">←</span> Previous<span class="demo-long"> design</span></a></li>
+        <li><a href="{{ demo.home }}">All designs</a></li>
+        <li><a href="{{ demo.home }}{{ demo.next.id }}{{ page.url }}" title="{{ demo.next.label }}">Next<span class="demo-long"> design</span> <span aria-hidden="true">→</span></a></li>
+      </ul>
+    </div>
+  </nav>
+  {%- endif %}
   {% include "partials/header.njk" %}
   <main id="main" tabindex="-1">
     {{ content | safe }}
