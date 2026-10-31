@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 440">
+  <defs>
+    <clipPath id="arch"><path d="M40 440V160a120 120 0 0 1 240 0v280z"/></clipPath>
+  </defs>
+  <path d="M40 440V160a120 120 0 0 1 240 0v280z" fill="#2846c9"/>
+  <g clip-path="url(#arch)">
+    <circle cx="160" cy="250" r="78" fill="#ffd23f"/>
+    <rect x="40" y="290" width="240" height="150" fill="#2846c9"/>
+    <path d="M40 304h240M40 334h240M40 364h240M40 394h240M40 424h240" stroke="#dfe5ff" stroke-width="12"/>
+  </g>
+  <circle cx="268" cy="62" r="46" fill="#ff5a36"/>
+  <path d="M0 440v-96a96 96 0 0 1 96 96z" fill="#9ee6c5"/>
+</svg>

@@ -1,0 +1,800 @@
+/* Vintage Travel Poster: navy, sunset orange and gold on aged cream, like a mid-century
+   national-park or airline poster. Flat shapes, condensed capitals for headings, framed
+   photos, title bands, double rules, round seals, a sunburst and a mountain silhouette.
+   Loaded after site.css. WCAG 2.x contrast for each text pair is noted beside the roles. */
+
+@font-face {
+  font-family: "Oswald";
+  src: url("../../fonts/oswald-latin-wght-normal.woff2") format("woff2-variations");
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --ink: #1e2a44;            /* deep navy: 12.0 on page, 13.7 on surface */
+  --page: #f4ead5;           /* aged cream */
+  --surface: #fffaf0;        /* cards, header, form fields */
+  --muted: #4f5566;          /* 6.2 on page, 7.2 on surface, 5.6 on the tints */
+  --primary: #ee7a3e;        /* sunset orange fills: navy text 5.1; always keeps a navy outline */
+  --on-primary: #1e2a44;
+  --primary-text: #a33c16;   /* orange as text: 5.5 on page, 6.3 on surface, 5.0 on gold tint */
+  --primary-soft: #f6d0bc;   /* navy 10.0 */
+  --highlight: #f2b544;      /* gold: navy 7.8 */
+  --highlight-soft: #f7dfa8; /* navy 10.9 */
+  --secondary: #1f6f6d;      /* teal: white 5.9 */
+  --on-secondary: #ffffff;
+  --secondary-soft: #cfe3df; /* navy 10.7 */
+  --link: #1f5f7a;           /* 5.9 on page, 6.8 on surface, 5.3+ on tints */
+  --rule: #c4b28a;
+  --footer-rule: #5d6884;
+  --ph-bg: #ffe14d;          /* lemon highlighter: navy 11.0 */
+
+  --font-head: "Oswald", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --head-weight: 600;
+  --head-settings: normal;
+  --radius: 4px;
+  --radius-lg: 4px;
+  --border: 3px solid var(--ink);
+  --pop: none;
+  --double: 8px double var(--ink); /* the poster's double rule */
+  --ridge: clamp(3.5rem, 2.5rem + 3.5vw, 6rem);
+}
+
+/* ---------- Type ---------- */
+
+h1,
+h2,
+h3,
+h4,
+.h3 {
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  line-height: 1.1;
+}
+h1 {
+  font-size: clamp(2.6rem, 1.75rem + 3.3vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1.03;
+  letter-spacing: 0.015em;
+  /* two-color poster lettering: navy over a flat orange offset */
+  text-shadow: 0.045em 0.045em 0 var(--primary);
+}
+h2 {
+  font-size: clamp(2rem, 1.45rem + 2.1vw, 3.1rem);
+}
+h3,
+.h3 {
+  font-size: clamp(1.4rem, 1.25rem + 0.6vw, 1.7rem);
+  letter-spacing: 0.035em;
+}
+
+.lead {
+  line-height: 1.55;
+}
+
+.eyebrow {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--highlight); /* 7.8 */
+  padding: 0.45em 0.85em 0.4em;
+  border-radius: var(--radius);
+  letter-spacing: 0.1em;
+  line-height: 1.45;
+  margin-bottom: 1.1rem;
+}
+
+.ph {
+  border-radius: 2px;
+  text-shadow: none; /* keeps [placeholders] in big headings crisp */
+}
+
+.skip-link {
+  border-radius: var(--radius);
+}
+
+/* ---------- Buttons: flat rectangles, solid fills, navy outline ---------- */
+
+.btn {
+  border-radius: var(--radius);
+  border-width: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding-inline: 1.15em;
+  transition: none;
+}
+.btn-primary,
+.btn-secondary {
+  box-shadow: none;
+}
+.btn:hover,
+.btn:active,
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: none;
+  /* hover draws the poster's inner frame line inside the button */
+  box-shadow: inset 0 0 0 3px var(--btn-fill, var(--primary)), inset 0 0 0 5px var(--ink);
+}
+.btn-primary {
+  --btn-fill: var(--primary);
+}
+.btn-secondary {
+  --btn-fill: var(--secondary);
+}
+.btn-sun,
+.btn-call {
+  --btn-fill: var(--highlight);
+}
+.btn-dark {
+  --btn-fill: var(--ink);
+}
+.btn-dark:hover {
+  box-shadow: inset 0 0 0 3px var(--ink), inset 0 0 0 5px var(--highlight);
+}
+.btn-secondary:hover {
+  box-shadow: inset 0 0 0 3px var(--secondary), inset 0 0 0 5px var(--surface);
+}
+
+/* ---------- Header and nav ---------- */
+
+.site-header {
+  border-bottom: 0;
+}
+.header-top {
+  padding-block: 1rem;
+}
+.brand-name {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 2.1rem;
+  line-height: 0.95;
+}
+.brand-sub {
+  letter-spacing: 0.24em;
+  margin-top: 0.3rem;
+}
+
+.btn-call {
+  font-size: 1.125rem;
+  border-width: 3px;
+}
+
+.menu-toggle {
+  border-radius: var(--radius);
+  border-width: 3px;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.site-nav {
+  background: var(--ink);
+  border-top: 0;
+  border-bottom: 5px solid var(--primary);
+}
+.site-nav ul {
+  gap: 0.25rem;
+  padding-block: 0.55rem;
+}
+.site-nav a {
+  color: var(--page); /* 12.0 on navy */
+  border-radius: var(--radius);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: 1.125rem;
+  padding-inline: 0.9em;
+}
+.site-nav a:hover {
+  color: var(--page);
+  border-color: var(--page);
+}
+.site-nav a[aria-current] {
+  background: var(--highlight);
+  border-color: var(--highlight);
+  color: var(--ink); /* 7.8 */
+}
+.site-nav :focus-visible {
+  outline-color: var(--highlight);
+}
+
+@media (max-width: 56em) {
+  .brand-name {
+    font-size: 1.8rem;
+  }
+  .site-nav a {
+    font-size: 1.15rem;
+  }
+}
+@media (max-width: 36em) {
+  /* keeps the name and the Menu button on one row on most phones */
+  .brand-sub {
+    letter-spacing: 0.17em;
+  }
+  .menu-toggle {
+    padding-inline: 0.8em;
+  }
+}
+@media (max-width: 24em) {
+  .header-top {
+    gap: 0.5rem;
+  }
+  .brand {
+    gap: 0.45rem;
+  }
+  .brand-mark {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  .brand-name {
+    font-size: 1.65rem;
+  }
+  .brand-sub {
+    letter-spacing: 0.12em;
+  }
+  .menu-toggle {
+    padding-inline: 0.7em;
+    letter-spacing: 0.04em;
+  }
+}
+
+/* ---------- Sections: flat color fields edged with a double rule ---------- */
+
+.section-white,
+.section-sun,
+.section-lagoon {
+  border-block: var(--double);
+}
+/* the gold field is a full-strength poster color; only headings and framed cards sit on it */
+.section-sun {
+  background: var(--highlight); /* navy 7.8 */
+}
+
+/* section headings carry a double rule out to the right edge */
+.section-head {
+  max-width: none;
+}
+.section-head > h2::after {
+  content: "";
+  display: block;
+  width: 5rem;
+  margin-top: 0.3em;
+  border-top: var(--double);
+}
+@media (min-width: 48em) {
+  .section-head > h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.45em;
+  }
+  .section-head > h2::after {
+    flex: 1 1 1.5rem;
+    min-width: 1.5rem;
+    margin-top: 0;
+  }
+}
+.section-head > .lead {
+  max-width: var(--measure);
+}
+
+.page-head {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(2rem, 5vw, 3rem);
+}
+.page-head,
+main > .section:first-child {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+@media (min-width: 64em) {
+  /* on wide screens the sun rises out of the top corner of every page title, like the sky
+     of a poster; it stays clear of the words (the widest title ends well before it) */
+  .page-head::before,
+  main > .section:first-child::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    width: clamp(22rem, 34vw, 32rem);
+    aspect-ratio: 1;
+    translate: 50% -50%;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle, var(--primary) 0 19%, var(--highlight) 19.3% 27%, transparent 27.3% 33%, var(--page) 33.3% 35%, transparent 35.3%),
+      repeating-conic-gradient(var(--highlight) 0 5deg, var(--highlight-soft) 5deg 15deg);
+  }
+}
+
+/* ---------- Home hero: a framed travel poster in front of a sunburst ---------- */
+
+.hero {
+  padding-block: clamp(2.5rem, 6vw, 5rem) clamp(3rem, 7vw, 5.5rem);
+}
+.hero h1 {
+  max-width: 17ch;
+}
+@media (min-width: 56em) {
+  .hero-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+.vp-hero-art {
+  position: relative;
+  isolation: isolate;
+  max-width: 29rem;
+  margin-inline: auto;
+  padding: 1rem 1.25rem 1.5rem;
+}
+.vp-sunburst {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 50%;
+  width: 128%; /* stays inside the poster's height, so it only fans out at the sides */
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  /* two-tone gold rays, crisp and flat like a screen-printed sunburst */
+  background:
+    radial-gradient(circle, transparent 0 69%, var(--page) 69.2% 71.5%, transparent 71.7%),
+    repeating-conic-gradient(var(--highlight) 0 6deg, var(--highlight-soft) 6deg 15deg);
+}
+
+.vp-poster {
+  position: relative;
+  container-type: inline-size; /* the bands' lettering scales with the poster, not the window */
+  background: var(--surface);
+  border: 0.6rem solid var(--ink);
+  padding: 0.6rem;
+}
+.vp-poster-picture {
+  position: relative;
+}
+.vp-poster .photo {
+  aspect-ratio: 5 / 6;
+  border: var(--border);
+  border-radius: 0;
+}
+.vp-poster-band {
+  font-family: var(--font-head);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.1;
+  padding: 0.5em 0.5em 0.45em;
+}
+.vp-poster-top {
+  background: var(--primary);
+  color: var(--ink); /* 5.1 */
+  border: var(--border);
+  border-bottom: 0;
+  font-size: 1.25rem;
+  font-size: clamp(1rem, 7.4cqi, 1.75rem);
+  letter-spacing: 0.12em;
+}
+.vp-poster-bottom {
+  background: var(--ink);
+  color: var(--highlight); /* 7.8 */
+  font-size: 1.125rem;
+  font-size: clamp(1rem, 6.1cqi, 1.5rem);
+  letter-spacing: 0.07em;
+}
+
+.vp-seal {
+  /* on phones the seal sits in the picture's lower corner, like a badge printed on the poster */
+  position: absolute;
+  z-index: 1;
+  width: clamp(4.5rem, 20vw, 6.5rem);
+  bottom: 0.6rem;
+  left: 0.6rem;
+  rotate: -10deg;
+}
+@media (min-width: 37.5em) {
+  .vp-seal {
+    /* wider screens: it hangs over the poster's right edge */
+    --seal: 7.5rem;
+    width: var(--seal);
+    top: 0.9rem;
+    bottom: auto;
+    left: auto;
+    right: calc(-1.2rem - 0.25 * var(--seal));
+    rotate: 10deg;
+  }
+}
+@media (min-width: 56em) {
+  .vp-seal {
+    /* beside the text the poster is narrower, so the seal scales with the window */
+    --seal: clamp(5.5rem, 11vw - 2rem, 8.5rem);
+  }
+}
+@media (max-width: 37.49em) {
+  .vp-hero-art {
+    padding-inline: 0.25rem;
+  }
+}
+
+/* Short pages (thank-you notes, page not found) get a flat sunburst badge above the heading */
+.section > .measure > h1:first-child::before {
+  content: "";
+  display: block;
+  width: clamp(4.5rem, 3.5rem + 4vw, 6rem);
+  aspect-ratio: 1;
+  margin-bottom: 1.25rem;
+  background: url("badge.svg") center / contain no-repeat;
+}
+
+/* ---------- Photos and placeholders ---------- */
+
+.photo {
+  border-radius: 0;
+  background-color: var(--highlight-soft);
+}
+.photo-ph {
+  background-image: url("scene.svg");
+}
+.photo-ph span {
+  background: var(--surface);
+  color: var(--ink);
+  border: 2px dashed var(--primary-text);
+  border-radius: var(--radius);
+  padding: 0.4em 0.9em;
+  box-shadow: 0 0 0 3px var(--ink);
+}
+
+/* A poster frame: thick navy edge, a cream mat, then a thin navy line around the picture */
+.split .photo,
+.trip-hero .photo {
+  border: 6px solid var(--ink);
+  border-radius: 0;
+  padding: 9px;
+  background-color: var(--surface);
+  box-shadow: inset 0 0 0 7px var(--surface), inset 0 0 0 9px var(--ink);
+}
+.gallery .photo {
+  border: var(--border);
+  padding: 7px;
+  background-color: var(--surface);
+  box-shadow: inset 0 0 0 5px var(--surface), inset 0 0 0 7px var(--ink);
+}
+.gallery a {
+  border-radius: 0;
+}
+
+/* ---------- Cards: a navy edge with a thin inner frame line ---------- */
+
+.card {
+  --pad: clamp(1.25rem, 3vw, 2rem);
+  --card-bg: var(--surface);
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: var(--pad);
+  box-shadow: inset 0 0 0 5px var(--card-bg), inset 0 0 0 7px var(--ink);
+}
+
+/* Cards that open with their own heading wear it as a title band */
+.trip-hero .card > .h3:first-child,
+.form-card > h2:first-child,
+.form-card > h3:first-child,
+.contact-card > .h3:first-child,
+.service-card > .h3:first-child {
+  margin: calc(-1 * var(--pad)) calc(-1 * var(--pad)) 1.25rem;
+  padding: 0.6em var(--pad) 0.5em;
+  background: var(--ink);
+  color: var(--page); /* 12.0 */
+  border-bottom: var(--border);
+  border-radius: 1px 1px 0 0;
+}
+.form-card > h2:first-child {
+  font-size: clamp(1.6rem, 1.35rem + 1vw, 2.2rem);
+}
+.service-card:first-child > .h3:first-child {
+  background: var(--primary);
+  color: var(--ink); /* 5.1 */
+}
+.service-card:nth-child(2) > .h3:first-child {
+  background: var(--secondary);
+  color: var(--on-secondary); /* 5.9 */
+}
+
+/* Steps: numbered round seals joined by a dashed route */
+.steps li {
+  padding-top: 5.25rem;
+}
+.steps li::before {
+  width: 4rem;
+  height: 4rem;
+  border: var(--border);
+  background: var(--highlight);
+  box-shadow: inset 0 0 0 4px var(--highlight), inset 0 0 0 6px var(--ink);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.85rem;
+  color: var(--ink);
+}
+@media (min-width: 56em) {
+  .steps li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 1.85rem;
+    left: 5rem;
+    right: 0.25rem;
+    border-top: 3px dashed var(--ink);
+  }
+}
+
+/* Trip cards: mini posters. A framed photo, then the title on a navy band */
+.trip-card {
+  padding: 0.6rem;
+  box-shadow: none;
+}
+.trip-card .photo {
+  border: var(--border);
+  aspect-ratio: 3 / 2;
+}
+.trip-card-body {
+  padding: 0 0 0.75rem;
+}
+.trip-card-body > :not(h3) {
+  margin-inline: 0.75rem;
+}
+.trip-card-body .pill {
+  order: 0;
+}
+.trip-card h3 {
+  background: var(--ink);
+  margin: 0 0 1rem;
+  padding: 0.6em 0.75rem 0.5em;
+  font-size: clamp(1.4rem, 1.3rem + 0.5vw, 1.65rem);
+}
+.trip-card h3 a {
+  color: var(--page); /* 12.0 */
+}
+.trip-card:hover {
+  box-shadow: none;
+}
+.trip-card:hover h3 {
+  background: var(--primary);
+}
+.trip-card:hover h3 a {
+  color: var(--ink); /* 5.1 */
+}
+.trip-price strong {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.5em;
+  letter-spacing: 0.02em;
+}
+.trip-card-more {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.trip-card-more::after {
+  content: " \2192";
+}
+
+.pill {
+  border: 2px solid var(--ink);
+  border-radius: 2px;
+  padding: 0.2em 0.7em;
+  letter-spacing: 0.02em;
+}
+
+/* "More trips on the way" panels: words up top on a solid field, the next horizon below
+   (sun rising behind the mountains, a plane heading for it). The art never sits behind text. */
+.more-card {
+  --card-bg: var(--secondary-soft);
+  container-type: inline-size; /* the art strip grows with the card's width */
+  justify-content: flex-start;
+}
+.card.more-card > :last-child {
+  margin-bottom: 1.25rem; /* the gap above the art */
+}
+.more-card::after {
+  /* a flex item after the words, sitting on the bottom frame line; in a tall grid cell it
+     grows up to a cap, and any spare room goes above it as plain sky */
+  content: "";
+  flex: 1 0 clamp(7rem, 20cqi, 11rem);
+  max-height: 16rem;
+  margin: auto calc(7px - var(--pad)) calc(7px - var(--pad));
+  background: url("horizon.svg") 90% 100% / cover no-repeat; /* keeps the sun and the plane in view at any crop */
+}
+@media (min-width: 56em) {
+  /* beside a single trip card it becomes a full-height poster panel */
+  .grid-3 > .more-card:nth-child(2):last-child {
+    --pad: 2.5rem;
+    align-self: stretch;
+    padding: var(--pad);
+  }
+  .grid-3 > .more-card:nth-child(2):last-child > :last-child {
+    margin-bottom: 1.5rem;
+  }
+  .grid-3 > .more-card:nth-child(2):last-child::after {
+    flex-basis: 14rem;
+    max-height: none;
+  }
+}
+
+/* ---------- Quotes ---------- */
+
+.quote blockquote {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.55;
+}
+.quote blockquote::before {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 4.5rem;
+  line-height: 0.75;
+  height: 2.25rem;
+  color: var(--primary-text);
+}
+.quote figcaption {
+  border-top: 2px solid var(--rule);
+  padding-top: 0.6rem;
+}
+.quote-ph {
+  border-style: dashed;
+  box-shadow: none;
+}
+
+/* ---------- Band: the sunset sky above the footer's mountains ---------- */
+
+.band {
+  background: var(--primary);
+  color: var(--ink); /* 5.1 */
+  border-block: var(--double);
+}
+
+/* ---------- Long-form pages ---------- */
+
+.prose h2 {
+  padding-bottom: 0.3em;
+  border-bottom: 6px double var(--ink);
+}
+.prose h2:first-child {
+  margin-top: 0;
+}
+
+/* ---------- Trip page ---------- */
+
+.facts div {
+  border-bottom: 2px dotted var(--rule);
+}
+.facts dd strong {
+  font-family: var(--font-head);
+  font-size: 1.3em;
+  letter-spacing: 0.02em;
+}
+
+.days li {
+  grid-template-columns: 5.25rem 1fr;
+  border-bottom: 2px dashed var(--rule);
+}
+.day-num {
+  justify-self: start;
+  align-self: start;
+  background: var(--ink);
+  color: var(--highlight); /* 7.8 */
+  border-radius: var(--radius);
+  padding: 0.3em 0.55em 0.25em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1.15rem;
+  line-height: 1.2;
+}
+
+/* ---------- Forms ---------- */
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="tel"],
+.field select,
+.field textarea {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+}
+/* errors keep their orange-red edge (the rule above would otherwise out-rank site.css's) */
+.field input[aria-invalid="true"],
+.field select[aria-invalid="true"],
+.field textarea[aria-invalid="true"] {
+  border: 3px solid var(--primary-text); /* 6.3 on surface */
+}
+.field-readonly {
+  border-radius: var(--radius);
+  border-color: var(--ink);
+}
+.option {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+}
+.option:has(input:checked) {
+  background: var(--highlight-soft);
+  box-shadow: inset 0 0 0 2px var(--ink);
+}
+.form-alert {
+  border-radius: var(--radius);
+}
+
+/* ---------- Contact ---------- */
+
+/* The taller Contact head puts its lead level with the corner sun; the shared two-line lead
+   (site.css) keeps the words clear of the rays. */
+
+.contact-card {
+  container-type: inline-size; /* the big links scale with the card */
+}
+.contact-card .big-link {
+  font-family: var(--font-body);
+  font-weight: 700;
+  /* the wide body face is capped to the card, so the email address stays on one line */
+  font-size: min(clamp(1.5rem, 1.2rem + 1.2vw, 2rem), 7cqi);
+}
+
+/* ---------- Lightbox ---------- */
+
+.lightbox {
+  border-radius: var(--radius);
+}
+.lightbox::backdrop {
+  background: rgb(30 42 68 / 0.88);
+}
+.lightbox img {
+  border-radius: 0;
+}
+
+/* ---------- Footer: navy mountains rising out of the page ---------- */
+
+.site-footer {
+  position: relative;
+}
+.site-footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% - 1px);
+  height: var(--ridge);
+  background: url("ridge.svg") left bottom / clamp(36rem, 24rem + 40vw, 64rem) 100% repeat-x;
+  pointer-events: none;
+}
+main > :last-child {
+  padding-bottom: calc(var(--section) + var(--ridge));
+  border-bottom: 0;
+}
+main > .band:last-child {
+  padding-bottom: calc(clamp(2.5rem, 6vw, 4.5rem) + var(--ridge));
+}
+
+.site-footer h2 {
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+}
+.footer-tagline {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+@media print {
+  .site-footer::before,
+  .page-head::before,
+  main > .section:first-child::before,
+  .more-card::after,
+  .vp-sunburst,
+  .vp-seal {
+    display: none;
+  }
+  .section-sun {
+    background: none;
+  }
+  h1 {
+    text-shadow: none;
+  }
+}

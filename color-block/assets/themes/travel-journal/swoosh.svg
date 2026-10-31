@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 26" preserveAspectRatio="none">
+  <!-- A quick marker underline under page titles -->
+  <path d="M4 15C46 7 104 5 158 8s70 6 78 3" fill="none" stroke="#b5512f" stroke-width="6" stroke-linecap="round"/>
+  <path d="M38 21c42-4 92-5 150-2" fill="none" stroke="#e8b23a" stroke-width="4.5" stroke-linecap="round"/>
+</svg>

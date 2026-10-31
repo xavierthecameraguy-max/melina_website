@@ -1,0 +1,1160 @@
+/* Color Block Modern: full-width blocks of tomato, sunflower and cobalt on warm white,
+   big bold Archivo headings, oversized step numbers, flat framed cards and photos cropped
+   into circles, arches and quarter circles.
+   Rule kept from site.css: bright colors are fills with ink text on top. The only light
+   text is white on cobalt or on ink. Ratios below are WCAG 2.x contrast. */
+
+@font-face {
+  font-family: "Archivo";
+  src: url("../../fonts/archivo-latin-wdth-normal.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --ink: #141414;            /* 17.2 on page, 18.4 on surface */
+  --page: #faf7f2;           /* warm white */
+  --surface: #ffffff;
+  --muted: #4d4a45;          /* 8.3 on page, 8.8 on surface, 6.1 on sunflower */
+  --primary: #ff5a36;        /* tomato: ink text 5.9 (2.9 vs page, so every button keeps an ink frame) */
+  --on-primary: #141414;
+  --primary-text: #c2381a;   /* 5.1 on page, 5.4 on surface */
+  --primary-soft: #ffd9cf;   /* ink 14.1 */
+  --highlight: #ffd23f;      /* sunflower: ink 12.8, cobalt 5.2 */
+  --highlight-soft: #fff0b8; /* ink 16.2 */
+  --secondary: #2846c9;      /* cobalt: white text 7.5 */
+  --on-secondary: #ffffff;
+  --secondary-soft: #dfe5ff; /* ink 14.7 */
+  --link: #2846c9;           /* 7.0 on page, 7.5 on surface, 5.2 on sunflower and mint */
+  --rule: #e2dbd0;           /* thin dividers (decorative) */
+  --footer-rule: #4d4a45;
+  --ph-bg: #fff0b8;          /* [placeholder] highlight; white when it sits on sunflower */
+
+  /* two extra block colors, both carry ink text only */
+  --mint: #9ee6c5;           /* ink 12.8, cobalt link 5.2 */
+  --pink: #ffb3d1;           /* ink 11.1 */
+
+  --font-head: "Archivo", "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --head-weight: 850;
+  --head-settings: normal;
+
+  --wrap: 76rem;
+  --radius: 6px;
+  --radius-lg: 6px;
+  --border: 3px solid var(--ink);
+  --pop: none;
+  --section: clamp(3.5rem, 8vw, 6.5rem);
+
+  /* the three-color strip used under the header, over the footer and on form cards */
+  --strip: linear-gradient(90deg, var(--primary) 0 33.34%, var(--highlight) 33.34% 66.67%, var(--secondary) 66.67% 100%);
+  --strip-reverse: linear-gradient(90deg, var(--secondary) 0 33.34%, var(--highlight) 33.34% 66.67%, var(--primary) 66.67% 100%);
+  --focus: var(--ink);
+}
+
+/* ---------- Type ---------- */
+
+h1,
+h2,
+h3,
+h4,
+.h3 {
+  font-stretch: 104%;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+}
+h1 {
+  font-weight: 900;
+  font-size: clamp(2.5rem, 1.15rem + 5.4vw, 5.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+h2 {
+  font-size: clamp(2rem, 1.3rem + 2.8vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+h3,
+.h3 {
+  font-weight: 800;
+  font-size: clamp(1.4rem, 1.25rem + 0.6vw, 1.7rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+@media (min-width: 56em) {
+  h1 {
+    font-stretch: 110%;
+  }
+}
+
+a:hover {
+  color: var(--ink);
+  text-decoration-thickness: 3px;
+}
+
+:focus-visible {
+  outline: 4px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 0.35em;
+  letter-spacing: 0.08em;
+}
+.eyebrow::before {
+  /* a little tomato dot */
+  content: "";
+  flex: none;
+  width: 0.85em;
+  height: 0.85em;
+  margin-right: 0.3em;
+  border-radius: 50%;
+  background: var(--primary);
+  align-self: center;
+}
+
+.lead {
+  font-size: 1.18em;
+  line-height: 1.55;
+}
+
+.skip-link {
+  border-radius: var(--radius);
+}
+
+/* Placeholders: a highlighter box with a dashed underline, on every background */
+.ph {
+  border-radius: 3px;
+  padding: 0 0.2em;
+}
+.section-sun .ph,
+.page-head .ph,
+.trip-hero .ph,
+.more-card .ph {
+  background: var(--surface);
+}
+/* ...but inside the white cards that sit on those blocks the yellow highlighter comes back,
+   otherwise a white box on a white card would leave only the dashed underline */
+.section-sun .card:not(.more-card) .ph,
+.page-head .card:not(.more-card) .ph,
+.trip-hero .card .ph {
+  background: var(--ph-bg);
+}
+
+/* ---------- Buttons: flat, square-ish, framed in ink ---------- */
+
+.btn {
+  min-height: 3rem;
+  padding: 0.65em 1.5em;
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  letter-spacing: 0.01em;
+  transition: none;
+}
+.btn-primary,
+.btn-secondary,
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn:active {
+  box-shadow: none;
+  transform: none;
+}
+.btn-primary {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+.btn-secondary {
+  background: var(--secondary);
+  color: var(--on-secondary);
+}
+.btn-sun {
+  background: var(--highlight);
+  color: var(--ink);
+}
+.btn-dark {
+  background: var(--ink);
+  color: #ffffff;
+}
+/* hover: every colored button turns ink with white text (17+), ink turns cobalt (7.5) */
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-sun:hover,
+.btn-call:hover {
+  background: var(--ink);
+  color: #ffffff;
+}
+.btn-dark:hover {
+  background: var(--secondary);
+  color: #ffffff;
+}
+
+/* ---------- Draft banner ---------- */
+
+.draft-banner {
+  background: var(--ink);
+  color: #ffffff;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  border-bottom: 0;
+}
+.site-header::after {
+  /* the strip is framed in ink so it stays crisp against any colored block below */
+  content: "";
+  display: block;
+  height: calc(0.6rem + 3px);
+  border-bottom: 3px solid var(--ink);
+  background: var(--strip);
+}
+.header-top {
+  padding-block: 1rem;
+}
+.brand-name {
+  font-weight: 900;
+  font-stretch: 118%;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+.brand-sub {
+  letter-spacing: 0.16em;
+}
+
+.btn-call {
+  background: var(--highlight);
+  border-radius: var(--radius);
+}
+.menu-toggle {
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+}
+.menu-toggle:hover {
+  background: var(--highlight);
+}
+
+.site-nav {
+  border-top: 2px solid var(--ink);
+}
+.site-nav ul {
+  gap: 0.4rem;
+  padding: 0.55rem 0;
+}
+.site-nav a {
+  border-radius: var(--radius);
+  padding: 0.4em 0.95em;
+}
+.site-nav a:hover {
+  background: var(--highlight-soft);
+  border-color: var(--ink);
+}
+.site-nav a[aria-current] {
+  background: var(--highlight);
+  border-color: var(--ink);
+}
+
+@media (max-width: 56em) {
+  .brand-name {
+    font-size: 1.7rem;
+  }
+  .site-nav ul {
+    padding: 0.75rem 0 1rem;
+  }
+}
+
+/* ---------- Section blocks ---------- */
+
+.section-white {
+  background: var(--surface);
+  border-block: 0;
+}
+.section-sun {
+  background: var(--highlight);
+  border-block: 0;
+}
+.section-lagoon {
+  background: var(--secondary);
+  color: var(--on-secondary);
+  border-block: 0;
+}
+
+/* Blocks with white text on cobalt */
+.section-lagoon {
+  --focus: var(--highlight);
+}
+.section-lagoon a {
+  color: #ffffff;
+}
+
+/* Services "What everything includes": cobalt block with a sun on the right (wide screens only,
+   where it can't sit behind the text) */
+.section-lagoon {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+@media (min-width: 64em) {
+  .section-lagoon::before,
+  .section-lagoon::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+  }
+  .section-lagoon::before {
+    top: 50%;
+    right: max(-5rem, calc((100vw - var(--wrap)) / 2 - 8rem));
+    width: 22rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--highlight);
+    transform: translateY(-50%);
+  }
+  .section-lagoon::after {
+    /* a small tomato circle overlapping the sun */
+    top: calc(50% + 2rem);
+    right: calc(max(-5rem, calc((100vw - var(--wrap)) / 2 - 8rem)) + 17rem);
+    width: 8rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--primary);
+  }
+}
+
+/* Home page: the blocks alternate warm white, cobalt, sunflower, mint and tomato */
+.hero ~ .section-white[aria-labelledby="how-heading"] {
+  background: var(--secondary);
+  color: var(--on-secondary);
+  --focus: var(--highlight);
+}
+.hero ~ .section-white[aria-labelledby="reviews-heading"] {
+  background: var(--mint);
+}
+
+.section-head h2 {
+  margin-bottom: 0.3em;
+}
+
+/* ---------- Interior page heads: a solid color block with a quarter circle and a setting sun ---------- */
+
+.page-head {
+  --block: var(--highlight);
+  --deco-1: var(--primary);
+  --deco-2: var(--secondary);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--block);
+  padding-block: clamp(4.75rem, 8vw, 6rem) clamp(3rem, 7vw, 5rem);
+}
+.page-head::before,
+.page-head::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+.page-head::before {
+  /* quarter circle tucked in the top right corner */
+  top: 0;
+  right: 0;
+  width: clamp(4rem, 9vw, 8rem);
+  aspect-ratio: 1;
+  border-bottom-left-radius: 100%;
+  background: var(--deco-2);
+}
+.page-head::after {
+  /* half circle sitting on the bottom edge */
+  bottom: 0;
+  right: clamp(5rem, 14vw, 14rem);
+  width: clamp(7rem, 20vw, 17rem);
+  aspect-ratio: 2 / 1;
+  border-radius: 999px 999px 0 0;
+  background: var(--deco-1);
+}
+.page-head h1 {
+  max-width: 14ch;
+}
+.page-head .grid {
+  margin-top: clamp(2rem, 5vw, 3rem);
+}
+
+/* Each page gets its own block color (browsers without :has() keep sunflower) */
+.page-head:has(.split) {
+  /* About: tomato, ink text 5.9 */
+  --block: var(--primary);
+  --deco-1: var(--highlight);
+  --deco-2: var(--secondary);
+}
+main:has(.gallery) > .page-head {
+  /* Gallery: cobalt, white text 7.5 */
+  --block: var(--secondary);
+  --deco-1: var(--highlight);
+  --deco-2: var(--primary);
+  --focus: var(--highlight);
+  color: var(--on-secondary);
+}
+main:has(.space-above) > .page-head {
+  /* Reviews: pink, ink text 11.1 */
+  --block: var(--pink);
+  --deco-1: var(--primary);
+  --deco-2: var(--secondary);
+}
+main:has(.contact-card) > .page-head {
+  /* Contact: mint, ink text 12.8; a cobalt corner, since the sunflower circle sits behind the photo */
+  --block: var(--mint);
+  --deco-1: var(--highlight);
+  --deco-2: var(--secondary);
+}
+
+/* Heads with cards (Services): a smaller sun, with room below the cards so it sits
+   on the bottom edge instead of peeking out from behind a card */
+.page-head:has(.grid) {
+  padding-bottom: clamp(4.5rem, 8vw, 6.5rem);
+}
+.page-head:has(.grid)::after {
+  width: clamp(6rem, 11vw, 9.5rem);
+}
+
+/* About and Contact heads: text and arched photo; the sun moves behind the photo instead */
+.page-head:has(.split)::after {
+  display: none;
+}
+
+/* ---------- Home hero ---------- */
+
+.hero {
+  padding-block: clamp(2.25rem, 5vw, 4rem) clamp(3rem, 7vw, 5.5rem);
+}
+.hero h1 {
+  max-width: 13ch;
+  font-size: clamp(2.5rem, 1rem + 4.7vw, 4.4rem);
+  margin-bottom: 0.4em;
+}
+.hero .lead {
+  max-width: 34rem;
+}
+
+.cb-art {
+  position: relative;
+  width: min(100%, 34rem);
+  aspect-ratio: 1;
+  margin-inline: auto;
+}
+.cb-shape {
+  position: absolute;
+  display: block;
+}
+.cb-sun {
+  top: 0;
+  right: 0;
+  width: 56%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--highlight);
+}
+.cb-stripes {
+  top: 3%;
+  left: 0;
+  width: 44%;
+  height: 6.6rem; /* ends on a whole stripe */
+  background: repeating-linear-gradient(180deg, var(--secondary) 0 0.6rem, transparent 0.6rem 1.2rem);
+}
+.cb-half {
+  left: 0;
+  bottom: 0;
+  width: 40%;
+  aspect-ratio: 2 / 1;
+  border-radius: 999px 999px 0 0;
+  background: var(--mint);
+}
+.cb-circle {
+  position: absolute;
+  top: 13%;
+  left: 7%;
+  width: 77%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.cb-circle .photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.cb-circle .photo-ph {
+  padding: 12%;
+}
+.cb-quarter {
+  right: 0;
+  bottom: 0;
+  width: 34%;
+  aspect-ratio: 1;
+  border-top-left-radius: 100%;
+  background: var(--primary);
+}
+.cb-dots {
+  left: 2%;
+  bottom: 2%;
+  width: 16%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, var(--ink) 0 26%, transparent 29%) 0 0 / 25% 25%;
+}
+
+/* ---------- Photos and placeholders ---------- */
+
+.photo {
+  border-radius: var(--radius);
+  background: var(--secondary-soft);
+}
+.photo-ph {
+  background: url("scene.svg") center / cover no-repeat, var(--secondary-soft);
+}
+.photo-ph span {
+  background: var(--surface);
+  color: var(--ink);
+  border: 2px dashed var(--primary-text);
+  border-radius: var(--radius);
+  padding: 0.35em 0.85em;
+  line-height: 1.35;
+}
+
+/* ---------- Cards: flat, white, framed in ink ---------- */
+
+.card {
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: none;
+}
+
+/* Steps: oversized numbers over a three-color rule */
+.steps li {
+  padding-top: 1rem;
+  border-top: 0.5rem solid var(--primary);
+}
+.steps li:nth-child(3n + 2) {
+  border-top-color: var(--highlight);
+}
+.steps li:nth-child(3n) {
+  border-top-color: var(--secondary);
+}
+.steps li::before {
+  content: counter(step, decimal-leading-zero);
+  position: static;
+  display: block;
+  width: auto;
+  height: auto;
+  margin-bottom: 0.75rem;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--secondary); /* 7.0 on page, 7.5 on white */
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-stretch: 112%;
+  font-size: clamp(4.25rem, 3rem + 3.5vw, 6.25rem);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+}
+.steps h3 {
+  margin-bottom: 0.4em;
+}
+/* on cobalt: sunflower numbers (5.2) and a white-and-color rule */
+.hero ~ .section-white[aria-labelledby="how-heading"] .steps li::before {
+  color: var(--highlight);
+}
+.hero ~ .section-white[aria-labelledby="how-heading"] .steps li:nth-child(3n) {
+  border-top-color: #ffffff;
+}
+
+.feature-icon {
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1rem;
+}
+
+/* ---------- Trip cards ---------- */
+
+.trip-card .photo {
+  border-radius: 0;
+  border-bottom: var(--border);
+}
+.trip-card:hover {
+  box-shadow: none;
+  background: var(--highlight-soft);
+}
+.trip-card-body {
+  padding: 1.35rem 1.5rem 1.6rem;
+}
+.trip-price strong {
+  font-family: var(--font-head);
+  font-weight: 850;
+}
+.trip-card-more {
+  /* looks like a button so the whole card reads as tappable (the card itself is the link) */
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+  padding: 0.5em 1.25em;
+  background: var(--ink);
+  color: #ffffff;
+  border-radius: var(--radius);
+  text-decoration: none;
+}
+.trip-card:hover .trip-card-more {
+  background: var(--secondary);
+}
+
+.pill {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 0.2em 0.7em;
+}
+.pill-open {
+  background: var(--mint);
+}
+.pill-soldout {
+  background: var(--primary-soft);
+}
+.pill-sun {
+  background: var(--highlight);
+}
+
+/* More-card: a mint block with a cobalt quarter circle in its corner */
+.more-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--mint);
+  padding-right: clamp(4rem, 8vw, 6rem);
+}
+.more-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: clamp(3rem, 6vw, 4.5rem);
+  aspect-ratio: 1;
+  border-bottom-left-radius: 100%;
+  background: var(--secondary);
+}
+/* Next to a single trip card the more-card fills the row as a little sunset block:
+   oversized heading on top, a sunflower sun setting into cobalt stripes along the bottom */
+@media (min-width: 56em) {
+  .grid-3 > .more-card:nth-child(2):last-child {
+    align-self: stretch;
+    justify-content: flex-start;
+    padding: clamp(2.5rem, 4vw, 3.5rem);
+    padding-bottom: 9rem;
+  }
+  .grid-3 > .more-card:nth-child(2):last-child > * {
+    position: relative;
+    max-width: 28rem;
+  }
+  .grid-3 > .more-card:nth-child(2):last-child h3 {
+    font-weight: 900;
+    font-stretch: 108%;
+    font-size: clamp(2.1rem, 1.1rem + 2.2vw, 3.1rem);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    max-width: 13ch;
+    margin-bottom: 0.45em;
+  }
+  .grid-3 > .more-card:nth-child(2):last-child p {
+    font-size: 1.1em;
+  }
+  .grid-3 > .more-card:nth-child(2):last-child::before {
+    /* the sun */
+    content: "";
+    position: absolute;
+    right: 9%;
+    bottom: 1.25rem;
+    width: clamp(9rem, 17vw, 14rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--highlight);
+  }
+  .grid-3 > .more-card:nth-child(2):last-child::after {
+    /* the sea: cobalt stripes across the bottom, the sun shows between them */
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: 6.3rem;
+    aspect-ratio: auto;
+    border-radius: 0;
+    background: repeating-linear-gradient(180deg, var(--secondary) 0 0.7rem, transparent 0.7rem 1.4rem);
+  }
+}
+
+/* ---------- Quotes ---------- */
+
+.quote blockquote {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 1.45;
+}
+.quote blockquote::before {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--ink);
+  font-weight: 900;
+  font-size: 3.25rem;
+  line-height: 1;
+  padding-top: 0.16em;
+}
+.quote-ph {
+  border-style: dashed;
+}
+
+/* ---------- Band: tomato block with a sun and stripes ---------- */
+
+.band {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--primary);
+  border-block: 0;
+  padding-block: clamp(3.5rem, 8vw, 5.5rem);
+}
+.band::before,
+.band::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+.band::before {
+  /* a sunflower sun rising off the right edge */
+  right: -4rem;
+  bottom: -5rem;
+  width: clamp(11rem, 26vw, 22rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--highlight);
+}
+.band::after {
+  /* cobalt stripes in the top left corner */
+  top: 0;
+  left: 0;
+  width: clamp(6rem, 14vw, 11rem);
+  height: 2.6rem;
+  background: repeating-linear-gradient(180deg, var(--secondary) 0 0.45rem, transparent 0.45rem 0.9rem);
+}
+.band h2 {
+  font-size: clamp(2.1rem, 1.3rem + 3.2vw, 3.75rem);
+}
+.band .btn-dark {
+  min-height: 3.5rem;
+  padding-inline: 1.75em;
+}
+@media (max-width: 47.99em) {
+  .band {
+    padding-bottom: 5.5rem;
+  }
+  .band::before {
+    width: 9rem;
+    right: -2.5rem;
+    bottom: -4.5rem;
+  }
+  .band::after {
+    height: 1.8rem;
+  }
+}
+
+/* ---------- Split: photo + text; the photo is an arch with a circle behind it ---------- */
+
+.split {
+  position: relative;
+  isolation: isolate;
+}
+.split .photo {
+  border: 0;
+  box-shadow: none;
+  border-radius: 999px 999px var(--radius) var(--radius);
+}
+.split::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -1.75rem;
+  left: -1.75rem;
+  width: clamp(7rem, 16vw, 11rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--highlight);
+  pointer-events: none;
+}
+@media (max-width: 47.99em) {
+  .split::before {
+    left: -1rem;
+  }
+  /* About on phones: the text comes first, so the circle sits under the photo's corner */
+  .page-head .split::before {
+    top: auto;
+    bottom: -2rem;
+  }
+}
+/* Contact: the heading, lead and two cards are taller than the photo, which sits centered beside
+   them, so the circle is placed in the photo's grid cell and lifted by half the photo's height
+   (4:5, at most 22rem wide; margin percentages follow the cell's width) to stay tucked behind the
+   arch's top corner, as on About */
+@media (min-width: 48em) {
+  .split:has(.contact-card)::before {
+    grid-area: 1 / 1 / 2 / 2;
+    top: 50%;
+    margin-top: calc(-0.625 * min(22rem, 100%) - 1.75rem);
+  }
+}
+
+/* ---------- Prose: a short color bar over each heading ---------- */
+
+.prose h2 {
+  font-size: clamp(1.75rem, 1.35rem + 1.5vw, 2.4rem);
+}
+.prose h2::before {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 0.45rem;
+  margin-bottom: 0.9rem;
+  background: var(--primary);
+}
+.prose h2:nth-of-type(3n + 2)::before {
+  background: var(--secondary);
+}
+.prose h2:nth-of-type(3n)::before {
+  background: var(--highlight);
+}
+.prose ul:not(.checklist) {
+  list-style: square;
+  padding-left: 1.4em;
+}
+.prose ul:not(.checklist) li::marker {
+  color: var(--primary-text);
+}
+.prose li {
+  margin-bottom: 0.35em;
+}
+
+/* ---------- Trip page ---------- */
+
+.trip-hero {
+  background: var(--highlight);
+  padding-block: clamp(2rem, 5vw, 3.5rem) clamp(3rem, 6vw, 4.5rem);
+}
+.trip-hero .photo {
+  border: var(--border);
+  box-shadow: none;
+  border-radius: var(--radius) clamp(6rem, 22vw, 13rem) var(--radius) var(--radius);
+  margin-top: 1.5rem;
+}
+.trip-hero .card {
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(clamp(1.25rem, 3vw, 2rem) + 0.6rem);
+}
+
+.facts div {
+  border-bottom: 2px solid var(--rule);
+}
+
+.days li {
+  grid-template-columns: 4.75rem 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  border-bottom: 2px solid var(--rule);
+}
+.day-num {
+  display: grid;
+  place-items: center;
+  width: 4.75rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--highlight);
+  color: var(--ink);
+  font-weight: 850;
+  font-size: 1.05rem;
+  line-height: 1;
+  text-align: center;
+}
+.days li:nth-child(4n + 2) .day-num {
+  background: var(--primary);
+}
+.days li:nth-child(4n + 3) .day-num {
+  background: var(--mint);
+}
+.days li:nth-child(4n) .day-num {
+  background: var(--pink);
+}
+
+.qa dt {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.2em;
+  line-height: 1.3;
+}
+
+/* ---------- Forms ---------- */
+
+.form-card,
+.trip-hero .card {
+  position: relative;
+  overflow: hidden;
+}
+.form-card {
+  padding-top: calc(clamp(1.25rem, 3vw, 2rem) + 0.6rem);
+}
+.form-card::before,
+.trip-hero .card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.6rem;
+  background: var(--strip);
+}
+
+/* Every form sits on its own soft cobalt block (contact, custom trip, booking), so the form
+   reads as one calm place to fill in. On wide screens a sunset-in-an-arch fills the empty
+   space next to the form card. */
+.section:has(> .wrap > .form-card) {
+  background: var(--secondary-soft); /* ink 14.7, cobalt step numbers 6.0 */
+}
+@media (min-width: 75em) {
+  .form-card {
+    overflow: visible;
+    margin-inline: 0; /* the art fills the space to its right */
+  }
+  .form-card::before {
+    border-radius: calc(var(--radius) - 3px) calc(var(--radius) - 3px) 0 0;
+  }
+  .form-card::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* level with the middle of the form, however long it is */
+    left: calc(100% + clamp(4rem, 8vw, 8rem));
+    width: 20rem;
+    aspect-ratio: 320 / 440;
+    background: url("form-art.svg") center / contain no-repeat;
+    pointer-events: none;
+  }
+}
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="tel"],
+.field select,
+.field textarea {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+}
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible {
+  outline: 4px solid var(--link);
+  outline-offset: 2px;
+}
+/* fields to fix: a thicker brick-red frame (5.4 on white), radio groups included */
+.field input[aria-invalid="true"],
+.field select[aria-invalid="true"],
+.field textarea[aria-invalid="true"],
+fieldset.field[aria-invalid="true"] .option {
+  border: 3px solid var(--primary-text);
+}
+.field-readonly {
+  border: 2px dashed var(--muted);
+  border-radius: var(--radius);
+}
+.option {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+}
+.option:hover {
+  background: var(--highlight-soft);
+}
+.option:has(input:checked) {
+  background: var(--highlight);
+  border-color: var(--ink);
+}
+.option input {
+  accent-color: var(--ink);
+}
+.form-alert {
+  border-radius: var(--radius);
+}
+
+/* ---------- Contact ---------- */
+
+.contact-card .big-link {
+  font-weight: 850;
+  letter-spacing: -0.02em; /* keeps the address on one line in the narrower card next to the photo */
+  text-wrap: balance; /* when it must wrap, it splits before the @ instead of leaving ".com" alone */
+}
+/* very small phones: a size down, so "@onyxworldtravel.com" fits on its line */
+@media (max-width: 22.49em) {
+  .contact-card .big-link {
+    font-size: 1.2rem;
+  }
+}
+
+/* ---------- Gallery: each photo gets a different geometric crop ---------- */
+
+.gallery .photo {
+  border: var(--border);
+  border-radius: var(--radius);
+}
+.gallery li:nth-child(3n + 1) .photo {
+  border-top-left-radius: 7rem;
+}
+.gallery li:nth-child(3n + 2) .photo {
+  border-radius: 999px 999px var(--radius) var(--radius);
+}
+.gallery li:nth-child(3n) .photo {
+  border-bottom-right-radius: 7rem;
+}
+/* placeholder skies take turns: cobalt tint, sunflower tint, mint tint, pink tint */
+.gallery li:nth-child(4n + 2) .photo-ph {
+  background-color: var(--highlight-soft);
+}
+.gallery li:nth-child(4n + 3) .photo-ph {
+  background-color: #d8f5e8;
+}
+.gallery li:nth-child(4n) .photo-ph {
+  background-color: #ffe0ec;
+}
+.gallery figcaption {
+  margin-top: 0.6rem;
+}
+.lightbox {
+  border-radius: var(--radius);
+}
+.lightbox::backdrop {
+  background: rgb(20 20 20 / 0.88);
+}
+.lightbox img {
+  border-radius: var(--radius);
+}
+
+/* ---------- Short pages (thanks, 404, terms, privacy): shapes on the right ---------- */
+
+main > .section:only-child {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(6rem, 9vw, 7rem) clamp(6rem, 9vw, 7rem);
+  min-height: 34rem;
+}
+main > .section:only-child::before,
+main > .section:only-child::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+main > .section:only-child::before {
+  /* sun */
+  top: -3rem;
+  right: -3rem;
+  width: 8rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--highlight);
+}
+main > .section:only-child::after {
+  /* tomato quarter circle on the bottom edge */
+  bottom: 0;
+  right: 0;
+  width: 4.5rem;
+  aspect-ratio: 1;
+  border-top-left-radius: 100%;
+  background: var(--primary);
+}
+@media (min-width: 64em) {
+  /* thanks and 404: the text lines up with the logo (like terms and privacy) so the shapes
+     on the right never run under it */
+  main > .section:only-child > .wrap.measure {
+    margin-left: max(var(--gutter), (100% - var(--wrap)) / 2);
+  }
+  main > .section:only-child::before {
+    top: 50%;
+    right: max(-6rem, calc((100vw - var(--wrap)) / 2 - 10rem));
+    width: 26rem;
+    transform: translateY(-50%);
+  }
+  main > .section:only-child::after {
+    width: 13rem;
+  }
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  position: relative;
+  color: #ffffff;
+  padding-top: calc(clamp(2.5rem, 6vw, 4rem) + 0.6rem + 3px);
+}
+.site-footer::before {
+  /* the header strip, mirrored, with an ink edge above it */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(0.6rem + 3px);
+  border-top: 3px solid var(--ink);
+  background: var(--strip-reverse);
+}
+.site-footer a {
+  color: #ffffff;
+}
+.site-footer h2 {
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: 0;
+}
+.footer-tagline {
+  font-weight: 850;
+  font-stretch: 108%;
+  font-size: clamp(1.6rem, 1.3rem + 1vw, 2.1rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+@media print {
+  .site-header::after,
+  .site-footer::before,
+  .page-head::before,
+  .page-head::after,
+  .band::before,
+  .band::after,
+  .split::before,
+  main > .section:only-child::before,
+  main > .section:only-child::after,
+  .form-card::after,
+  .more-card::before,
+  .more-card::after {
+    display: none;
+  }
+  .page-head,
+  .trip-hero,
+  .section-sun,
+  .section-lagoon,
+  .section:has(> .wrap > .form-card) {
+    background: #fff;
+    color: #000;
+  }
+}

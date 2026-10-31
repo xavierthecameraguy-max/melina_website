@@ -1,0 +1,71 @@
+/* Sunny Passport: cream, coral and sunshine, postcard and passport-stamp details.
+   Colors are the defaults in site.css :root, so only the font and hero artwork live here. */
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("../../fonts/fraunces-latin-soft-normal.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Home hero: a postcard with a passport stamp, in front of a big sun ---------- */
+
+.hero::before {
+  /* the sun behind the postcard */
+  content: "";
+  position: absolute;
+  width: min(38rem, 80vw);
+  aspect-ratio: 1;
+  right: -8rem;
+  top: -6rem;
+  border-radius: 50%;
+  background: var(--highlight-soft);
+  z-index: -1;
+}
+
+.postcard {
+  position: relative;
+  background: var(--surface);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: 8px 8px 0 var(--primary);
+  padding: 0.9rem;
+  transform: rotate(-2deg);
+  max-width: 34rem;
+  margin-inline: auto;
+}
+.postcard .photo {
+  aspect-ratio: 4 / 3;
+}
+.postcard-caption {
+  font-family: var(--font-head);
+  font-variation-settings: var(--head-settings);
+  font-size: 1.15rem;
+  margin: 0.75rem 0.25rem 0.1rem;
+}
+.stamp {
+  position: absolute;
+  width: clamp(6.5rem, 18vw, 8.5rem);
+  right: -1.5rem;
+  top: -2rem;
+  transform: rotate(12deg);
+}
+@media (max-width: 37.5em) {
+  .stamp {
+    right: -0.5rem;
+  }
+}
+
+/* ---------- Contact ---------- */
+
+/* when the email wraps, break it at the "@" rather than leaving ".com" alone on a line */
+.contact-card .big-link {
+  text-wrap: balance;
+}
+/* very small phones: a size down, so "@onyxworldtravel.com" fits on its line */
+@media (max-width: 22.49em) {
+  .contact-card .big-link {
+    font-size: 1.2rem;
+  }
+}

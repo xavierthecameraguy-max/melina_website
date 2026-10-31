@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+  <!-- Photo placeholder for the Travel Journal design: a sketchbook landscape, watercolor washes with pen lines -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3dfae"/>
+      <stop offset="1" stop-color="#fbf3e3"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#sky)"/>
+  <circle cx="300" cy="86" r="34" fill="#e8b23a" opacity=".9"/>
+  <path d="M268 80c4-22 30-34 50-24 18 9 22 34 8 48" fill="none" stroke="#2b2a33" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+  <path d="M0 196l52-58 30 30 58-70 56 74 30-26 54 46 38-30 82 50v128H0z" fill="#c9d8c3"/>
+  <path d="M0 194l52-58 30 30 58-70 56 74 30-26 54 46 38-30 80 50" fill="none" stroke="#2b2a33" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" opacity=".55"/>
+  <path d="M0 222c64-34 122-30 176-12s120 12 224-20v110H0z" fill="#6f8f74"/>
+  <path d="M0 258c86-22 172-20 248-6s110 4 152-6v54H0z" fill="#e7b9a2"/>
+  <path d="M168 300c24-28 66-42 52-62-10-14 4-24 14-30h5c-8 8-16 18-6 30 18 22-22 40-38 62z" fill="#fbf3e3"/>
+  <path d="M196 296c18-20 40-32 33-48m-1-14c-5-8 0-16 6-21" fill="none" stroke="#b5512f" stroke-width="2.4" stroke-dasharray="6 6" stroke-linecap="round"/>
+  <path d="M70 70q7-7 14 0q7-7 14 0M112 92q5-5 10 0q5-5 10 0" fill="none" stroke="#2b2a33" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+</svg>
