@@ -12,23 +12,31 @@ description: What travelers say about trips with Milena and Onyx World Travel.
 
 <section class="section section-white">
   <div class="wrap">
-    {%- if reviews.length or site.draft %}
-    <div class="grid grid-2">
-      {%- if reviews.length %}
+    {%- if reviews.length %}
+    <div class="reviews-list">
       {%- for review in reviews %}
-      <figure class="card quote">
-        <blockquote><p>{{ review.quote }}</p></blockquote>
-        <figcaption>{{ review.name }}, {{ review.trip }}</figcaption>
+      <figure class="card quote review" id="{{ review.name | slugify }}">
+        {%- if review.highlight %}
+        {#- the highlight repeats a sentence from the review, so screen readers skip it -#}
+        <p class="review-highlight" aria-hidden="true">{{ review.highlight }}</p>
+        {%- endif %}
+        <blockquote class="review-text">
+          {%- for paragraph in review.quote | paragraphs %}
+          <p>{{ paragraph }}</p>
+          {%- endfor %}
+        </blockquote>
+        <figcaption>{{ review.name }}{% if review.trip %}, {{ review.trip }}{% endif %}</figcaption>
       </figure>
       {%- endfor %}
-      {%- elif site.draft %}
+    </div>
+    {%- elif site.draft %}
+    <div class="grid grid-2">
       {%- for i in range(4) %}
       <figure class="card quote quote-ph">
         <blockquote><p>{% ph "A sentence or two from a past traveler, used with their permission" %}</p></blockquote>
         <figcaption>{% ph "First name, Trip and year" %}</figcaption>
       </figure>
       {%- endfor %}
-      {%- endif %}
     </div>
     {%- else %}
     <p class="lead">My first reviews are on their way. In the meantime, I'd love to tell you about my trips myself: <a href="/contact/">get in touch</a>.</p>

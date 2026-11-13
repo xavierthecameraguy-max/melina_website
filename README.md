@@ -26,7 +26,7 @@ All content lives in `src/`.
 | Add a trip | Copy `src/trips/sample-trip.md`, rename it (the file name becomes the web address), fill in each line |
 | A trip is over | In that trip's file, set `past: true`. It leaves the list; its page stays up (so links already sent still work) and says the trip has wrapped up |
 | A trip is sold out | In that trip's file, set `status: soldout`. The booking form becomes a waitlist |
-| Reviews | `src/_data/reviews.json`: `[{ "quote": "...", "name": "Sue", "trip": "Italy 2026" }]` |
+| Reviews | `src/_data/reviews.json`: `[{ "highlight": "...", "quote": ["First paragraph", "Second paragraph"], "name": "Sue", "trip": "Italy 2026" }]`. `highlight` is one sentence copied from the review, shown big on Home and above the full review; `trip` can be left `""`. The first three reviews show on Home |
 | Gallery photos | Put photos in `src/assets/photos/`, then list them in `src/_data/gallery.json`: `[{ "src": "/assets/photos/rome.jpg", "alt": "The group at the Colosseum", "caption": "Rome, 2025" }]` |
 | Page text | The matching file in `src/` (`index.njk` is Home) |
 | Colors and fonts | `src/assets/css/site.css` (the palette is at the top) |

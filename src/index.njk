@@ -110,8 +110,9 @@ title: Home
       {%- if reviews.length %}
       {%- for review in reviews | head(3) %}
       <figure class="card quote">
-        <blockquote><p>{{ review.quote }}</p></blockquote>
-        <figcaption>{{ review.name }}, {{ review.trip }}</figcaption>
+        <blockquote><p>{{ review.highlight or (review.quote | paragraphs | first) }}</p></blockquote>
+        <figcaption>{{ review.name }}{% if review.trip %}, {{ review.trip }}{% endif %}</figcaption>
+        <p class="quote-more"><a href="/reviews/#{{ review.name | slugify }}">Read the full review<span class="visually-hidden"> from {{ review.name }}</span></a></p>
       </figure>
       {%- endfor %}
       {%- else %}

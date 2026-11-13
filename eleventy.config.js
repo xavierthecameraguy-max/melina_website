@@ -34,6 +34,9 @@ export default function (eleventyConfig) {
       .sort((a, b) => a.data.startDate - b.data.startDate)
   );
 
+  // A review's text as a list of paragraphs: "quote" can be one string or a list of them.
+  eleventyConfig.addFilter("paragraphs", (text) => (Array.isArray(text) ? text : [text]).filter(Boolean));
+
   // First n items of a list: {{ collections.upcomingTrips | head(3) }}
   eleventyConfig.addFilter("head", (list, n) => (list || []).slice(0, n));
 
