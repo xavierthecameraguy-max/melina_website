@@ -77,6 +77,7 @@ h4,
 .brand-name,
 .day-num,
 .quote blockquote,
+.review-highlight,
 .contact-card .big-link {
   /* Young Serif defaults to old-style figures, where a "1" reads like a dotless i: use lining ones */
   font-variant-numeric: lining-nums;
@@ -692,6 +693,41 @@ main > .section:only-child > .wrap.measure::before {
 .quote-ph {
   border: 2px dashed rgb(94 85 72 / 0.55);
   box-shadow: var(--pop);
+}
+/* Home: the name and "Read the full review" sit at the foot of each card, level across the row */
+.quote:has(> .quote-more) {
+  display: flex;
+  flex-direction: column;
+}
+.quote:has(> .quote-more) blockquote {
+  flex-grow: 1;
+  margin-bottom: 1em; /* margins no longer collapse in a flex card: keep the old gap above the name */
+}
+.quote:has(> .quote-more) blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+/* Reviews page: the tapes take turns like on Home, and each highlight is a pull quote
+   with the same terracotta quote mark, ruled off from the full review below it like the trip page's lists */
+.reviews-list > .review:nth-child(3n + 2) {
+  --tape: var(--tape-clay);
+  --tape-tilt: 3deg;
+}
+.reviews-list > .review:nth-child(3n) {
+  --tape: var(--tape-sage);
+}
+.review-highlight {
+  padding-bottom: 1.1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1.5px solid var(--ruled);
+}
+.review-highlight::before {
+  content: "\201C";
+  display: block;
+  font-size: 4rem;
+  line-height: 0.75;
+  margin-bottom: 0.1rem;
+  color: var(--primary-text);
 }
 
 /* ---------- Band: a ticket stub ---------- */

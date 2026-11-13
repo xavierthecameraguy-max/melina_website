@@ -57,6 +57,33 @@
   }
 }
 
+/* ---------- Reviews ---------- */
+
+/* Home: the names and "Read the full review" links line up along the bottom of the cards */
+.quote:has(.quote-more) {
+  display: flex;
+  flex-direction: column;
+}
+.quote:has(.quote-more) blockquote {
+  flex-grow: 1;
+}
+.quote:has(.quote-more) blockquote > :last-child {
+  margin-bottom: 0; /* as a flex item it no longer collapses into the blockquote's own margin */
+}
+
+/* Reviews page: the highlight gets the coral quote mark of the Home cards, so it reads as a quote, not a heading */
+.review-highlight {
+  margin-bottom: 1.5rem;
+}
+.review-highlight::before {
+  content: "\201C";
+  display: block;
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 0.8;
+  color: var(--primary-text);
+}
+
 /* ---------- Contact ---------- */
 
 /* when the email wraps, break it at the "@" rather than leaving ".com" alone on a line */
