@@ -624,7 +624,8 @@ main > .section:first-child {
   font-size: 1.2rem;
   line-height: 1.55;
 }
-.quote blockquote::before {
+.quote blockquote::before,
+.review-highlight::before {
   font-family: var(--font-head);
   font-weight: 700;
   font-style: normal;
@@ -640,6 +641,36 @@ main > .section:first-child {
 .quote-ph {
   border-style: dashed;
   box-shadow: none;
+}
+
+/* Home: side by side, the cards share rows, so the rules, names and "Read the full review"
+   links line up however long each highlight or name runs */
+@media (min-width: 40em) {
+  .grid > .quote:has(.quote-more) {
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+  .grid > .quote:has(.quote-more) blockquote > :last-child {
+    margin-bottom: 0; /* a grid item no longer collapses it into the blockquote's margin */
+  }
+}
+.quote:has(.quote-more) figcaption {
+  line-height: 1.35; /* a long trip name can wrap in the narrow cards */
+}
+
+/* Reviews page: the highlight is the pull quote, under the orange quote mark of the Home
+   cards; the full review below it is upright body text, easier to read at length */
+.review-highlight {
+  margin-bottom: 1.5rem;
+}
+.review-highlight::before {
+  content: "\201C";
+  display: block;
+}
+.quote .review-text {
+  font-style: normal;
 }
 
 /* ---------- Band: the sunset sky above the footer's mountains ---------- */

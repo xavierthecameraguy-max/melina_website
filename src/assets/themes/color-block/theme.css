@@ -700,7 +700,9 @@ main:has(.contact-card) > .page-head {
   font-size: 1.3rem;
   line-height: 1.45;
 }
-.quote blockquote::before {
+.quote blockquote::before,
+.review-highlight::before {
+  content: "\201C";
   display: grid;
   place-items: center;
   width: 3.25rem;
@@ -717,8 +719,25 @@ main:has(.contact-card) > .page-head {
 .quote-ph {
   border-style: dashed;
 }
-
-/* ---------- Band: tomato block with a sun and stripes ---------- */
+/* Home: the names and "Read the full review" links line up along the bottom of the cards */
+.grid-3 > .quote {
+  display: flex;
+  flex-direction: column;
+}
+.grid-3 > .quote blockquote {
+  margin-bottom: 1.25rem;
+}
+.grid-3 > .quote blockquote p {
+  margin-bottom: 0;
+}
+.grid-3 > .quote figcaption {
+  margin-top: auto;
+}
+/* Reviews page: the tomato quote circle sits over each highlight (above), and the full
+   review is plain body text, not the semibold of the short quotes */
+.quote .review-text {
+  font-weight: 400;
+}: tomato block with a sun and stripes ---------- */
 
 .band {
   position: relative;

@@ -727,6 +727,58 @@ main > .section:only-child::after {
   border-left: 0;
 }
 
+/* Home: the bubbles in a row stretch to one height, so the names and links line up */
+.grid > .quote {
+  display: flex;
+  flex-direction: column;
+}
+.grid > .quote blockquote {
+  flex-grow: 1;
+}
+/* "Read the full review" sits under the name, bold with an arrow like "See the trip" */
+.quote-more {
+  padding-left: 1.25rem;
+  margin-top: 0.35rem;
+}
+.quote-more a {
+  font-weight: 800;
+}
+.quote-more a::after {
+  content: " \2192";
+}
+
+/* Reviews page: the highlight is a pull quote with the berry quote mark of the Home
+   bubbles; the full review below reads as body text, with real paragraph breaks and a
+   roomier bubble, and the bubbles take turns in sky, pink and mango */
+.reviews-list {
+  gap: clamp(2.5rem, 6vw, 3.5rem);
+}
+.review-highlight::before {
+  content: "\201C";
+  display: block;
+  height: 2.6rem;
+  color: var(--primary-text);
+  font-size: 4rem;
+  line-height: 0.9;
+}
+.quote .review-text {
+  font-weight: inherit;
+  padding: clamp(1.35rem, 3vw, 2rem) clamp(1.35rem, 4vw, 2.5rem) clamp(1.5rem, 3.5vw, 2.25rem);
+}
+.quote .review-text p + p {
+  margin-top: 0.85em;
+}
+.reviews-list > .review:nth-child(3n + 2) .review-text {
+  --bubble: var(--primary-soft);
+}
+.reviews-list > .review:nth-child(3n + 3) .review-text {
+  --bubble: var(--highlight-soft);
+}
+/* room above the note for its hibiscus sticker */
+.reviews-list + .more-card {
+  margin-top: clamp(3rem, 7vw, 4rem);
+}
+
 /* ---------- Band ---------- */
 
 .band {

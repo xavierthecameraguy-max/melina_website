@@ -70,6 +70,9 @@
 .quote:has(.quote-more) blockquote > :last-child {
   margin-bottom: 0; /* as a flex item it no longer collapses into the blockquote's own margin */
 }
+.quote:has(.quote-more) figcaption {
+  line-height: 1.35; /* a name with a long trip can wrap in the narrow cards */
+}
 
 /* Reviews page: the highlight gets the coral quote mark of the Home cards, so it reads as a quote, not a heading */
 .review-highlight {

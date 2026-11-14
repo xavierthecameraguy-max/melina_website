@@ -540,6 +540,47 @@ a:hover {
   box-shadow: none;
   background: var(--surface);
 }
+/* Home: names and "Read the full review" links line up along the bottom of the cards */
+.quote:has(.quote-more) {
+  display: flex;
+  flex-direction: column;
+}
+.quote:has(.quote-more) figcaption {
+  margin-top: auto;
+}
+.quote:has(.quote-more) blockquote {
+  margin-bottom: 1.25rem;
+}
+.quote:has(.quote-more) blockquote > :last-child {
+  margin-bottom: 0; /* margins no longer collapse in the flex column */
+}
+/* Reviews page: the terracotta quote mark sits on the highlight, the full review below it in
+   plain body text, and the name signs off after a little wave, clear of the last paragraph */
+.review-highlight {
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+}
+.review-highlight::before {
+  content: "\201C";
+  display: block;
+  font-size: 4.5rem;
+  line-height: 0.75;
+  height: 2.1rem;
+  color: var(--mb-terra);
+}
+.review figcaption {
+  margin-top: 1.75rem;
+}
+.review figcaption::before {
+  content: "";
+  display: inline-block;
+  width: 2.25rem;
+  height: 0.7rem;
+  margin-right: 0.6rem;
+  vertical-align: 0.05em;
+  background: url("wave.svg") center / contain no-repeat;
+}
 
 /* ---------- Band: a calm sea-blue strip ---------- */
 
