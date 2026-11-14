@@ -659,6 +659,12 @@ main > .section:first-child {
 .quote:has(.quote-more) figcaption {
   line-height: 1.35; /* a long trip name can wrap in the narrow cards */
 }
+/* the cards share rows, so one name wrapping would leave a blank line under the others */
+@media (min-width: 56em) and (max-width: 74.99em) {
+  .grid > .quote:has(.quote-more) figcaption {
+    font-size: 0.9em;
+  }
+}
 
 /* Reviews page: the highlight is the pull quote, under the orange quote mark of the Home
    cards; the full review below it is upright body text, easier to read at length */

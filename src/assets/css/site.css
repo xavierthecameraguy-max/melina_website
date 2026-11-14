@@ -859,6 +859,9 @@ main:focus {
   padding-top: 0.5rem;
 }
 
+.more-card a {
+  white-space: nowrap; /* a short link like "Send me a note" moves to its own line in one piece */
+}
 .more-card {
   display: flex;
   flex-direction: column;

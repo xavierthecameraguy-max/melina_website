@@ -739,6 +739,10 @@ main > .section:only-child::after {
 .grid:has(> .quote) {
   row-gap: clamp(2.25rem, 5vw, 2.75rem);
 }
+/* "Read more reviews" gets the same room below the bubbles as between their rows */
+.grid:has(> .quote) + .btn-row {
+  margin-top: clamp(2.25rem, 5vw, 2.75rem);
+}
 /* "Read the full review" sits under the name, bold with an arrow like "See the trip" */
 .quote-more {
   padding-left: 1.25rem;

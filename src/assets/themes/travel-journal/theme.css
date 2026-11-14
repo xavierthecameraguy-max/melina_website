@@ -706,6 +706,10 @@ main > .section:only-child > .wrap.measure::before {
 .quote:has(> .quote-more) blockquote > :last-child {
   margin-bottom: 0;
 }
+.quote:has(> .quote-more) figcaption {
+  line-height: 1.35; /* a long trip name can wrap in the narrow cards */
+  text-wrap: balance;
+}
 
 /* Reviews page: the tapes take turns like on Home, and each highlight is a pull quote
    with the same terracotta quote mark, ruled off from the full review below it like the trip page's lists */
@@ -715,6 +719,13 @@ main > .section:only-child > .wrap.measure::before {
 }
 .reviews-list > .review:nth-child(3n) {
   --tape: var(--tape-sage);
+}
+/* the same clearance for the tapes as the taped cards on Home */
+.reviews-list {
+  gap: clamp(2.25rem, 4vw, 2.75rem);
+}
+.reviews-list + .more-card {
+  margin-top: clamp(2.25rem, 4vw, 2.75rem);
 }
 .review-highlight {
   padding-bottom: 1.1rem;

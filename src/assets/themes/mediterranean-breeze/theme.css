@@ -547,6 +547,8 @@ a:hover {
 }
 .quote:has(.quote-more) figcaption {
   margin-top: auto;
+  line-height: 1.35; /* a long trip name can wrap in the narrow cards */
+  text-wrap: balance;
 }
 .quote:has(.quote-more) blockquote {
   margin-bottom: 1.25rem;
