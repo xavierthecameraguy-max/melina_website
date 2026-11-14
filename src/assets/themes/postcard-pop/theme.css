@@ -735,6 +735,10 @@ main > .section:only-child::after {
 .grid > .quote blockquote {
   flex-grow: 1;
 }
+/* stacked bubbles: more room between rows, so each link stays with its own name */
+.grid:has(> .quote) {
+  row-gap: clamp(2.25rem, 5vw, 2.75rem);
+}
 /* "Read the full review" sits under the name, bold with an arrow like "See the trip" */
 .quote-more {
   padding-left: 1.25rem;

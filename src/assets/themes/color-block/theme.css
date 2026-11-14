@@ -732,12 +732,20 @@ main:has(.contact-card) > .page-head {
 }
 .grid-3 > .quote figcaption {
   margin-top: auto;
+  /* a name that wraps in a narrow card ("Kraków / and Rome") stays one tight block */
+  line-height: 1.35;
+  text-wrap: balance;
 }
 /* Reviews page: the tomato quote circle sits over each highlight (above), and the full
    review is plain body text, not the semibold of the short quotes */
+.review-highlight {
+  margin-bottom: 1.25rem;
+}
 .quote .review-text {
   font-weight: 400;
-}: tomato block with a sun and stripes ---------- */
+}
+
+/* ---------- Band: tomato block with a sun and stripes ---------- */
 
 .band {
   position: relative;
