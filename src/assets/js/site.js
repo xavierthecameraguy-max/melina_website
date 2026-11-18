@@ -158,11 +158,27 @@
         return;
       }
 
+      // No forms service connected yet (no access key in site.json): the answers still reach
+      // Milena, as an email written out in the visitor's own email app, ready to send.
       if (form.dataset.connected !== "yes") {
+        var lines = [];
+        new FormData(form).forEach(function (value, name) {
+          if (/^(access_key|subject|from_name|redirect|botcheck)$/.test(name)) return;
+          value = String(value).trim();
+          if (value) lines.push((name === "email" ? "Email" : name) + ": " + value);
+        });
+        var subject = form.querySelector('input[name="subject"]').value;
+        var mail = document.createElement("a");
+        mail.href = "mailto:" + form.dataset.mailto + "?subject=" + encodeURIComponent(subject) +
+          "&body=" + encodeURIComponent(lines.join("\n\n"));
+        mail.click();
+        var reach = form.querySelector(".form-actions p");
         showAlert(
           form,
-          "<h3>This form isn't connected yet</h3><p>This is a draft website, so nothing was sent. " +
-            "Once it goes live, this form will send straight to Milena.</p>",
+          "<h3>Almost done: press Send in your email app</h3><p>Your message to Milena is written out there, " +
+            "ready to go. If no email opened, write to <a href=\"mailto:" + form.dataset.mailto + "\">" +
+            form.dataset.mailto + "</a>" +
+            (reach ? " or " + reach.innerHTML.replace("Rather talk? ", "").replace("Call me", "call me") : "") + ".</p>",
           true
         );
         return;

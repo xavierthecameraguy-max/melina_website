@@ -109,7 +109,7 @@ fs.writeFileSync("_site/index.html", `<!doctype html>
       <ul>
         <li>The words are the same in all six, and any of your photos can go in any of them. Only the look changes.</li>
         <li>Anything in <span class="ph">[brackets]</span> is still to fill in, like your first trip and your reviews.</li>
-        <li>The forms don't send anything yet.</li>
+        <li>Every button works: the forms open your email app with the answers written out to me, ready to send.</li>
         <li>The bar at the top of every page has <strong>Next</strong>, which shows the same page in the next look.</li>
       </ul>
       <p>When you've had a look, tell me which one you like best and anything you'd change.</p>

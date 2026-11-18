@@ -5,4 +5,7 @@
   {%- if submitNote %}
   <p class="form-note">{{ submitNote }}</p>
   {%- endif %}
+  {%- if not site.web3formsAccessKey %}
+  <p class="form-note">This opens your email app with your answers, addressed to {{ site.owner }} and ready to send.</p>
+  {%- endif %}
 </form>
