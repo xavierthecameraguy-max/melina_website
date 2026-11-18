@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150">
+  <!-- Doodle for the "more trips" notes: a paper plane looping off on a dashed route. Decorative only. -->
+  <path d="M8 138c26 6 52-2 66-20 14-17 8-38-8-38-15 0-20 20-6 32 20 17 56 6 78-12 18-15 34-34 52-46" fill="none" stroke="#2f4b7c" stroke-width="3" stroke-dasharray="8 7" stroke-linecap="round" stroke-linejoin="round"/>
+  <g stroke="#2b2a33" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M232 10l-74 30 30 10z" fill="#fffaf1"/>
+    <path d="M232 10l-44 40 6 30z" fill="#e8b23a"/>
+    <path d="M188 50l-4 22 10 8z" fill="#e09676"/>
+  </g>
+</svg>

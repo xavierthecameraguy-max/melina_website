@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <!-- Paper grain: faint warm speckle, tiled behind the page. Kept light so text contrast is unchanged. -->
+  <filter id="grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="11" stitchTiles="stitch"/>
+    <feColorMatrix values="0 0 0 0 .36  0 0 0 0 .27  0 0 0 0 .17  .16 0 0 0 -.055"/>
+  </filter>
+  <filter id="fibre" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency=".012 .05" numOctaves="2" seed="3" stitchTiles="stitch"/>
+    <feColorMatrix values="0 0 0 0 .55  0 0 0 0 .42  0 0 0 0 .25  .09 0 0 0 -.03"/>
+  </filter>
+  <rect width="300" height="300" filter="url(#fibre)"/>
+  <rect width="300" height="300" filter="url(#grain)"/>
+</svg>
