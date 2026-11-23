@@ -12,7 +12,7 @@ The build guide (`1-build-guide.md`, Steps 8 and 13) points here. The words to p
 
 - **UNVERIFIED**: the research couldn't confirm it. Check it once in the real editor, or on a real phone, before relying on it. This is the same as "(check in the editor)" in the build guide.
 - **[TO FILL: ...]**: nobody knows this yet. Paste it exactly as written. Never guess it. Nothing marked [TO FILL] may be public at launch, except on the hidden Trip template, which keeps its blanks on purpose (build guide Step 10).
-- **Milena at the keyboard**: only works signed in as Milena. She does it, with you beside her or on a screen share. Never ask for her password.
+- **Milena at the keyboard**: only works signed in as Milena ([her Gmail address]). She does it, with you beside her or on a screen share. Never ask for her password.
 
 
 ## What Google Sites can link to (the research, in short)
@@ -36,7 +36,7 @@ Sources: support.google.com/sites/answer/90538 (buttons, links, social links), s
 
 # Part 1. The three Google Forms
 
-All three forms live in **Milena's own Google account**, so the answers and the "new response" emails are hers. You are added as Editor (build guide Step 1).
+All three forms live in **Milena's own Google account, [her Gmail address]** (her existing Gmail), so the answers and the "new response" emails are hers. You are added as Editor (build guide Step 1). That address never goes in a form's title, description, questions or confirmation message: visitors only ever see milena@onyxworldtravel.com.
 
 | Form | Title (exactly) | Shown on (Insert > Forms) | Also linked from | Replaces on the demo |
 |---|---|---|---|---|
@@ -49,7 +49,7 @@ The questions come from the demo's forms (`src/_includes/partials/contact-form.n
 
 ## 1.1 Create the forms (Sitting 1, Milena at the keyboard)
 
-1. Go to **forms.google.com** > **Blank form**. Do it three times.
+1. Signed in as [her Gmail address] (check the account picture at the top right), go to **forms.google.com** > **Blank form**. Do it three times. If she already has other forms in this account, that's fine: the three titles below keep them apart.
 2. Click "Untitled form" at the top of each one and type its title from the table above.
 3. In each form: More (three dots, top right) > **Add collaborators** > your Google account > **Editor**.
 
@@ -212,16 +212,50 @@ All three messages contain **[TO FILL: how fast Milena replies, e.g. within a da
 
 ## 1.5 Email notifications to Milena (Sitting 2, Milena at the keyboard)
 
-In **each** of the three forms:
+Signed in as [her Gmail address], in **each** of the three forms:
 
 1. Click **Responses** at the top.
 2. Click **More** (three dots) > **Get email notifications for new responses**. A tick shows it's on (support.google.com/docs/answer/139706).
 
-- **Only the account that clicks it gets the emails.** You can't switch it on for her, and there's no box to type another address.
-- The emails go to her Google account's own address: **[TO FILL: Google account email for Milena]**. If the build guide's Step 0.1 recommendation is followed, that's milena@onyxworldtravel.com, her GoDaddy inbox.
-- What the email says: probably only that there's a new response, with a link to it, **not** the answers themselves (LIKELY, from several 2025-2026 guides; Google's help doesn't say). Its sender, subject line, and whether several responses close together come as one email are UNVERIFIED. Part 3 checks them, and the answers go into Milena's guide.
+- **Only the account that clicks it gets the emails.** You can't switch it on for her, and there's no box to type another address. If you switch it on in your own account too, you get your own copy (optional). To get them in her business inbox as well, use the optional Gmail forwarding (1.5a / build guide 8.3a).
+- The emails go to her Google account's own address: **[her Gmail address]**, her Gmail inbox, not her GoDaddy business inbox. If she checks milena@onyxworldtravel.com every day instead, forward them there (1.5a, optional). (LIKELY: Google's help doesn't name the recipient, but several guides agree it's the account that switched it on.)
+- What the email says: probably only that there's a new response, with a link to it, **not** the answers themselves (LIKELY, from several 2025-2026 guides; Google's help doesn't say). Its sender (LIKELY "Google Forms" `forms-receipts-noreply@google.com`, from three non-Google guides), subject line, and whether several responses close together come as one email are UNVERIFIED. Part 3 checks them, and the answers go into Milena's guide. The sender is also what the forwarding filter (1.5a) matches on, so write it down from the first test.
+- It may land in a Gmail tab (Updates or Promotions) or in Spam instead of her main inbox (UNVERIFIED). Part 3 notes where it lands, so you can tell her where to look.
 - **Replying to that email does not reach the visitor.** It comes from Google, not from them.
+- Her Google storage must not be full. Gmail, Drive and Photos share the free 15 GB, and a full account can't receive emails, so the alerts would bounce, and nobody could edit the forms (support.google.com/googleone/answer/9312312 and drive/answer/6374270; build guide Step 0.4). Whether a full account also stops the forms taking answers is UNVERIFIED.
 - No add-on is needed, and none is used.
+
+
+## 1.5a Optional: forward the alerts to her business inbox (Sitting 2, Milena at the keyboard)
+
+Ask Milena which inbox she checks every day. If it's her Gmail, skip this. If it's milena@onyxworldtravel.com, Gmail can send a copy of each alert there. It's free and needs no add-on. The build guide's Step 8.3a covers the same step. Do it **on a computer**: Google gives no steps for the phone app (support.google.com/mail/answer/10957).
+
+**Order in Sitting 2:** turn on notifications (1.5) > send one test (Part 3, Step 3, point 4) so a real alert reaches her Gmail > set up forwarding from that alert (A and B below) > send a second test and check the copy reaches milena@onyxworldtravel.com. A new filter only acts on **new** emails, so alerts that came before it are never forwarded (answer/10957).
+
+**A. Add the forwarding address** (in Gmail, signed in as [her Gmail address]):
+
+1. Settings (gear, top right) > **See all settings** > **Forwarding and POP/IMAP** tab (sometimes just "Forwarding").
+2. **Add a forwarding address** > type `milena@onyxworldtravel.com` > **Next** > **Proceed** > **OK**.
+3. Google sends a confirmation email to milena@onyxworldtravel.com. Milena opens her business inbox (look in Junk too) and clicks the confirmation link in it. If Gmail shows a box asking for a confirmation code instead, she types the code from that same email (UNVERIFIED).
+4. Back in Gmail, refresh the page.
+5. **Leave "Disable forwarding" selected.** Never choose "Forward a copy of incoming mail to": that would send **all** her personal Gmail to her business inbox. The filter below forwards only the alerts.
+
+**B. The filter.** Build it from the real test alert, so it doesn't rely on a sender address the research couldn't confirm.
+
+1. In Gmail, tick the box next to the test alert > **More** (three dots) > **Filter messages like these** (support.google.com/mail/answer/6579).
+2. The **From** box should show the alert's sender (LIKELY `forms-receipts-noreply@google.com`; UNVERIFIED). Write down the real sender and subject line.
+   - No real alert yet? Search box > **Show search options** > From: the sender above > **Search**, and check it finds only Google Forms alerts.
+3. **Create filter** > tick **Forward it** > choose milena@onyxworldtravel.com (the label may read "Forward it to"; UNVERIFIED).
+4. In the same filter, also tick **Never send it to Spam**, and optionally **Categorize as: Primary** (labels UNVERIFIED), so the alert also stays easy to find in her Gmail.
+5. **Create filter**.
+6. Send the second test. The copy must arrive at milena@onyxworldtravel.com. The first time, look in its **Junk** folder too and mark it **Not junk**.
+
+- The alert still arrives in her Gmail. The copy is extra. She still reads the answers in Google Forms, signed in as [her Gmail address] (1.6).
+- Gmail doesn't forward spam (answer/10957), so an alert that lands in her Gmail Spam is probably not passed on (LIKELY for filters too). That's what "Never send it to Spam" is for.
+- For the first week, Gmail shows a note saying she's forwarding some of her email. That's expected. If she ever sees a forwarding note she didn't ask for, she changes her Google password right away and calls you, and that forwarding is turned off (answer/10957).
+- Each extra address needs its own filter. One is enough here.
+- If her business email ever changes, her Google sign-in and the alerts stay at [her Gmail address]. Only this forwarding needs the new address added and confirmed, and the filter pointed at it (build guide 8.3a).
+- Whether the filter also catches "Contact form owner" messages (X3) is UNVERIFIED. The "Contact form owner" test in Part 3, Step 3 checks it.
 
 
 ## 1.6 How Milena reads and answers a message
@@ -230,16 +264,18 @@ Written for Milena, in her words. Copy this into `4-milena-guide.md`.
 
 > **When someone fills in a form on your website**
 >
-> You get an email from Google saying there's a new response. It doesn't show their message. Here's how to read it and answer:
+> You get an email from Google in your Gmail ([her Gmail address]) saying there's a new response. If Xavier set up forwarding, a copy also comes to milena@onyxworldtravel.com. It may not show their message. Here's how to read it and answer:
 >
-> 1. Go to **forms.google.com**. You'll see your three forms: Message for Milena, Custom trip idea, and Trip booking and waitlist.
+> 1. Go to **forms.google.com**. If Google asks you to sign in, use [her Gmail address]. (The picture or letter at the top right shows which account you're in.) You'll see your three forms: Message for Milena, Custom trip idea, and Trip booking and waitlist.
 > 2. Click the form the email was about.
 > 3. At the top, click **Responses**, then **Individual**. You'll see one message at a time. The arrows move to the next or previous one.
 > 4. Read it. Their phone number and, if they gave one, their email address are in the answers.
-> 5. **To answer by email:** copy their email address. Open your usual email (milena@onyxworldtravel.com), start a **new** email, paste their address, write to them and send it.
+> 5. **To answer by email:** copy their email address. Open your business email (milena@onyxworldtravel.com), not your Gmail, start a **new** email, paste their address, write to them and send it. That way travelers always see your business address.
 > 6. **To answer by phone:** call or text the number they gave.
 >
 > **Please don't press Reply on Google's email.** It goes to Google, not to the traveler.
+>
+> **Sometimes a visitor writes to you through Google's own "Contact form owner" link** at the bottom of a form. That email arrives in your Gmail. Answer from your business email (milena@onyxworldtravel.com) by typing the traveler's address into a new message. Don't press Reply in Gmail: the traveler would see your personal Gmail address.
 >
 > **Junk messages:** in Responses > Individual, the bin (trash) icon deletes the one you're looking at.
 >
@@ -248,6 +284,7 @@ Written for Milena, in her words. Copy this into `4-milena-guide.md`.
 Notes for you:
 
 - The trash icon's place in Individual view is UNVERIFIED. Check it, and correct her guide.
+- The "Contact form owner" paragraph is LIKELY. Google's help says the visitor's name and email are shared with the message (support.google.com/docs/answer/15473134), and speaks of "the email with their feedback" that the owner receives (answer/139706). Its sender, subject and Reply-To are UNVERIFIED until the "Contact form owner" test in Part 3, Step 3 checks them. If the test shows something different, correct her guide.
 - Optional, free: Responses > **Link to Sheets** puts every answer in a Google Sheet. Not needed. Google warns that form collaborators may also see a linked sheet (answer/139706).
 - **Privacy:** everyone who is an Editor on a form can read every response. At hand-over, Milena decides whether you stay an Editor on the forms (build guide Step 14).
 - Google Forms has no captcha or spam filter. How much junk arrives is unknown (UNVERIFIED). Deleting it is the only remedy that costs $0.
@@ -440,8 +477,8 @@ The demo's form error summaries (links that jump to a field with a problem) are 
 | # | What | Where | Note |
 |---|---|---|---|
 | X1 | Search (magnifier) | top right of every published page | Searches the site. It can't be removed (UNVERIFIED). Hidden pages may show in its results (UNVERIFIED); the Trip template is labelled "Sample trip", which is acceptable. |
-| X2 | The round **(i)** badge | bottom left of every published page | Google's site information and "Report abuse". It can't be removed. Normal. |
-| X3 | Inside each form: **Submit**, **Clear form** (label UNVERIFIED), and Google's small links at the bottom (Terms, Privacy, report abuse) | every embedded form | Google's own. A signed-in visitor also sees their own Google account at the top of the form. That's normal and harmless. |
+| X2 | The round **(i)** badge | bottom left of every published page | Google's site information: "Google Sites", "Report abuse" and "Page details" / "Page updated" (labels LIKELY, from two live personal-account sites). It can't be removed. Normal. It shows no owner email or name (LIKELY); Part 3, Step 4 checks it. |
+| X3 | Inside each form: **Submit**, **Clear form**, and Google's small print at the bottom: "Never submit passwords through Google Forms.", "This content is neither created nor endorsed by Google.", **Terms of Service**, **Privacy Policy**, "Does this form look suspicious? **Report**", and a **Help and feedback** menu with **Contact form owner**, **Help Forms improve** and **Report** | every embedded form, and Form C's full-screen link | Google's own (seen on a live personal-account form; exact labels can vary, UNVERIFIED). A signed-in visitor also sees their own Google account at the top of the form. That's normal and harmless. No owner email or name shows (LIKELY; Part 3, Step 3 checks it). **"Contact form owner"** is harmless, but it lets a visitor send Milena a message, with their name and email, that arrives in her Gmail, [her Gmail address] (support.google.com/docs/answer/15473134; LIKELY). The research found no setting that turns it off. Her guide (1.6) says how to answer it. "Report" goes to Google, not to her (LIKELY). |
 | X4 | Anything else clickable: an Announcement banner, Social links icons, an image with a link, an empty "+" placeholder | anywhere | **None should exist.** If one turns up, it's removed (Part 3, Step 4). |
 
 
@@ -473,7 +510,7 @@ Run it on the **published** site: not in the editor, and not only in Preview. Us
 - A computer with a **private (incognito) window**, so you see exactly what visitors see, signed out.
 - A phone. Ideally one iPhone **and** one Android (borrow one), because phone numbers behave differently on each.
 - **Your own** email address and phone number for the test answers. **Not** Milena's, so you can check that her reply reaches the sender.
-- **Milena**, for her inbox (Spam or Junk too) and for the reply test. Her Google account receives the "new response" emails.
+- **Milena**, for her Gmail inbox, [her Gmail address], which receives the "new response" emails (Spam too). Also her business inbox, milena@onyxworldtravel.com, for the reply test and for any forwarded alerts (Junk too).
 - Optional: a second person on a different phone or network.
 
 ## When to run it
@@ -481,7 +518,7 @@ Run it on the **published** site: not in the editor, and not only in Preview. Us
 | Round | When | Who | What |
 |---|---|---|---|
 | **1. Before launch** | After build guide Step 11 (published, still **Restricted**) | You, signed in to your own Google account | **Steps 1 and 4** on the restricted site. **Step 3, points 1 to 7**, on each form's **responder link** in a private window. (A signed-out window can't open a restricted site, but it can open the forms.) No notification check yet: Milena turns notifications on in Sitting 2. |
-| **2. Sitting 2** | Right after Milena turns on notifications (1.5) | You and Milena | **Step 3 in full**, one test per form, including the notification and the reply. Also **Step 2**. |
+| **2. Sitting 2** | Right after Milena turns on notifications (1.5) and, if wanted, forwarding (1.5a). Forwarding is built from the first test's alert, so send one more test after it (1.5a, "Order in Sitting 2"). | You and Milena | **Step 3 in full**, one test per form, including the notification, the forwarded copy if 1.5a was done, and the reply. Also the "Contact form owner" test (Step 3) and **Step 2**. |
 | **3. After the domain is live** | Build guide Step 12, within 48 hours | You, then Milena on her phone | **Step 5** (the domain), then **Steps 1, 3 and 4 again** on www.onyxworldtravel.com, signed out, on a computer and a phone. |
 | **Later** | After every new trip, and after any change to a form | Milena | "Milena's three-line check" at the end of this part. |
 
@@ -537,23 +574,33 @@ Do this for **Form A** (Contact), **Form B** (Plan a custom trip) and **Form C**
    - In the last box: `Test of the [form name] form, [today's date]`
 
    Press Submit.
-5. **The confirmation message shows** inside the box, with that form's words from Part 1. If you have to scroll up inside the box to see it, note that for Milena's guide.
+5. **The confirmation message shows** inside the box, with that form's words from Part 1. If you have to scroll up inside the box to see it, note that for Milena's guide. **Her Gmail address shows nowhere:** on the form, and again on its confirmation, press **Ctrl+F** and search `[her Gmail username]`. Nothing may be found (LIKELY that Google shows no owner address; this checks it).
 6. **Blank email is accepted** (B and C): send a second test with Email left empty. It goes through.
 7. **The answers are in the form:** Responses > Individual shows every answer, next to its question. On C, the trip choice is right.
 8. **The notification reaches Milena** (from Round 2):
-   - Within about 10 minutes (timing UNVERIFIED), an email from Google arrives in her Google account's inbox, **[TO FILL: Google account email for Milena]**.
-   - Not in the inbox? Look in **Spam** or **Junk**. If it's there, mark it **Not spam** and add the sender to her contacts.
-   - Not there at all? Check that 1.5 was done in **that** form, signed in as Milena.
-   - Write down the sender, the subject line, and whether the answers are in the email. Put them in her guide (Appendix A, item 12 of the build guide).
+   - Within about 10 minutes (timing UNVERIFIED), an email from Google arrives in her Gmail inbox, **[her Gmail address]**. If forwarding was set up (1.5a), a copy also arrives at milena@onyxworldtravel.com.
+   - Not in the inbox? In Gmail, look in **Spam** and in the **Updates** and **Promotions** tabs. If it's in Spam, mark it **Not spam** and add the sender to her contacts. With forwarding on, also look in the business inbox's **Junk** folder and mark it **Not junk**. Write down where it landed, and tell Milena where to look.
+   - Not there at all? Check that 1.5 was done in **that** form, signed in as [her Gmail address]. In Gmail but not at milena@onyxworldtravel.com? Check the forwarding address is confirmed and the filter's sender matches (1.5a). Alerts that came before the filter are never forwarded, so send a new test.
+   - Write down the sender, the subject line, and whether the answers are in the email. Put them in her guide (Appendix A, item 12 of the build guide), and use the sender for the forwarding filter (1.5a).
 9. **Milena can reply to the sender** (from Round 2, Milena at the keyboard):
    1. She opens the response (1.6), copies **your** test address, and writes a **new** email from milena@onyxworldtravel.com: "Test reply".
    2. It must arrive in your inbox. Check your spam folder too.
-   3. Reply to her from your test address. It must arrive in her inbox.
+   3. Reply to her from your test address. It must arrive in her business inbox, milena@onyxworldtravel.com.
    4. Also press **Reply** on Google's notification email and look at the "To" line. Expected: it isn't your address. That's why her guide says never to use it. Write down what it shows.
 10. **On a phone:** send one more test (Form A is enough). Check that the form fits the screen, every question can be answered, and the confirmation shows.
 11. **Clean up:** delete the test responses (Responses > Individual > trash icon; UNVERIFIED place) and the test emails.
 
 **Form C: the waitlist (once, in Round 2).** In Form C, add a choice `TEST trip, (sold out: join the waitlist)`. Send a test choosing it, and check that the response shows those words. Then delete the choice and the response. This also checks the sold-out step in Milena's guide.
+
+**"Contact form owner" (once, in Round 2, after 1.5a if it was done).** Open Form A's responder link in the private window > at the bottom, **Help and feedback** > **Contact form owner** (X3), and note whether it asks you to sign in (UNVERIFIED). Then, signed in to **your own** Google account, send one message: `TEST from Xavier, please ignore`. Then, with Milena, write down:
+
+- where it lands in her Gmail (inbox, a tab, or Spam), its sender and subject line;
+- whether you, the sender, see `[her Gmail username]` anywhere, on screen or in any copy emailed to you (UNVERIFIED);
+- what **Reply** in Gmail would show in the "To" line (the Reply-To), then discard the reply without sending;
+- whether the forwarding filter (1.5a), if set up, also sent it to milena@onyxworldtravel.com;
+- whether it has a "Block the sender" link at the bottom (Google's help says it does).
+
+If anything differs from the "Contact form owner" paragraph in 1.6, correct her guide. Then delete the test message.
 
 
 ## Step 4. Look for anything clickable that isn't on the list
@@ -561,6 +608,8 @@ Do this for **Form A** (Contact), **Form B** (Plan a custom trip) and **Form C**
 On every page, on both devices, look for buttons, icons, underlined words or clickable pictures that aren't on the tick sheet. Expected: only Google's search magnifier, the (i) badge and the parts of the forms (X1 to X3). Anything else, such as an empty "+" box, a social icon, an announcement banner or a linked picture, must work or be removed.
 
 Also press **Ctrl+F** and search for `TO FILL` on every live page, in the three confirmation messages and in Form C's trip list. Nothing may be found at launch, except on the hidden Trip template (build guide Step 10). With no trip at launch, also check that Home and Services & Trips use the no-trip words ("The next one is in the works." / "The next trip is in the works.", `2-text-to-paste.md` part 13).
+
+**Her Gmail address stays private.** Search `[her Gmail username]` the same way on every live page: nothing may be found. The site's own address (sites.google.com/view/...) mustn't contain it either. In Round 3, in a signed-out private window on www.onyxworldtravel.com, also open the **(i)** badge (X2) and each thing it offers: nothing in it may show `[her Gmail username]` or her Google account name (LIKELY that it doesn't; check in the editor).
 
 
 ## Step 5. The domain: both addresses, with the padlock
@@ -622,6 +671,7 @@ If something fails, use the error table in build guide 12.8 ("Invalid DNS", "Mis
 | E23 | Footer "Privacy" | Privacy | [ ] | [ ] | |
 | E3 | No Call button in the menu bar | nothing there | [ ] | [ ] | |
 | X1 | Search magnifier | search box opens | [ ] | [ ] | |
+| X2 | (i) badge, and Ctrl+F `[her Gmail username]` (Step 4) | Google's info only; `[her Gmail username]` and her Google account name nowhere | [ ] | [ ] | |
 | X4 | Nothing else clickable (Step 4) | nothing fake left | [ ] | [ ] | |
 
 **Home**
@@ -720,21 +770,21 @@ Put this in her guide. After she adds a trip, or changes a form, and presses Pub
 
 1. Open the new trip page on your phone. Tap "See the trip" on Home, then both "Save my spot" buttons. Each one should open the booking form, with the new trip in the list.
 2. Fill in the form with your own name and the word TEST, choose the new trip, and press Submit.
-3. Check that Google's email arrives (look in Spam too). Then open the form > Responses > Individual and delete the TEST answer.
+3. Check that Google's email arrives in your Gmail, and in your business inbox if forwarding is set up (look in Spam and Junk too). Then open the form > Responses > Individual and delete the TEST answer.
 
 
 ---
 
 # Questions only you or Milena can answer
 
-1. **Milena's Google account email.** [TO FILL: Google account email for Milena]. It decides where every "new response" email lands. Using milena@onyxworldtravel.com puts them in the inbox she already reads.
+1. **Which inbox she checks every day.** Her Google account is decided: [her Gmail address], so every "new response" email lands in her Gmail. If she checks milena@onyxworldtravel.com more, set up the optional forwarding in Sitting 2 (1.5a).
 2. **Reply time.** How fast does Milena usually reply? It fills [TO FILL: how fast Milena replies, e.g. within a day] in all three confirmation messages and on the Contact page. If there's no answer by launch, the words are cut (1.4).
 3. **Contact form: "Phone or email".** Is one required question OK (recommended, so every message can be answered)? The alternatives are two optional boxes, as on the demo, with the risk of a message she can't answer, or a required Email.
 4. **First trip.** Will a real trip be ready at launch? If not, the trip rows on Home and Services & Trips are deleted, and "Which trip?" holds only "A different trip, or I'm not sure yet".
 5. **Phones for the test.** Do you have an iPhone **and** an Android for Step 2? Without both, there's no Call button: the plain number stays everywhere.
 6. **Who can read the answers after hand-over.** Every Editor on a form sees every response, with names and phone numbers. Does Milena keep you as an Editor on the forms?
 7. **Optional: pre-selected trip.** Google Forms can make a link that opens the booking form with one trip already chosen ("Get pre-filled link"; not researched here, UNVERIFIED). It would save visitors one click, but Milena would have to make a new link for every trip and paste it into two buttons. Recommendation: leave it out unless she's comfortable with it.
-8. **Being there for Sitting 2.** The notification and reply tests (Step 3, points 8 and 9) need Milena and her inbox. Will she be at the keyboard, in person or on a screen share?
+8. **Being there for Sitting 2.** The notification and reply tests (Step 3, points 8 and 9) need Milena, her Gmail, and her business inbox (for the reply test and any forwarding). Will she be at the keyboard, in person or on a screen share?
 
 
 ---
@@ -744,25 +794,32 @@ Put this in her guide. After she adds a trip, or changes a form, and presses Pub
 Google:
 
 - Forms:
-  - support.google.com/docs/answer/139706 (responses, Individual view, email notifications, collecting email addresses, copies to responders, Link to Sheets)
+  - support.google.com/docs/answer/139706 (responses, Individual view, email notifications, collecting email addresses, copies to responders, Link to Sheets; responders can contact the owner, with "Block the sender" at the bottom of "the email with their feedback")
   - support.google.com/docs/answer/2839588 (Publish, Manage, who can respond, confirmation message, Copy responder link, Shorten URL, View results summary)
   - support.google.com/docs/answer/7322334 (question types, Description, Required, File upload needs sign-in)
   - support.google.com/docs/answer/3378864 (Response validation, Custom error text)
   - support.google.com/docs/community-guide/395355672 (Product Expert guide: what forces respondents to sign in)
+  - support.google.com/docs/answer/15473134 (Report a problem, Contact form owner: the visitor's name and email are shared with the message)
 - Sites:
   - support.google.com/sites/answer/90569 (Insert > Forms, embedding)
   - support.google.com/sites/answer/90538 (buttons, links, social links)
   - support.google.com/sites/answer/98216 (pages, navigation, footer)
   - support.google.com/sites/answer/6372880 (publishing, Preview)
   - support.google.com/sites/answer/9068867 (custom domains)
-- Accounts: support.google.com/accounts/answer/27441 (a Google account with an existing email address)
+- Gmail:
+  - support.google.com/mail/answer/10957 (forwarding: add and confirm a forwarding address, forward only some messages with a filter, the first-week notice, spam isn't forwarded)
+  - support.google.com/mail/answer/6579 (filters: Filter messages like these, Forward it)
+- Storage:
+  - support.google.com/googleone/answer/9312312 (15 GB shared by Gmail, Drive and Photos; over quota, Gmail can be affected and nobody can edit the forms)
+  - support.google.com/drive/answer/6374270 (a full account can't send or receive email; messages to it go back to the sender)
 
 Third-party, used to fill gaps:
 
 - sites.google.com/view/new-sites-testing (Product Expert test site: mailto-link, click-to-call, external-links, links in navigation)
 - k8oms.net/links/click-to-call
 - rahmanzeb.com/how-to-add-click-to-call-button-in-google-sites ("does not accept something like tel:")
-- formswrite.com/blog/google-forms-email-notifications (what the notification email contains)
+- formswrite.com/blog/google-forms-email-notifications (what the notification email contains; it goes to the account that switched it on)
+- nerdy-form.com/blog/google-forms-notifications, qualtir.com/blog/google-forms-email-notification (the likely sender, forms-receipts-noreply@google.com)
 - steegle.com/google-sites/how-to/add-buttons (button behaviour)
 
 Local evidence:
@@ -770,4 +827,5 @@ Local evidence:
 - The demo's forms: `/home/user/melina_website/src/_includes/partials/contact-form.njk`, `custom-trip-form.njk`, `booking-form.njk`, and the error messages in `src/assets/js/site.js`
 - The thank-you pages: `gs/site/thanks/`
 - Published-Sites HTML and viewer code: `gs/research/dl/`
+- A live personal-account Google Form and two personal-account Sites, saved signed out (2026-11-23): `gs/work/gmail/live/` (the form's footer links in X3; no owner email in any of them)
 - The clickable inventory script and its output: `gs/work/forms3/` (`links.py`, `links.txt`, `clickables.mjs`, `clickables.json`)

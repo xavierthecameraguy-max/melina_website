@@ -16,3 +16,6 @@ needed for that. Start with `1-build-guide.md`.
 
 Anything marked "(check in the editor)" or UNVERIFIED comes from research that couldn't open a signed-in editor;
 confirm it in the live editor (the full list is in the build guide's Appendix A).
+
+This repository is public, so Milena's personal Gmail address (the Google account that owns the site and
+forms) is written as `[her Gmail address]` here. Xavier's own copies of the guides have it filled in.

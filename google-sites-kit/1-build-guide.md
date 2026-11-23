@@ -1,6 +1,6 @@
 # Onyx World Travel: build guide for Google Sites
 
-For Xavier. This guide rebuilds the Sunny Passport site by hand in new Google Sites, inside **Milena's own free Google account**, on onyxworldtravel.com, for $0. Afterwards she keeps it up to date herself by clicking and typing, with no code and no AI.
+For Xavier. This guide rebuilds the Sunny Passport site by hand in new Google Sites, inside **Milena's own free Google account** (her existing Gmail, [her Gmail address]), on onyxworldtravel.com, for $0. Afterwards she keeps it up to date herself by clicking and typing, with no code and no AI.
 
 **The kit**
 
@@ -14,73 +14,82 @@ For Xavier. This guide rebuilds the Sunny Passport site by hand in new Google Si
 
 **Marks**
 
-- **(check in the editor)**: the research couldn't confirm this. Look before you rely on it, and use the fallback given. For the domain steps, "the editor" means GoDaddy or Search Console. For phone items, it means a real phone. The full list is in Appendix A.
+- **(check in the editor)**: the research couldn't confirm this. Look before you rely on it, and use the fallback given. For the domain steps, "the editor" means GoDaddy or Search Console. For the forwarding step (8.3a), it means Gmail's settings. For phone items, it means a real phone. The full list is in Appendix A.
 - **[TO FILL: ...]**: nobody knows this yet. Paste it exactly as written and never guess it. Before launch, each one is either answered by Milena or its line is deleted (Step 10).
 - **S1 / S2 / S3**: the three section colour styles of the custom theme (Step 3). S1 = **Cream**, S2 = **Sunshine**, S3 = **Dark**. Milena's guide uses those names.
-- **Milena at the keyboard**: a step that only works signed in as Milena. She does it, with you beside her or on a screen share. Never ask for her password.
+- **Milena at the keyboard**: a step that only works signed in as Milena ([her Gmail address]). She does it, with you beside her or on a screen share. Never ask for her password.
 
 **The rules**
 
 1. **No fake buttons.** Every button, link and form must really work. If Google Sites can't make one work, delete it.
 2. **Phone numbers are plain text.** Google Sites very likely doesn't accept `tel:` links, so there are no Call buttons. "(914) 559-8159" is written out wherever the design had a call link. One optional test is in Step 13.
-3. **Email addresses are text links** to `mailto:milena@onyxworldtravel.com` (this works in Sites). The link text is always the address itself.
+3. **Email addresses are text links** to `mailto:milena@onyxworldtravel.com` (this works in Sites). The link text is always the address itself. The site and the forms only ever show milena@onyxworldtravel.com. Her Google sign-in, [her Gmail address], never goes on a page, in the footer, or in a form's title, description, questions or confirmation message.
 4. **Links to pages are always picked from the page list**, never pasted. A picked page opens in the same tab. A pasted address, even the site's own, opens in a new tab.
 5. **Never change a text box's font, colour or size.** The theme does that. Bold (**B**) is fine. A box's own formatting overrides the theme, and Milena couldn't undo it.
 6. **No code.** Never use Insert > Embed > "Embed code". It's the only code door in Sites, and Milena can't maintain it.
-7. **$0.** Ignore every "Try Google Workspace", "Get a domain" or add-on offer.
+7. **$0.** Ignore every "Try Google Workspace", "Get a domain", buy-more-storage or add-on offer.
 8. **No AI.** Ignore Gemini, sparkle icons and "Help me create". Build everything by hand so Milena can change everything by hand.
 
 **Two sittings with Milena** (in person, or a screen share with her at the keyboard)
 
 | Sitting | Steps | About |
 |---|---|---|
-| 1. Start | 0, 1, 12.0 (and 12.3 if you can) | Her Google account, the empty site and forms shared with you, your GoDaddy access, Search Console |
-| 2. Launch | 8.3, 12.3 (if not done), 12.5, 12.6, 14 | Form notifications, going public, the custom domain, hand-over |
+| 1. Start | 0, 1, 12.0 (and 12.3 if you can) | Her Google account ([her Gmail address]): check she can sign in, protect it, check her storage. The empty site and forms shared with you, your GoDaddy access, Search Console |
+| 2. Launch | 8.3 (and optional 8.3a), 12.3 (if not done), 12.5, 12.6, 14 | Form notifications and their tests (and, if she wants them in her business inbox, Gmail forwarding), going public, the custom domain, hand-over |
 
 Everything else you do alone, signed in as yourself.
 
 ---
 
-## Step 0. Milena's Google account (Sitting 1, Milena at the keyboard)
+## Step 0. Milena's Google account: [her Gmail address] (Sitting 1, Milena at the keyboard)
 
-Everything (the site, the three forms, their answers, Search Console) lives in **one personal Google account: hers**. Nothing is ever transferred.
+Everything (the site, the three forms, their answers, Search Console) lives in **one personal Google account: hers, [her Gmail address]** (her existing Gmail). Nothing is ever transferred.
 
 | Who | Owns / can do |
 |---|---|
-| **Milena** | Owns the site, the forms and the Search Console property. Only she can connect the domain, and only her own click sends form notifications to her. |
+| **Milena** ([her Gmail address]) | Owns the site, the forms and the Search Console property. Only she can connect the domain, and only her own click turns on form notifications to her Gmail inbox. |
 | **You (Xavier)** | **Editor** on the site and on each form (Step 1), with your own Google account. GoDaddy **delegate** with your own GoDaddy account (Step 12.0). Never her password. |
 
 Why: only the site's owner can connect a domain (editors don't even see the setting), and Google says transferring a site can break a custom domain (support.google.com/sites/answer/9068867). Form notifications and Search Console ownership are tied to one account too.
 
-**0.1 Which account**
+**0.1 The account: her existing Gmail**
 
-- **Recommended:** a free personal Google account made **with her existing address milena@onyxworldtravel.com**. Go to accounts.google.com > Create account > For my personal use > **Use your existing email** (support.google.com/accounts/answer/27441). Form notifications then land in the inbox she already reads.
-  - This only works if that address isn't already a Google account. Try signing in with it first.
-  - Its recovery email must then be a **different** address.
-- **Alternative:** a new Gmail address. Then form notifications go to that Gmail, and she has a second inbox to watch.
-- Decision: **[TO FILL: Google account email for Milena]**.
-- No Google Workspace. The free account is enough for everything in this guide.
+- **Decided:** her existing personal Gmail, **[her Gmail address]**. She already has it, so there's nothing to create. It's only her sign-in: the site and the forms show **milena@onyxworldtravel.com** everywhere, and [her Gmail address] never appears on them. Form notifications go to this Gmail (8.3). If she'd rather see them in her business inbox, see 8.3a.
+- **Check she can sign in:** at accounts.google.com, Milena signs in as [her Gmail address] with her own password. You never see it. If she can't get in, she recovers the account before anything else is built.
+- Changing her business email or phone later doesn't change this sign-in. It stays [her Gmail address].
+- No Google Workspace. Her free Gmail account is enough for everything in this guide.
 
 **0.2 Protect the account (do it now, not later)**
 
-Google Account > Security:
+Signed in as [her Gmail address]: Google Account > **Security & sign-in** > **How you sign in to Google** (support.google.com/accounts/answer/183723). It's an account she already uses, so some of these may already be set. Check each one and correct it:
 
-1. **Recovery phone:** her mobile. Not a Google Voice number.
-2. **Recovery email:** a different address from the account's own.
-3. **Recovery contact:** someone she trusts (support.google.com/accounts/answer/12418290).
-4. **2-Step Verification:** on, with the phone prompt as the method.
+1. **Recovery phone:** her mobile, one that gets text messages and belongs only to her. Not a Google Voice number. An old account often holds an outdated number: check that the number shown is her current mobile.
+2. **Recovery email:** **milena@onyxworldtravel.com**, her business address. It must be different from the account's own address ([her Gmail address]).
+3. **Recovery contact:** someone she trusts. Security & sign-in > **Recovery contacts** > Add recovery contact. The person has 7 days to accept (support.google.com/accounts/answer/16590793).
+4. **2-Step Verification:** on, with the phone prompt as the method (it may already be on; check it).
 
-If she loses this account, she loses the site, the forms and the domain verification. Google can delete accounts that are unused for 2 years (support.google.com/accounts/answer/3036546). Normal use keeps it active.
+If she loses this account, she loses her Gmail, the site, the forms and the domain verification. Her personal email and her business website now share one login, so a hacked or locked Gmail takes the website with it. Google can delete accounts that are unused for 2 years (support.google.com/accounts/answer/12418290). Normal use keeps it active: reading or sending email in this Gmail counts.
 
 **0.3 If you already started a copy in your own account**
 
 Rebuild it in hers. Don't publish test copies from your account under the address she'll use: Google ties a used address to its owner (support.google.com/sites/answer/6372880).
 
-If rebuilding is impossible, transfer it **before any domain step**: Share > the person > Make owner (wording: check in the editor). She has to accept the transfer. Then she publishes and does the domain herself.
+If rebuilding is impossible, transfer it **before any domain step**: Share > [her Gmail address] > Make owner (wording: check in the editor). She has to accept the transfer. Then she publishes and does the domain herself.
+
+**0.4 Her storage, and what's already in her account (Sitting 1)**
+
+- **Storage:** her Gmail, Drive and Photos share one free 15 GB (support.google.com/googleone/answer/9312312). The forms count toward it. The site probably does too (LIKELY), but its pictures are small.
+  - Check it: Google Drive > **Storage** (left menu), or google.com/settings/storage.
+  - If it's near 15 GB, clean up **before** building: empty Gmail's Trash and Spam, and delete big old attachments. The figure can take 48-72 hours to update.
+  - Why it matters: a full account can't send or receive email (messages to her bounce back), so the form alerts bounce, and nobody can edit the forms until she frees space (support.google.com/drive/answer/6374270 and googleone/answer/9312312). Whether the forms still take answers then is UNVERIFIED.
+  - **$0:** never buy storage. Clearing space is the fix.
+- **Existing files:** open **sites.google.com** and **forms.google.com** in her account and note any sites or forms she already has. They're harmless, but she could open the wrong one. The website's files are the ones named in Step 1: **Onyx World Travel** and the three form titles.
 
 ---
 
 ## Step 1. Create the site, the forms and the sharing (Sitting 1, Milena at the keyboard)
+
+Before you start, check that the account picture at the top right is [her Gmail address]. If it isn't, switch to it. Otherwise the site and forms are created in the wrong account. Check again at step 6 (forms.google.com).
 
 1. **sites.google.com** > **Blank site**.
 2. Top left, the file name ("Untitled site"): type **Onyx World Travel**.
@@ -287,7 +296,7 @@ Text: **Footer** block.
 
 ---
 
-## Step 8. The three Google Forms (in Milena's account)
+## Step 8. The three Google Forms (in Milena's account, [her Gmail address])
 
 Build them **before** the pages that embed them. The questions, word for word, are in `3-forms-and-buttons.md`, part 1. Summary:
 
@@ -324,13 +333,43 @@ Build them **before** the pages that embed them. The questions, word for word, a
 - With no real trip at launch, that last choice is the only one.
 - When a trip sells out, Milena renames its choice to add "(sold out: join the waitlist)". The waitlist is this same form.
 
-**8.3 Notifications: Milena at the keyboard (Sitting 2).** In each form:
+**8.3 Notifications: Milena at the keyboard (Sitting 2), signed in as [her Gmail address].** In each form:
 
 1. **Responses** tab > More (three dots).
 2. **Get email notifications for new responses**. A tick shows it's on.
 
-- Only the account that clicks it gets the emails, so you can't do this for her (support.google.com/docs/answer/139706).
-- The email probably doesn't contain the answers (check in the editor). It links to them. Replying to it doesn't reach the visitor.
+- Only the account that clicks it gets the emails, so you can't do this for her (support.google.com/docs/answer/139706). The alerts go to her Gmail, **[her Gmail address]**, not to milena@onyxworldtravel.com (LIKELY: Google's help doesn't name the recipient, but several guides agree). If she wants them in her business inbox too, do 8.3a. If you switch it on in your own account as well, you get your own copy (optional).
+- The email probably doesn't contain the answers (check in the editor). It links to them. Replying to it doesn't reach the visitor. She reads the answers in Google Forms (signed in as [her Gmail address]) and writes to the traveler from milena@onyxworldtravel.com, never from her Gmail, so travelers only ever see her business address.
+- **Google's "Contact form owner" link.** Every form has Google's own **Help and feedback > Contact form owner** at the bottom, and no setting to turn it off was found. A visitor's message sent that way probably arrives by email in her Gmail, with the visitor's name and email (LIKELY). Its sender and Reply-To are UNVERIFIED. If she pressed Reply in Gmail, the traveler would see [her Gmail address], so she answers these from milena@onyxworldtravel.com too, in a new email. At Sitting 2, signed in as yourself, send one such message and note where it lands, its sender and Reply-To, and whether the 8.3a filter forwards it (3-forms part 3, Step 3).
+
+**8.3a Optional: forward the alerts to her business inbox (Sitting 2, Milena at the keyboard)**
+
+Ask her which inbox she checks every day. If it's her Gmail, skip this. If it's milena@onyxworldtravel.com, Gmail can send a copy of each alert there, for free. Do it **on a computer**: Google gives no steps for the phone app (support.google.com/mail/answer/10957). The same steps are in 3-forms 1.5a.
+
+**Order:** 8.3 first > one test (3-forms part 3, Step 3), so a real alert is in her Gmail > A and B below > a second test. A new filter only acts on **new** emails, so alerts that came before it are never forwarded.
+
+**A. Add the forwarding address** (in Gmail, signed in as [her Gmail address]):
+
+1. Settings (gear, top right) > **See all settings** > **Forwarding and POP/IMAP** tab (sometimes just "Forwarding").
+2. **Add a forwarding address** > `milena@onyxworldtravel.com` > **Next** > **Proceed** > **OK**.
+3. Google sends a confirmation email to milena@onyxworldtravel.com. Milena opens her business inbox (Junk too) and clicks the confirmation link in it. If Gmail shows a box asking for a confirmation code instead, she types the code from that same email (check in the editor).
+4. Back in Gmail, refresh the page.
+5. **Leave "Disable forwarding" selected.** Never choose "Forward a copy of incoming mail to": that sends **all** her personal Gmail to her business inbox. Only the filter below forwards, and only the alerts.
+
+**B. The filter.** Build it from the real test alert, so it doesn't rely on a sender address the research couldn't confirm.
+
+1. In Gmail, tick the box next to the test alert > **More** (three dots) > **Filter messages like these** (support.google.com/mail/answer/6579).
+2. The **From** box shows the alert's sender (probably `forms-receipts-noreply@google.com`; UNVERIFIED). Write down the real sender and subject line (Appendix A item 12).
+   - No real alert yet? Search box > **Show search options** > From: that sender > **Search**, and check it finds only Google Forms alerts.
+3. **Create filter** > tick **Forward it** > choose milena@onyxworldtravel.com (the label may read "Forward it to"; check in the editor).
+4. In the same filter, also tick **Never send it to Spam**, and optionally **Categorize as: Primary**, so the alert stays easy to find in her Gmail (check in the editor).
+5. **Create filter**.
+6. Send the second test. The alert must arrive in **both** inboxes. At GoDaddy, look in **Junk** the first time and mark it not junk.
+
+- Gmail keeps its own copy. She still reads the answers in Google Forms, signed in as [her Gmail address].
+- Gmail doesn't forward what lands in its Spam (LIKELY also true for filters). That's what "Never send it to Spam" is for.
+- For the first week, Gmail shows a note saying she's forwarding some of her email. That's expected; tell her. If she ever sees a forwarding note nobody set up, she changes her Google password right away and calls you, and that forwarding is turned off (answer/10957). Her guide says the same.
+- If her business email ever changes, the new address has to be added and confirmed again, and the filter pointed at it.
 
 **8.4 The booking form's link** (for the "Save my spot" buttons)
 
@@ -498,7 +537,7 @@ Milena duplicates this page for every new trip. Keep every [TO FILL] exactly as 
 
 ## Step 11. Publish (still restricted)
 
-1. **Publish** (top right) > Web address: `sites.google.com/view/` + **[TO FILL: site address name, e.g. onyxworldtravel if free]** > Publish.
+1. **Publish** (top right) > Web address: `sites.google.com/view/` + **[TO FILL: site address name, e.g. onyxworldtravel if free]** > Publish. Never use her Gmail username ([her Gmail username]) in this address.
 2. Open the address on a computer and a phone.
 3. Share > Published site stays **Restricted** while any [TO FILL] text is visible on a page visitors can reach (the hidden Trip template excepted, Step 10). Only you and Milena can open it.
 4. Every later change goes live only after **Publish** again.
@@ -512,7 +551,9 @@ The domain and email stay at GoDaddy. Google Sites can only use an address **wit
 
 **Sitting 2 checklist (Milena at the keyboard):**
 
-- [ ] Notifications on in all three forms (8.3)
+- [ ] Notifications on in all three forms, signed in as [her Gmail address] (8.3)
+- [ ] Ask which inbox she checks daily. If it's milena@onyxworldtravel.com: Gmail forwarding and filter, then a test (8.3a, optional)
+- [ ] Form tests with her (3-forms part 3, Round 2): one per form, her reply from milena@onyxworldtravel.com, and one "Contact form owner" message (8.3)
 - [ ] Search Console verified (12.3), if not done in Sitting 1
 - [ ] Published site Public, search engines allowed, Publish (12.5)
 - [ ] Custom domain connected, Publish (12.6)
@@ -571,7 +612,7 @@ GoDaddy > Domain Portfolio > onyxworldtravel.com > **DNS**:
 
 You can do this days ahead: it changes nothing visible, and verification can take a while.
 
-1. Signed in as **Milena**: **search.google.com/search-console** > Add property > **Domain** (not URL prefix) > `onyxworldtravel.com` > Continue.
+1. Signed in as **Milena ([her Gmail address])**: **search.google.com/search-console** > Add property > **Domain** (not URL prefix) > `onyxworldtravel.com` > Continue. If she already sees other properties from past use, that's harmless: add this one as a new Domain property.
 2. Use the "Any DNS provider" instructions and copy the TXT value `google-site-verification=…`. If a GoDaddy "Start verification" button appears instead, it's optional (check in the editor). The manual TXT always works.
 3. GoDaddy > DNS > **Add New Record**:
    - Type: **TXT**
@@ -584,7 +625,7 @@ You can do this days ahead: it changes nothing visible, and verification can tak
 4. Back in Search Console > **Verify**. If it fails, wait a day and retry. It can take 2-3 days (support.google.com/webmasters/answer/9008080).
 5. **Never delete this TXT.** Without it, the domain loses verification.
 
-- The token belongs to Milena's account. Your own verification wouldn't count. Whether a delegated Search Console owner would satisfy Sites is unconfirmed (check in the editor), so she stays the verified owner.
+- The token belongs to Milena's account ([her Gmail address]). Your own verification wouldn't count. Whether a delegated Search Console owner would satisfy Sites is unconfirmed (check in the editor), so she stays the verified owner.
 
 ### 12.4 Point www at Google (GoDaddy)
 
@@ -603,7 +644,7 @@ DNS > the existing **CNAME `www`** (GoDaddy's default value is `@`) > **Edit** >
 
 ### 12.6 Connect the domain in Sites (Milena at the keyboard)
 
-Only the owner sees this setting.
+Only the owner ([her Gmail address]) sees this setting.
 
 1. Open the site > Settings (gear) > **Custom domains** > **Start setup**.
 2. Type **`www.onyxworldtravel.com`**.
@@ -659,7 +700,8 @@ Run **part 3 of `3-forms-and-buttons.md`** on a computer **and** a phone. Tick o
    - it submits with only the required answers and Email left blank
    - a bad email is refused
    - the confirmation message shows
-   - the notification reaches milena@onyxworldtravel.com (check spam the first time and mark it "Not spam")
+   - the notification reaches her Gmail, [her Gmail address] (check Spam the first time and mark it "Not spam"). Note which Gmail tab or folder it lands in (Primary, Updates, Promotions or Spam; UNVERIFIED) and tell her where to look. If 8.3a was done, a copy also reaches milena@onyxworldtravel.com (check Junk there too)
+   - neither the form nor its confirmation page shows "[her Gmail username]" anywhere (LIKELY; check in the editor)
    - the answer shows under Responses > Individual
 
    Delete the test responses afterwards.
@@ -667,6 +709,7 @@ Run **part 3 of `3-forms-and-buttons.md`** on a computer **and** a phone. Tick o
 5. **Phone numbers:** plain text everywhere. On an iPhone, note whether tapping offers to call. That's a bonus, not a requirement.
 6. **Ctrl+F `TO FILL`** on every live page finds nothing, except on the hidden Trip template (Step 10). Also check the three confirmation messages and Form C's trip list.
 7. **Domain:** the four addresses in 12.8.
+8. **Her Gmail stays private:** signed out, in a private window on www.onyxworldtravel.com, open the round **(i)** badge (and Page details, if shown). Nothing in it shows "[her Gmail username]" or her Google account name. **Ctrl+F `[her Gmail username]`** on every live page finds nothing (LIKELY; check in the editor). If it shows up anywhere, set Published site back to **Restricted** (Share) and decide with Milena what to do.
 
 **Optional Call-button test** (keep it only if every point passes):
 
@@ -685,13 +728,16 @@ If it passes, one "Call (914) 559-8159" button may go on the Contact page beside
 3. **Her guide:**
    - Fix any button or menu name in `4-milena-guide.md` that differed in the real editor.
    - Add screenshots of a finished trip row and a review section.
+   - If you didn't set up forwarding (8.3a), delete the "if Xavier set up forwarding" sentences in her guide (Keep this handy, sections 12 and 13; search it for "forwarding" to find them all). Keep the warning about a forwarding note nobody set up (section 13, Part A).
    - Give it to her with a copy of the `kit` folder, her spare copy of all the words and photos.
-4. **15 minutes together, at her computer, signed in as herself:**
+4. **15 minutes together, at her computer, signed in as herself ([her Gmail address]):**
+   - Show her how to check the account picture at the top right before she edits: it must be [her Gmail address].
    - Change one word, Preview, Publish, change it back and Publish again.
    - Duplicate a review section, then delete it.
    - Open Version history and press **Back**.
    - Open one form's Responses > Individual.
-   - Remind her what to ignore: Gemini and sparkle icons, Themes, Insert > Embed, Workspace offers, the search icon and the (i) badge.
+   - Show her where the alerts arrive: her Gmail (the tab or folder you noted in Step 13), plus her business inbox if 8.3a was done. Remind her that she answers travelers from milena@onyxworldtravel.com, never from her Gmail, and never by replying to Google's alert or to a "Contact form owner" email.
+   - Remind her what to ignore: Gemini and sparkle icons, Themes, Insert > Embed, Workspace offers, offers to buy storage, the search icon and the (i) badge. A "storage almost full" warning is different: she clears Gmail's Trash and Spam or calls you (Step 0.4).
 5. **Access, her choice:**
    - **Sites:** Share > Settings > untick "Editors can publish, change permissions, and add new people". Keep you as Editor for emergencies, or remove you.
    - **Forms:** same choice for each form.
@@ -718,7 +764,7 @@ If it passes, one "Call (914) 559-8159" button may go on the Contact page beside
 | 9 | The footer takes an image | Step 7 | Leave out the light logo |
 | 10 | Duplicate page: the copy's name, position, hidden state and path | Step 9.4 | Fix them in Properties and Pages |
 | 11 | Insert > Forms lists Milena's forms while you edit | Step 8.5 | Insert > Embed > By URL |
-| 12 | Blank optional Email with validation is accepted; the "submit another response" label; auto-save as a sign-in trigger; the notification's sender, subject and content | Step 8 | Adjust 3-forms and Milena's guide |
+| 12 | Blank optional Email with validation is accepted; the "submit another response" label; auto-save as a sign-in trigger; the notification's sender (also needed for the 8.3a filter), subject and content | Step 8 | Adjust 3-forms, Milena's guide and the 8.3a filter |
 | 13 | Collapsible groups start closed | Step 9.4 | Acceptable either way |
 | 14 | Hidden pages in the site search | Step 5 | Acceptable ("Sample trip" label) |
 | 15 | `tel:` and `mailto:` in buttons | Step 13 | Plain number; email text links |
@@ -730,6 +776,10 @@ If it passes, one "Call (914) 559-8159" button may go on the Contact page beside
 | 21 | The search icon has no hide setting | Step 2 | Nothing to do; it's in Milena's ignore list |
 | 22 | Edits to a published Google Form reach the embedded form with no new Publish in Forms | Step 8 | If Forms shows a Publish/Update button after edits, add "press it" to Milena's guide sections 5-9 and 12 |
 | 23 | Hidden Trip template (with its [TO FILL] lines) stays out of Google search results and the site search | Steps 5, 10 | Acceptable (labelled "Sample trip"); nothing links to it at launch |
+| 24 | Gmail forwarding: whether a code box appears instead of the confirmation link, the filter's "Forward it" label, "Never send it to Spam" and "Categorize as: Primary"; which Gmail tab the alert lands in | Step 8.3a, Step 13 | Skip forwarding; she checks her Gmail for alerts |
+| 25 | Nothing visitors see shows [her Gmail address] or her Google account name: the (i) badge, Page details, each form and its confirmation page | Steps 11, 13 | Set the published site back to Restricted and decide with Milena |
+| 26 | Google's "Contact form owner" messages: where they land, their sender and Reply-To, whether the 8.3a filter forwards them | Step 8.3 | She answers them from milena@onyxworldtravel.com in a new email, as with every message |
+| 27 | Whether the forms still take answers when her Google storage is full | Step 0.4 | Keep her storage well under 15 GB |
 
 ## Appendix B. Help pages used
 
@@ -747,10 +797,13 @@ If it passes, one "Call (914) 559-8159" button may go on the Contact page beside
 - **Google Forms** (support.google.com/docs/answer/…):
   - 2839588: publish, confirmation message
   - 139706: responses, notifications
+  - 15473134: "Contact form owner" and feedback
   - 7322334: question types
   - 3378864: validation
   - Product Expert guide 395355672: sign-in triggers
-- **Google Accounts:** support.google.com/accounts/answer/27441, 183723, 12418290, 3036546.
+- **Google Accounts:** support.google.com/accounts/answer/183723 (recovery phone and email), 16590793 (recovery contacts), 12418290 (inactivity policy).
+- **Gmail:** support.google.com/mail/answer/10957 (forwarding, and forwarding only some messages with a filter), 6579 (filters).
+- **Google storage:** support.google.com/googleone/answer/9312312 (the shared 15 GB), support.google.com/drive/answer/6374270 (when the account is full).
 - **Search Console:** support.google.com/webmasters/answer/9008080, 7687615.
 - **Workspace mapping page:** knowledge.workspace.google.com/admin/getting-started/map-a-new-url-to-a-site-in-google-sites.
 - **GoDaddy:** godaddy.com/help/ 19237 (edit CNAME), 19232 (add TXT), 12123 (forwarding), 4166 (export zone file), 42241 (Microsoft 365 DNS), 12376 / 12374 / 32180 (delegate access), 32311 (Domain Protection), 7468 and 41294 (deleting products and websites).

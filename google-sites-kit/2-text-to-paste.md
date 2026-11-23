@@ -22,6 +22,7 @@ The pictures are in the `images` folder. `images/INDEX.md` says where each one g
 - **LINK** on some words: select the words, click Link in the toolbar (Ctrl+K), then do what the line after "->" says.
 - "-> page: X" means **pick page X from the list**. Never paste the page's web address: a pasted address opens in a new tab.
 - "-> email" means type `milena@onyxworldtravel.com` in the link box. Google Sites turns it into an email link by itself.
+- The site only ever shows milena@onyxworldtravel.com. Milena's Google sign-in address (the account that owns the site and the forms) never goes on a page or in a form.
 - "-> the Trip booking form's link" means paste the form's responder link (forms.gle/...). `3-forms-and-buttons.md` says where to copy it. It opens the form in a new tab.
 - **Phone numbers are always plain text.** Google Sites most likely can't make a tap-to-call link, so (914) 559-8159 is never a link or a button, and never coloured. On iPhones the number may become tappable by itself (LIKELY, not yet tested on a real iPhone).
 - **IMAGE**: Insert > Images > Upload, from the `images` folder. **ALT TEXT**: click the picture > More (three dots) > Add alt text, then paste.
@@ -1598,7 +1599,7 @@ How the site responds to "Do Not Track"
 
 When this policy took effect
 
-(Not to paste: when the real policy is written, by Milena or a professional, it must say that the forms are Google Forms and that the answers are kept in Milena's Google account.)
+(Not to paste: when the real policy is written, by Milena or a professional, it must say that the forms are Google Forms and that the answers are kept in Milena's Google account. The only contact address it names is milena@onyxworldtravel.com, never her Google sign-in address.)
 
 
 ---

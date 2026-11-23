@@ -6,7 +6,7 @@ Hi Milena!
 
 This guide is yours to keep. It shows you, step by step, how to change your website yourself: the words, the photos, your trips, your reviews and your gallery. It also shows you how to read the messages people send you from your website.
 
-You'll use two free Google programs, both in your own Google account:
+You'll use two free Google programs, both in your own Google account (your Gmail, [her Gmail address]):
 
 - **Google Sites**, where your website lives. You change it by clicking and typing, a bit like writing a letter.
 - **Google Forms**, which holds the three forms on your website and the messages people send through them.
@@ -15,7 +15,7 @@ Three things to know before you start:
 
 - **Looking around can't break anything.** Your changes save by themselves as you go, but nobody else sees them until you click **Publish**.
 - **There's a safety net.** Google Sites remembers every earlier version of your website, and you can go back to one (section 14).
-- **It's all free.** Your website, your forms and your messages cost nothing at Google. The only bills are the ones you already pay GoDaddy for your web address and your email.
+- **It's all free.** Your website, your forms and your messages cost nothing at Google. The only bills are the ones you already pay GoDaddy for your web address and your business email.
 
 Each section below is one job. Find the job you want and follow the steps in order.
 
@@ -25,12 +25,13 @@ Each section below is one job. Find the job you want and follow the steps in ord
 - **Your website:** www.onyxworldtravel.com
 - **Where you change your website:** sites.google.com
 - **Where your forms and messages are:** forms.google.com
-- **Your Google account email:** [TO FILL: Google account email for Milena]
-- **Your password:** keep it wherever you keep your other passwords, not on this page. Never give it to anyone, not even to someone who says they're from Google. Google will never phone you to ask for it.
-- **Your web address and your email are at GoDaddy:** godaddy.com, phone **1-480-366-3549**. Keep "auto-renew" switched on there. If your web address ever runs out, your website and your email both stop working.
+- **The Google account you sign in with:** [her Gmail address] (your own Gmail). Your website still shows your business email, milena@onyxworldtravel.com.
+- **Where new-message emails arrive:** your Gmail (and your business inbox too, if Xavier set up forwarding).
+- **Your password:** it's the same password you use for your Gmail. Keep it wherever you keep your other passwords, not on this page. Never give it to anyone, not even to someone who says they're from Google. Google will never phone you to ask for it.
+- **Your web address and your business email are at GoDaddy:** godaddy.com, phone **1-480-366-3549**. Keep "auto-renew" switched on there. If your web address ever runs out, your website and your business email both stop working.
 - **Your spare copy:** Xavier gave you a folder with all of your website's words and photos. The words are in the file called "2-text-to-paste", and the photos are in the "images" folder. Keep it somewhere safe.
 
-Your Google account holds your website, your forms and all your messages, so look after it. If you change your mobile number, update it in your Google account too (myaccount.google.com, then **Security & sign-in**). That's how Google lets you back in if you ever forget your password.
+Your Google account ([her Gmail address]) holds your Gmail, your website, your forms and all your messages, so look after it. If you change your mobile number or your business email, update them in your Google account too (myaccount.google.com, then **Security & sign-in**): your business email is its recovery email. That's how Google lets you back in if you ever forget your password.
 
 
 ## A few words you'll see
@@ -77,7 +78,7 @@ Your Google account holds your website, your forms and all your messages, so loo
 ## 1. Open your website editor
 
 1. On your computer, open your internet program (Chrome, Safari or Edge) and go to **sites.google.com**.
-2. If Google asks you to sign in, sign in with your Google account ([TO FILL: Google account email for Milena]) and your password.
+2. If Google asks you to sign in, sign in with your Gmail, **[her Gmail address]**, and its password.
 3. Under your recent sites, click **Onyx World Travel**.
 
 You're in! Your website is in the middle of the screen, and the panel is on the right.
@@ -87,6 +88,7 @@ You're in! Your website is in the middle of the screen, and the panel is on the 
 Good to know:
 
 - **Use a computer** for every job in this guide. Google Sites is made for editing on a computer.
+- **Check you're in the right account.** The small picture or letter at the top right is your Google account. Click it: it should say [her Gmail address]. If it shows another account, pick [her Gmail address] from the list.
 - **There's no Save button.** Your changes save by themselves.
 - **If you get lost, close the tab.** Your work is saved, and nothing is live until you publish.
 - **Only ever open "Onyx World Travel".** If you see a site called "Onyx World Travel SPARE, do not edit", that's a spare copy Xavier made. Leave it alone. And never click **Blank site** or one of the ready-made designs on the sites.google.com start page: that would start a brand-new, separate website.
@@ -493,12 +495,17 @@ Your email address is a link: clicking it starts an email to you. So you change 
 3. On your website, click your email address in the footer. A new email to your new address should open.
 4. Send yourself a test from the Contact page (section 13, part E). The message after Submit should show your new number.
 
-**About the emails that tell you about new messages:** Google sends them to your Google account's email address, not to the address on your website. If you change the email address you use for your Google account itself, that's a bigger job. Google's help page "Change your Google Account email" (support.google.com/accounts) explains it. Take it slowly, and send yourself a test afterwards.
+**Changing your business email or phone doesn't change how you sign in to Google.** You still sign in with [her Gmail address], and Google still sends the new-message emails to your Gmail. What to update:
+
+- **Your Google account** (myaccount.google.com, then **Security & sign-in**): your recovery email if your business email changed, and your recovery phone if your mobile number changed.
+- **The forwarding to your business inbox,** if Xavier set it up and your business email changed. Ask Xavier.
+
+Then send yourself a test (section 13, part E).
 
 
 ## 13. Read and answer messages from your website
 
-Your website has three forms. Each one keeps every message in Google Forms, in your Google account, and emails you when a new one arrives.
+Your website has three forms. Each one keeps every message in Google Forms, in your Google account, and emails your Gmail ([her Gmail address]) when a new one arrives.
 
 | Form name in Google Forms | Where it is on your website |
 |---|---|
@@ -508,17 +515,19 @@ Your website has three forms. Each one keeps every message in Google Forms, in y
 
 ### Part A: Where messages arrive
 
-- **In your email.** Google sends a short email to your Google account's email address ([TO FILL: Google account email for Milena]) saying one of your forms has a new response, with a link to see it. The email may not show what the person wrote, so you'll open the form to read it (part B).
+- **In your Gmail.** Google sends a short email to your Gmail, **[her Gmail address]**, saying one of your forms has a new response, with a link to see it. If Xavier set up forwarding, a copy also lands in your business inbox, milena@onyxworldtravel.com. The email may not show what the person wrote, so you'll open the form to read it (part B).
 - **In Google Forms.** Every message is kept there, even if an email goes missing. Have a look at forms.google.com once a week, just to be safe.
 
-The first time, check your Spam or Junk folder too. If an email from Google Forms is in there, mark it "Not spam", so the next ones land in your inbox.
+The first time, check Spam in your Gmail too, and Junk in your business inbox if forwarding is on. If an email from Google Forms is in there, mark it "Not spam" (or "Not junk"), so the next ones land in your inbox. In Gmail, it may also sit under the **Updates** or **Promotions** tab.
+
+**A note about forwarding.** If Xavier set up forwarding, Gmail shows a note for the first week saying you're forwarding some of your email. That's expected. But if Gmail ever shows a note saying your email is being forwarded, and nobody set that up for you, change your Google password right away and call Xavier.
 
 **Waitlist or booking?** Look at the answer to "Which trip?". If it ends in "(sold out: join the waitlist)", the person is asking to join the waitlist.
 
 ### Part B: Read a message
 
-1. Go to **forms.google.com** (or click the link in Google's email).
-2. Click the form, for example **Trip booking and waitlist**.
+1. Go to **forms.google.com** (or click the link in Google's email). If Google asks you to sign in, use [her Gmail address].
+2. Click the form, for example **Trip booking and waitlist**. (If you have other forms of your own, they're in the list too. Your website's three are the ones in the table above.)
 3. At the top of the form, click **Responses**. The number next to it tells you how many messages the form has.
 4. Click **Individual**. You see one message at a time, with all the answers.
 5. To move between messages, click **Previous** or **Next** (the arrows).
@@ -532,7 +541,9 @@ You can ignore **Summary** (charts of all the answers) and **Link to Sheets** (a
 1. Open the message in Google Forms (part B).
 2. Find their phone number or email address in their answers. On the contact form, it's in "Phone or email". On the other two forms, the phone number is always there, and the email is there if they typed one.
 3. Look at "Best way to reach you" if they answered it.
-4. Call or text them, or write them a new email from your usual email (milena@onyxworldtravel.com). To copy their address, highlight it and press **Ctrl** and **C** (on a Mac, **Command** and **C**). Then paste it into your new email with **Ctrl** and **V** (on a Mac, **Command** and **V**).
+4. Call or text them, or write them a new email from your business email, milena@onyxworldtravel.com, not from your Gmail, so travelers always see your business address. To copy their address, highlight it and press **Ctrl** and **C** (on a Mac, **Command** and **C**). Then paste it into your new email with **Ctrl** and **V** (on a Mac, **Command** and **V**).
+
+**Sometimes a visitor writes to you through Google's own "Contact form owner" link** at the bottom of a form. That email arrives in your Gmail. Answer from your business email (milena@onyxworldtravel.com) by typing the traveler's address into a new message. Don't press Reply in Gmail: the traveler would see your personal Gmail address.
 
 Your website never takes payments. When someone asks to save a spot, you get in touch about the deposit and payment yourself, the way you always do.
 
@@ -553,15 +564,17 @@ Do this after you add a trip, change a form or change your email, and once a mon
 1. On your phone, open www.onyxworldtravel.com and go to the page with the form (for a trip, the trip's own page).
 2. Fill in the form with your own name and the word **TEST**. On the booking form, choose the trip under "Which trip?".
 3. Press **Submit**. A thank-you message should appear inside the form box.
-4. Check that Google's email arrives. Look in Spam or Junk too.
+4. Check that Google's email arrives in your Gmail (and in your business inbox, if Xavier set up forwarding). Look in Spam or Junk too.
 5. Open the form's **Responses**, then **Individual**, and check your test is there. Then delete it (part D).
 
 **If the email doesn't arrive:**
 
-1. Go to forms.google.com and click the form.
+1. Go to forms.google.com, signed in as [her Gmail address], and click the form.
 2. Click **Responses**, then **More** (⋮).
 3. Look at **Get email notifications for new responses**. If there's no tick next to it, click it to turn it on. Each form has its own setting, so check all three.
 4. Send another test.
+
+If it reaches your Gmail but not your business inbox, the forwarding needs a look. Ask Xavier. You can still read every message in your Gmail and in Google Forms.
 
 **If the form on your website says it isn't accepting responses:** open the form in Google Forms, click **Published** at the top right, and make sure accepting responses is switched on.
 
@@ -615,7 +628,7 @@ Google shows lots of offers, helpers and extras. You don't need any of them.
 - **Settings** (the gear at the top). Everything in there was set up by Xavier and should stay as it is.
 - **The arrow next to Publish** (Publish settings). It holds your web address.
 - **The Share button.** It decides who can see and change your website. Leave it as it is.
-- **"Try Google Workspace", "Get a domain", and offers of more storage.** Your free account already has everything your website needs.
+- **"Try Google Workspace", "Get a domain", and offers to buy more storage.** Your free account already has everything your website needs. But don't ignore a warning that your storage is almost full: your Gmail shares that space, and a full account stops the emails about your website's messages. Empty Gmail's **Trash** and **Spam**, or call Xavier.
 - **Starting a new site.** On the sites.google.com start page, never click **Blank site** or a ready-made design. That would be a brand-new, separate website.
 - **In Google Forms:** **Add-ons**, **Make this a quiz**, and new kinds of questions such as **File upload**. Some of these would make visitors sign in to Google before they can write to you, and many would give up.
 - **On your live website:** the magnifying glass at the top right (a search box Google adds) and the small round **(i)** at the bottom left. Every Google website has them. You didn't break anything, and there's nothing you need to do about them.
@@ -633,7 +646,7 @@ Google shows lots of offers, helpers and extras. You don't need any of them.
 
    At the bottom of a help page you can also ask Google's help community. Volunteers there answer questions. Never post your password, your phone number or your email there.
 4. **There's no Google phone line for your website.** Google doesn't offer phone help for free accounts, so the help pages and the help community are the way to get answers. If someone phones you saying they're from Google, it isn't Google. Hang up.
-5. **For your web address or your email (not your website):** call GoDaddy at **1-480-366-3549**. Say: "My domain onyxworldtravel.com and my email are with you. My website itself is on Google Sites." GoDaddy can't help with Google Sites.
+5. **For your web address or your business email, milena@onyxworldtravel.com (not your website or your Gmail):** call GoDaddy at **1-480-366-3549**. Say: "My domain onyxworldtravel.com and my email are with you. My website itself is on Google Sites." GoDaddy can't help with Google Sites.
 6. **Someone else you can call:** [TO FILL: name and phone number of a backup helper, or delete this line]
 
 You've got this, Milena. Take it one step at a time, and remember: nothing is live until you click **Publish**.
@@ -653,6 +666,7 @@ The research could read Google's help pages, but never had a signed-in Google Si
 
 ### 2. Not confirmed by the research (check in the editor)
 
+- **Section 1 ("Check you're in the right account"):** that clicking the picture or letter at the top right of sites.google.com shows the signed-in address and lets her pick another account. Also, if she was signed in to several accounts, which one Sites and Forms open by default.
 - **Section 1:** the sites.google.com start page lists the site under recent sites; the small arrow that opens **Services & Trips** in Pages; and what the "hidden" mark next to a hidden page looks like (section 6, Part A, step 6 refers to it). If the mark is an icon, describe it in step 6.
 - **Section 1 and 6:** whether hidden pages appear in the link picker when you edit a button. If they don't, section 6 Part D step 4 needs another route.
 - **Section 2:** the button **Edit** dialog's finishing button (**Done** or **Save**); used in sections 2, 6, 8 and 9. Also that **Ctrl+Shift+V** pastes plain text in Sites.
@@ -667,17 +681,19 @@ The research could read Google's help pages, but never had a signed-in Google Si
 - **Section 6, Part D, "no trip row left":** the **Layouts** heading in the Insert panel (Google may call it "Content blocks") and the picture-left layout. Ideally, try building a row this way once and add a screenshot here.
 - **Section 9, Part B:** deleting a single button or form box with the **Delete** key (or a trash icon), and dragging a new button under the text.
 - **Section 12:** the small box that appears when you click a text link: the pencil (**Edit**), and whether it shows separate boxes for the words and the link, and **Apply**.
-- **Section 12, last paragraph:** the way to change a Google account's email address. Adjust once you know which address her account uses.
-- **Section 13, Part A:** the notification email's sender, subject, and whether it includes the answers (third-party guides say it doesn't). If it does include them, simplify part B.
+- **Section 12, last paragraph:** her sign-in stays [her Gmail address]. Check the recovery-email and recovery-phone path (myaccount.google.com > Security & sign-in), and whether the forwarding bullet applies (build guide 8.3a).
+- **Section 13, Part A:** the notification email's sender, subject, and whether it includes the answers (third-party guides say it doesn't). If it does include them, simplify part B. Note which Gmail tab or folder the Sitting 2 test alert landed in (Primary, Updates, Promotions or Spam; UNVERIFIED) and name it in Part A. If you set up forwarding (build guide 8.3a), check that the forwarded copy arrives at milena@onyxworldtravel.com. If you didn't, delete the "if Xavier set up forwarding" sentences in Keep this handy and sections 12 and 13 (search the guide for "forwarding"), but keep "A note about forwarding" with its last sentence (the warning about a forwarding note nobody set up), which reads on its own.
+- **Section 13, Part C, "Contact form owner":** LIKELY (support.google.com/docs/answer/15473134). Where it lands, its sender and Reply-To, and whether the forwarding filter catches it are UNVERIFIED until the "Contact form owner" test (3-forms Part 3, Step 3). Correct the paragraph if the test shows something different.
 - **Section 13, Part E:** the **Published** button's wording for accepting responses.
 - **Section 14, Part A:** naming the newest version: whether its **More** > **Rename** is offered on the current version. Also whether a restore needs a **Publish** afterwards (the guide says Publish anyway, which is harmless).
 - **Section 14, last paragraph:** that Ctrl+Z (or an **Undo** button) undoes an edit in the Google Forms editor, and whether Forms now has a version history of its own. If it does, tell her where.
-- **Section 15:** which Gemini prompts actually appear in the Sites and Forms editors for a free account in November 2026. If none, shorten the first bullet.
+- **Section 15:** which Gemini prompts actually appear in the Sites and Forms editors for a free account in November 2026. If none, shorten the first bullet. The storage line is CONFIRMED for Gmail (a full account can't receive email) and for editing forms; whether her forms stop accepting responses when the account is full is UNVERIFIED for a personal account.
 - **Section 16:** that Google has no phone support for free accounts. GoDaddy's number 1-480-366-3549 comes from the earlier kit; check it on GoDaddy's contact page.
 
 ### 3. Fill in before you hand it over
 
-- The [TO FILL] lines: her Google account email (Keep this handy, section 1, section 13), and the backup helper in section 16 (or delete that line).
+- The [TO FILL] line: the backup helper in section 16 (or delete that line). Her Google account ([her Gmail address]) is already filled in, in Keep this handy, section 1 and section 13.
+- Forwarding: keep or delete the "if Xavier set up forwarding" sentences (Keep this handy, sections 12 and 13) to match what you did in Sitting 2.
 - If the site launches with no real trip, the two "no trip" sentences are already in place (build guide Step 9.1), and her first new trip uses sections 6 Part D step 6 and Part E step 4 to change them back.
 - The names in this guide must match the site exactly: "Where are we going next?", "Here's the answer." / "The next one is in the works.", "Here's what's coming up." / "The next trip is in the works.", "More trips are on the way", "Upcoming Trips", "Don't see what you want?", "Trip template", "Quick facts", "Save my spot", "Milena at a glance", "What my travelers say", "Traveled with me before?", "Call me", "Email me", and the three form names. If you renamed any while building, change them here too.
 - The "Launched" version in section 14 assumes you named it (build guide, Step 14). The spare copy's name in section 1 assumes "Onyx World Travel SPARE, do not edit". If you made no spare, delete that bullet.
